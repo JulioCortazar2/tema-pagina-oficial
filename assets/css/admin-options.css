@@ -1,0 +1,417 @@
+/* ==========================================================================
+   GanaGana Custom Theme — Admin Options Page Styles
+   Aplica solo en las páginas: Ajustes GanaGana (CMB2 Options)
+   ========================================================================== */
+
+/* --- Fuente e importaciones --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+/* ============================================================
+   VARIABLES DE COLOR
+   ============================================================ */
+:root {
+    --gg-green-dark:   #1A382D;
+    --gg-green-mid:    #2A5C46;
+    --gg-green-light:  #3A7A5E;
+    --gg-yellow:       #F5C800;
+    --gg-yellow-hover: #E0B400;
+    --gg-white:        #FFFFFF;
+    --gg-gray-light:   #F4F6F9;
+    --gg-gray-mid:     #E2E8F0;
+    --gg-gray-text:    #4A5568;
+    --gg-border:       #CBD5E0;
+    --gg-shadow:       0 4px 20px rgba(26, 56, 45, 0.12);
+    --gg-shadow-hover: 0 8px 30px rgba(26, 56, 45, 0.20);
+    --gg-radius:       12px;
+    --gg-radius-sm:    8px;
+    --gg-transition:   all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   RESET BASE DEL BODY EN PÁGINAS DE ADMIN GanaGana
+   ============================================================ */
+#wpwrap,
+#wpcontent {
+    background: var(--gg-gray-light) !important;
+}
+
+.wrap {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+}
+
+/* ============================================================
+   CABECERA HERO — BRANDING GANAGANA
+   ============================================================ */
+.wrap > h2,
+.wrap > h1 {
+    display: flex !important;
+    align-items: center;
+    gap: 14px;
+    background: linear-gradient(135deg, var(--gg-green-dark) 0%, var(--gg-green-mid) 100%) !important;
+    color: var(--gg-white) !important;
+    margin: 20px 0 28px !important;
+    padding: 24px 30px !important;
+    border-radius: var(--gg-radius) !important;
+    font-size: 1.3rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.04em !important; 
+    text-transform: uppercase !important;
+    box-shadow: var(--gg-shadow) !important;
+    border: none !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.wrap > h2::before,
+.wrap > h1::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 180px; height: 100%;
+    background: linear-gradient(135deg, transparent, rgba(245, 200, 0, 0.15));
+    pointer-events: none;
+}
+
+/* ============================================================
+   CONTENEDOR PRINCIPAL CMB2
+   ============================================================ */
+#cmb2-metabox-gg_topbar_options,
+#cmb2-metabox-gg_header_promo_options,
+#cmb2-metabox-gg_prefooter_options,
+#cmb2-metabox-gg_footer_options,
+#cmb2-metabox-gg_copyright_options,
+.cmb2-options-page .cmb2-metabox {
+    background: var(--gg-white);
+    border: 1px solid var(--gg-border);
+    border-radius: var(--gg-radius);
+    box-shadow: var(--gg-shadow);
+    margin-bottom: 24px;
+    overflow: hidden;
+    transition: var(--gg-transition);
+}
+
+.cmb2-options-page .cmb2-metabox:hover {
+    box-shadow: var(--gg-shadow-hover);
+}
+
+/* ============================================================
+   CABECERA DE CADA SECCIÓN (metabox title)
+   ============================================================ */
+.cmb2-options-page .postbox-header,
+.cmb2-options-page .hndle {
+    background: linear-gradient(90deg, var(--gg-green-dark), var(--gg-green-mid)) !important;
+    border-radius: var(--gg-radius) var(--gg-radius) 0 0 !important;
+    padding: 14px 20px !important;
+    border-bottom: 3px solid var(--gg-yellow) !important;
+    cursor: default !important;
+}
+
+.cmb2-options-page .postbox-header h2,
+.cmb2-options-page .hndle span,
+.cmb2-options-page .postbox-header .hndle {
+    color: var(--gg-white) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+}
+
+/* Ocultar el toggle de colapsar (no necesario en options page) */
+.cmb2-options-page .postbox-header .handle-actions {
+    display: none !important;
+}
+
+/* ============================================================
+   TABLA DE CAMPOS CMB2
+   ============================================================ */
+.cmb2-options-page .cmb-th,
+.cmb2-options-page .cmb-td {
+    padding: 16px 20px !important;
+    border-bottom: 1px solid var(--gg-gray-mid) !important;
+    vertical-align: middle !important;
+}
+
+.cmb2-options-page .cmb-wrap:last-child .cmb-th,
+.cmb2-options-page .cmb-wrap:last-child .cmb-td {
+    border-bottom: none !important;
+}
+
+/* Alternado de filas */
+.cmb2-options-page .cmb-row:nth-child(even) {
+    background-color: #FAFBFD;
+}
+
+/* Label */
+.cmb2-options-page .cmb-th label {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    color: var(--gg-green-dark) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+}
+
+/* Description */
+.cmb2-options-page .cmb2-metabox-description,
+.cmb2-options-page .cmb2-metabox .description {
+    color: #718096 !important;
+    font-size: 0.78rem !important;
+    font-style: normal !important;
+    margin-top: 6px;
+    line-height: 1.5;
+}
+
+/* ============================================================
+   INPUTS, SELECTS Y TEXTAREAS
+   ============================================================ */
+.cmb2-options-page input[type="text"],
+.cmb2-options-page input[type="url"],
+.cmb2-options-page input[type="email"],
+.cmb2-options-page input[type="number"],
+.cmb2-options-page select,
+.cmb2-options-page textarea {
+    width: 100% !important;
+    max-width: 560px !important;
+    padding: 10px 14px !important;
+    border: 2px solid var(--gg-border) !important;
+    border-radius: var(--gg-radius-sm) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 0.88rem !important;
+    color: var(--gg-gray-text) !important;
+    background: #FDFDFD !important;
+    transition: var(--gg-transition) !important;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.04) !important;
+    outline: none !important;
+}
+
+.cmb2-options-page input[type="text"]:focus,
+.cmb2-options-page input[type="url"]:focus,
+.cmb2-options-page input[type="email"]:focus,
+.cmb2-options-page textarea:focus {
+    border-color: var(--gg-green-light) !important;
+    background: var(--gg-white) !important;
+    box-shadow: 0 0 0 3px rgba(58, 122, 94, 0.15) !important;
+}
+
+.cmb2-options-page textarea {
+    min-height: 120px !important;
+    resize: vertical !important;
+    line-height: 1.6 !important;
+}
+
+/* Checkbox */
+.cmb2-options-page input[type="checkbox"] {
+    width: 18px !important;
+    height: 18px !important;
+    accent-color: var(--gg-green-dark) !important;
+    cursor: pointer;
+}
+
+/* ============================================================
+   GRUPOS / REPEATERS
+   ============================================================ */
+.cmb2-options-page .cmb-group-description {
+    background: linear-gradient(90deg, rgba(26,56,45,0.05), transparent);
+    border-left: 4px solid var(--gg-yellow);
+    padding: 10px 16px;
+    border-radius: 0 var(--gg-radius-sm) var(--gg-radius-sm) 0;
+    font-size: 0.82rem !important;
+    color: var(--gg-gray-text) !important;
+    margin-bottom: 16px;
+}
+
+/* Cada entrada del repeater */
+.cmb2-options-page .cmb-repeatable-grouping {
+    background: var(--gg-gray-light) !important;
+    border: 1px solid var(--gg-border) !important;
+    border-radius: var(--gg-radius-sm) !important;
+    margin-bottom: 14px !important;
+    overflow: hidden;
+    transition: var(--gg-transition);
+}
+
+.cmb2-options-page .cmb-repeatable-grouping:hover {
+    border-color: var(--gg-green-light) !important;
+    box-shadow: 0 2px 12px rgba(26,56,45,0.08) !important;
+}
+
+/* Título del repeater (Link #1, Botón #1, etc.) */
+.cmb2-options-page .cmb-group-title,
+.cmb2-options-page .cmb-repeatable-grouping h4 {
+    background: var(--gg-green-dark) !important;
+    color: var(--gg-yellow) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    padding: 8px 16px !important;
+    margin: 0 !important;
+    border-radius: var(--gg-radius-sm) var(--gg-radius-sm) 0 0 !important;
+}
+
+/* ============================================================
+   BOTONES
+   ============================================================ */
+
+/* Botón de Guardar principal */
+.cmb2-options-page #submit,
+.cmb2-options-page .cmb-submit-wrap input[type="submit"],
+.cmb2-options-page p.cmb-submit input {
+    background: var(--gg-yellow) !important;
+    color: var(--gg-green-dark) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 0.9rem !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    padding: 12px 36px !important;
+    border: none !important;
+    border-radius: var(--gg-radius-sm) !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 14px rgba(245, 200, 0, 0.4) !important;
+    transition: var(--gg-transition) !important;
+}
+
+.cmb2-options-page #submit:hover,
+.cmb2-options-page .cmb-submit-wrap input[type="submit"]:hover {
+    background: var(--gg-yellow-hover) !important;
+    box-shadow: 0 6px 20px rgba(245, 200, 0, 0.55) !important;
+    transform: translateY(-2px);
+}
+
+/* Botón Agregar del repeater */
+.cmb2-options-page .cmb-add-group-row,
+.cmb2-options-page .cmb-add-row-button {
+    background: transparent !important;
+    color: var(--gg-green-dark) !important;
+    border: 2px solid var(--gg-green-dark) !important;
+    border-radius: var(--gg-radius-sm) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    padding: 8px 18px !important;
+    transition: var(--gg-transition) !important;
+    cursor: pointer !important;
+}
+
+.cmb2-options-page .cmb-add-group-row:hover,
+.cmb2-options-page .cmb-add-row-button:hover {
+    background: var(--gg-green-dark) !important;
+    color: var(--gg-yellow) !important;
+}
+
+/* Botón Eliminar del repeater */
+.cmb2-options-page .cmb-remove-group-row,
+.cmb2-options-page .cmb-remove-row-button {
+    background: transparent !important;
+    color: #E53E3E !important;
+    border: 2px solid #E53E3E !important;
+    border-radius: var(--gg-radius-sm) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    padding: 6px 12px !important;
+    transition: var(--gg-transition) !important;
+    cursor: pointer !important;
+}
+
+.cmb2-options-page .cmb-remove-group-row:hover,
+.cmb2-options-page .cmb-remove-row-button:hover {
+    background: #E53E3E !important;
+    color: white !important;
+}
+
+/* ============================================================
+   MENSAJES DE ACTUALIZACIÓN / ÉXITO
+   ============================================================ */
+.cmb2-options-page .updated,
+#setting-error-settings_updated {
+    background: linear-gradient(90deg, var(--gg-green-dark), var(--gg-green-mid)) !important;
+    border: none !important;
+    border-left: 5px solid var(--gg-yellow) !important;
+    border-radius: var(--gg-radius-sm) !important;
+    color: var(--gg-white) !important;
+    box-shadow: var(--gg-shadow) !important;
+    padding: 14px 20px !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 600 !important;
+}
+
+.cmb2-options-page .updated p,
+#setting-error-settings_updated p {
+    color: var(--gg-white) !important;
+    margin: 0 !important;
+}
+
+/* ============================================================
+   WRAP DE SUBMIT — BARRA EN LA PARTE INFERIOR
+   ============================================================ */
+.cmb2-options-page .cmb-submit-wrap {
+    background: var(--gg-white);
+    border-top: 2px solid var(--gg-gray-mid);
+    padding: 16px 24px;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-radius: 0 0 var(--gg-radius) var(--gg-radius);
+}
+
+.cmb2-options-page .cmb-submit-wrap::before {
+    content: 'Recuerda guardar los cambios antes de salir de la página';
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #718096;
+    flex: 1;
+}
+
+/* ============================================================
+   MENÚ LATERAL — HIGHLIGHT DE SECCIONES GANAGANA
+   ============================================================ */
+#adminmenu .toplevel_page_gg_topbar > a,
+#adminmenu .toplevel_page_gg_topbar .wp-menu-name {
+    color: var(--gg-yellow) !important;
+    font-weight: 700 !important;
+}
+
+#adminmenu .toplevel_page_gg_topbar > a .wp-menu-image::before {
+    color: var(--gg-yellow) !important;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 782px) {
+    .cmb2-options-page .cmb-th,
+    .cmb2-options-page .cmb-td {
+        display: block !important;
+        width: 100% !important;
+        padding: 10px 16px !important;
+    }
+
+    .cmb2-options-page .cmb-th {
+        border-bottom: none !important;
+        padding-bottom: 4px !important;
+    }
+
+    .cmb2-options-page input[type="text"],
+    .cmb2-options-page input[type="url"],
+    .cmb2-options-page input[type="email"],
+    .cmb2-options-page textarea {
+        max-width: 100% !important;
+    }
+
+    .wrap > h2,
+    .wrap > h1 {
+        font-size: 1rem !important;
+        padding: 16px 20px !important;
+    }
+}
