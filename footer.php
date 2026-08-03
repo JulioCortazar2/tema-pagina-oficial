@@ -346,11 +346,13 @@
     if (!empty($redes_flotantes) && is_array($redes_flotantes)) {
         foreach ($redes_flotantes as $item) {
             $nombre = !empty($item['nombre_red']) ? trim($item['nombre_red']) : '';
-            $url    = !empty($item['url_red']) ? esc_url($item['url_red']) : '#';
+            $raw_url = !empty($item['url_red']) ? trim($item['url_red']) : '';
+            $url    = (!empty($raw_url) && $raw_url !== '#') ? esc_url($raw_url) : '';
             $icono  = !empty($item['icono_red']) ? strtolower(trim($item['icono_red'])) : 'otro';
             $target = !empty($item['target_blank']) ? '_blank' : '_self';
 
-            if ($nombre || $url !== '#') {
+            // Solo agrega si tiene una URL válida (no vacía y no '#')
+            if (!empty($url)) {
                 $items_flotantes[] = array(
                     'nombre' => $nombre ? $nombre : ucfirst($icono),
                     'url'    => $url,
@@ -361,15 +363,13 @@
         }
     }
 
-    // Fallback si no hay redes configuradas aún en el panel
+    // Fallback con URLs reales oficiales de GanaGana si no hay nada configurado aún en el panel
     if (empty($items_flotantes)) {
         $items_flotantes = array(
             array('nombre' => 'Instagram', 'url' => 'https://www.instagram.com/ganaganaoficial/', 'icono' => 'instagram', 'target' => '_blank'),
             array('nombre' => 'Facebook',  'url' => 'https://www.facebook.com/ganaganaoficial/',  'icono' => 'facebook',  'target' => '_blank'),
             array('nombre' => 'X',         'url' => 'https://twitter.com/ganaganaoficial/',        'icono' => 'x',         'target' => '_blank'),
-            array('nombre' => 'Threads',   'url' => '#',                                           'icono' => 'threads',   'target' => '_blank'),
             array('nombre' => 'YouTube',   'url' => 'https://www.youtube.com/channel/UCGPe6UsUNlFxMSb6GSKTx4g', 'icono' => 'youtube', 'target' => '_blank'),
-            array('nombre' => 'WhatsApp',  'url' => '#',                                           'icono' => 'whatsapp',  'target' => '_blank'),
         );
     }
 
