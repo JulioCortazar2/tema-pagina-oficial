@@ -92,4 +92,29 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // =============================================
+    // 5. WIDGET FLOTANTE DE REDES SOCIALES
+    // =============================================
+    var floatingToggle = document.getElementById('gg-floating-socials-toggle');
+    var floatingWidget = document.getElementById('gg-floating-socials');
+
+    if (floatingToggle && floatingWidget) {
+        floatingToggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var isOpen = floatingWidget.classList.contains('is-open');
+            floatingWidget.classList.toggle('is-open');
+            floatingToggle.setAttribute('aria-expanded', !isOpen);
+        });
+
+        // Cerrar al hacer clic fuera
+        document.addEventListener('click', function (e) {
+            if (floatingWidget.classList.contains('is-open')) {
+                if (!floatingWidget.contains(e.target)) {
+                    floatingWidget.classList.remove('is-open');
+                    floatingToggle.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+    }
+
 });

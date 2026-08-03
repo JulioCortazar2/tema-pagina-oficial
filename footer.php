@@ -110,7 +110,7 @@
                      * Valor: SVG inline listo para usar.
                      * Para agregar una red nueva: añade su clave y SVG aquí.
                      */
-                    function gg_get_social_svg($nombre) {
+                    function gg_get_social_svg($nombre, $nombre_alt = '') {
                         $iconos = array(
 
                             'facebook' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987H7.898V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>',
@@ -123,7 +123,7 @@
 
                             'x' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>',
 
-                            'threads' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" fill="currentColor" width="20" height="20"><path d="M141.537 88.988a66.667 66.667 0 00-2.518-1.143c-1.482-27.307-16.403-42.94-41.457-43.1h-.34c-14.986 0-27.449 6.396-35.12 18.036l13.779 9.452c5.73-8.695 14.724-10.548 21.348-10.548h.23c8.248.054 14.474 2.452 18.502 7.13 2.932 3.405 4.893 8.11 5.864 14.05-7.314-1.244-15.224-1.626-23.68-1.14-23.82 1.371-39.134 15.264-38.105 34.568.522 9.792 5.4 18.216 13.735 23.719 7.047 4.652 16.124 6.927 25.557 6.412 12.458-.683 22.231-5.436 29.049-14.127 5.178-6.6 8.453-15.153 9.899-25.93 5.937 3.583 10.337 8.298 12.767 13.966 4.132 9.635 4.373 25.468-8.546 38.376-11.319 11.308-24.925 16.2-45.488 16.351-22.809-.169-40.06-7.484-51.275-21.742C35.236 139.966 29.808 120.682 29.605 96c.203-24.682 5.63-43.966 16.133-57.317C57.053 24.425 74.303 17.11 97.112 16.94c22.975.17 40.526 7.52 52.171 21.847 5.71 7.026 10.015 15.86 12.853 26.162l16.147-4.308c-3.44-12.68-8.853-23.606-16.219-32.668C147.036 9.607 125.202.195 97.27 0h-.406C69.019.195 47.355 9.65 32.endXml 27.989 18.31 44.974 10.994 68.853 10.752 96.002c.243 27.15 7.558 51.027 21.235 69.003 14.601 19.103 36.265 28.56 64.416 28.76h.407c24.567-.18 41.854-6.609 56.077-20.826 19.163-19.141 18.568-42.94 12.268-57.602-4.484-10.454-13.033-18.945-24.866-24.349zM96.35 151.095c-9.196.5-18.775-1.58-25.488-5.658-5.072-3.148-7.764-7.542-8.011-12.964-.418-9.862 7.164-19.668 29.081-20.948 2.546-.147 5.035-.218 7.47-.218 5.693 0 11.045.502 15.938 1.485-1.814 22.542-10.021 37.744-19.99 38.303z"/></svg>',
+                            'threads' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="currentColor" width="20" height="20"><path d="M436.8 302C436.2 232.4 398.5 190.5 334.8 190.5C292.3 190.5 256.5 209.7 237.7 240.4L278.9 269.1C289.6 252.3 304.3 238.3 331.3 238.3C361.8 238.3 377.6 255.3 382.1 286.8C367.4 284.5 352.6 283.3 337.5 283.3C255.1 283.3 216.4 320.6 216.4 369.9C216.4 419.2 255.2 449.6 312.3 449.6C375 449.6 412.4 407.4 427.7 355.1C443.6 362.3 454.6 379.1 454.6 404.4C454.6 472 376.6 508.9 310.5 508.9C213 508.9 149.2 444.9 149.2 340.7C149.2 213.1 233.5 131.3 346.8 131.3C422.8 131.3 460.4 164.7 486 209.4L528 179.9C500.2 121.9 438.1 80.4 344.9 80.4C196.4 80.4 95.4 185.8 95.4 338.6C95.4 478.4 194.3 559.5 312.1 559.5C409.5 559.5 507.9 502.7 507.9 405.5C507.9 354.7 478.7 321 436.7 302zM310.4 398.9C288.9 398.9 270 388.7 270 369.9C270 340.3 306.4 331.3 342 331.3C355.5 331.3 368.8 332.2 380.5 334.8C372.1 373.3 347.1 399 310.5 399L310.5 399z"/></svg>',
 
                             'tiktok' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg>',
 
@@ -132,13 +132,16 @@
                             'whatsapp' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>',
                         );
 
-                        // Si el nombre existe en el mapa, devuelve el SVG
-                        if (isset($iconos[$nombre])) {
-                            return $iconos[$nombre];
+                        $nombre_key = strtolower(trim($nombre));
+                        if ($nombre_key !== 'otro' && isset($iconos[$nombre_key])) {
+                            return $iconos[$nombre_key];
                         }
 
-                        // Fallback: muestra las 2 primeras letras en mayúsculas
-                        return '<span style="font-size:0.7rem;font-weight:800;line-height:1;">' . esc_html(strtoupper(substr($nombre, 0, 2))) . '</span>';
+                        // Fallback / "otro": muestra las 2 primeras letras del nombre en mayúsculas
+                        $texto_base = !empty($nombre_alt) ? $nombre_alt : $nombre;
+                        $letras = strtoupper(substr(trim($texto_base), 0, 2));
+
+                        return '<span style="font-size:0.75rem;font-weight:800;line-height:1;letter-spacing:-0.02em;">' . esc_html($letras) . '</span>';
                     }
                     ?>
 
@@ -332,6 +335,79 @@
         </div>
 
     </footer>
+
+    <!-- =============================================
+         WIDGET FLOTANTE DE REDES SOCIALES (Centro Izquierda / Móvil Abajo)
+         ============================================= -->
+    <?php
+    $redes_flotantes = gg_get_option('redes_flotantes_items');
+    $items_flotantes = array();
+
+    if (!empty($redes_flotantes) && is_array($redes_flotantes)) {
+        foreach ($redes_flotantes as $item) {
+            $nombre = !empty($item['nombre_red']) ? trim($item['nombre_red']) : '';
+            $url    = !empty($item['url_red']) ? esc_url($item['url_red']) : '#';
+            $icono  = !empty($item['icono_red']) ? strtolower(trim($item['icono_red'])) : 'otro';
+            $target = !empty($item['target_blank']) ? '_blank' : '_self';
+
+            if ($nombre || $url !== '#') {
+                $items_flotantes[] = array(
+                    'nombre' => $nombre ? $nombre : ucfirst($icono),
+                    'url'    => $url,
+                    'icono'  => $icono,
+                    'target' => $target,
+                );
+            }
+        }
+    }
+
+    // Fallback si no hay redes configuradas aún en el panel
+    if (empty($items_flotantes)) {
+        $items_flotantes = array(
+            array('nombre' => 'Instagram', 'url' => 'https://www.instagram.com/ganaganaoficial/', 'icono' => 'instagram', 'target' => '_blank'),
+            array('nombre' => 'Facebook',  'url' => 'https://www.facebook.com/ganaganaoficial/',  'icono' => 'facebook',  'target' => '_blank'),
+            array('nombre' => 'X',         'url' => 'https://twitter.com/ganaganaoficial/',        'icono' => 'x',         'target' => '_blank'),
+            array('nombre' => 'Threads',   'url' => '#',                                           'icono' => 'threads',   'target' => '_blank'),
+            array('nombre' => 'YouTube',   'url' => 'https://www.youtube.com/channel/UCGPe6UsUNlFxMSb6GSKTx4g', 'icono' => 'youtube', 'target' => '_blank'),
+            array('nombre' => 'WhatsApp',  'url' => '#',                                           'icono' => 'whatsapp',  'target' => '_blank'),
+        );
+    }
+
+    if (!empty($items_flotantes)) :
+    ?>
+    <div class="gg-floating-socials-widget" id="gg-floating-socials">
+        <button type="button" class="gg-floating-socials-toggle" id="gg-floating-socials-toggle" aria-label="Compartir en Redes Sociales" aria-expanded="false">
+            <svg class="gg-icon-share" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+            </svg>
+            <svg class="gg-icon-close" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+        </button>
+
+        <div class="gg-floating-socials-list" id="gg-floating-socials-list">
+            <?php foreach ($items_flotantes as $sf) : 
+                $sf_nombre = esc_attr($sf['nombre']);
+                $sf_url    = esc_url($sf['url']);
+                $sf_icono  = esc_attr($sf['icono']);
+                $sf_target = $sf['target'] === '_blank' ? ' target="_blank" rel="noopener noreferrer"' : '';
+                $svg_code  = gg_get_social_svg($sf['icono'], $sf['nombre']);
+            ?>
+                <a href="<?php echo $sf_url; ?>"<?php echo $sf_target; ?> 
+                   class="gg-floating-social-btn gg-social-<?php echo $sf_icono; ?>" 
+                   aria-label="<?php echo $sf_nombre; ?>" 
+                   title="<?php echo $sf_nombre; ?>">
+                    <?php echo $svg_code; ?>
+                </a>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <?php endif; ?>
 
     <?php wp_footer(); ?>
 </body>

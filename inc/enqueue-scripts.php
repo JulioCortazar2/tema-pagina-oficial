@@ -60,6 +60,7 @@ function gg_enqueue_admin_styles($hook) {
         'ajustes-ganagana_page_gg_prefooter',
         'ajustes-ganagana_page_gg_footer',
         'ajustes-ganagana_page_gg_copyright',
+        'ajustes-ganagana_page_gg_redes_flotantes',
     );
 
     if (in_array($hook, $gg_pages, true)) {

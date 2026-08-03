@@ -1368,3 +1368,168 @@ ul, ol {
         font-size: 1.7rem;
     }
 }
+
+/* ============================================================
+   WIDGET FLOTANTE DE REDES SOCIALES
+   ============================================================ */
+.gg-floating-socials-widget {
+    position: fixed;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Botón principal (esfera retraída en el centro-izquierda en Desktop) */
+.gg-floating-socials-toggle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #1A382D;
+    border: 2px solid #FBD000;
+    color: #FBD000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease, border-color 0.3s ease;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.gg-floating-socials-toggle:hover {
+    transform: scale(1.08);
+    background-color: #132b22;
+}
+
+.gg-floating-socials-toggle .gg-icon-close {
+    display: none;
+}
+
+.gg-floating-socials-widget.is-open .gg-floating-socials-toggle {
+    background-color: #FBD000;
+    border-color: #1A382D;
+    color: #1A382D;
+}
+
+.gg-floating-socials-widget.is-open .gg-floating-socials-toggle .gg-icon-share {
+    display: none;
+}
+
+.gg-floating-socials-widget.is-open .gg-floating-socials-toggle .gg-icon-close {
+    display: block;
+}
+
+/* Lista desplegada (En Desktop: Despliega hacia ABAJO debajo del botón) */
+.gg-floating-socials-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+    margin-bottom: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-15px) scale(0.9);
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), visibility 0.3s ease;
+    pointer-events: none;
+}
+
+.gg-floating-socials-widget.is-open .gg-floating-socials-list {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+/* Esferas circulares de cada red social (tamaño uniforme) */
+.gg-floating-social-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    background-color: #1A382D;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+}
+
+.gg-floating-social-btn:hover {
+    transform: scale(1.15);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    color: #FFFFFF;
+}
+
+/* Colores de marca */
+.gg-floating-social-btn.gg-social-facebook {
+    background: #1877F2;
+}
+
+.gg-floating-social-btn.gg-social-instagram {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+}
+
+.gg-floating-social-btn.gg-social-youtube {
+    background: #FF0000;
+}
+
+.gg-floating-social-btn.gg-social-twitter,
+.gg-floating-social-btn.gg-social-x {
+    background: #000000;
+}
+
+.gg-floating-social-btn.gg-social-threads {
+    background: #000000;
+}
+
+.gg-floating-social-btn.gg-social-tiktok {
+    background: #000000;
+}
+
+.gg-floating-social-btn.gg-social-linkedin {
+    background: #0A66C2;
+}
+
+.gg-floating-social-btn.gg-social-whatsapp {
+    background: #25D366;
+}
+
+.gg-floating-social-btn.gg-social-otro {
+    background: #1A382D;
+    border: 2px solid #FBD000;
+    color: #FBD000;
+}
+
+/* ============================================================
+   RESPONSIVE MÓVIL: Fijado en esquina INFERIOR izquierda, despliega HACIA ARRIBA
+   ============================================================ */
+@media (max-width: 900px) {
+    .gg-floating-socials-widget {
+        left: 15px !important;
+        bottom: 20px !important;
+        top: auto !important;
+        transform: none !important;
+        flex-direction: column-reverse !important;
+    }
+
+    .gg-floating-socials-list {
+        margin-top: 0 !important;
+        margin-bottom: 12px !important;
+        transform: translateY(15px) scale(0.9) !important;
+    }
+
+    .gg-floating-socials-widget.is-open .gg-floating-socials-list {
+        transform: translateY(0) scale(1) !important;
+    }
+}

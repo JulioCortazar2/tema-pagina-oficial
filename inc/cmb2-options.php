@@ -334,6 +334,66 @@ function gg_register_theme_options() {
         'id'   => 'url',
         'type' => 'text_url',
     ));
+
+    // =========================================================
+    // SECCIÓN 6: REDES SOCIALES FLOTANTES (Widget lateral)
+    // =========================================================
+    $redes_flotantes = new_cmb2_box(array(
+        'id'           => 'gg_redes_flotantes_options',
+        'title'        => 'Redes Sociales Flotantes',
+        'object_types' => array('options-page'),
+        'option_key'   => 'gg_redes_flotantes',
+        'parent_slug'  => 'gg_topbar',
+        'tab_title'    => 'Redes Flotantes',
+    ));
+
+    $flotantes_group = $redes_flotantes->add_field(array(
+        'id'          => 'redes_flotantes_items',
+        'type'        => 'group',
+        'description' => 'Configura las redes sociales que aparecerán en el botón flotante del sitio.',
+        'options'     => array(
+            'group_title'   => 'Red Social #{#}',
+            'add_button'    => '+ Agregar Red Social',
+            'remove_button' => 'Eliminar',
+            'sortable'      => true,
+        ),
+    ));
+    $redes_flotantes->add_group_field($flotantes_group, array(
+        'name' => 'Nombre de la red social',
+        'desc' => 'Ej: Instagram, Facebook, Telegram',
+        'id'   => 'nombre_red',
+        'type' => 'text',
+    ));
+    $redes_flotantes->add_group_field($flotantes_group, array(
+        'name' => 'Link a la red social',
+        'desc' => 'Ej: https://www.instagram.com/tu-usuario',
+        'id'   => 'url_red',
+        'type' => 'text_url',
+    ));
+    $redes_flotantes->add_group_field($flotantes_group, array(
+        'name'    => 'Abrir en nueva pestaña',
+        'id'      => 'target_blank',
+        'type'    => 'checkbox',
+        'default' => 'on',
+    ));
+    $redes_flotantes->add_group_field($flotantes_group, array(
+        'name'    => 'Ícono de la red social',
+        'id'      => 'icono_red',
+        'type'    => 'select',
+        'options' => array(
+            'facebook'  => 'Facebook',
+            'instagram' => 'Instagram',
+            'youtube'   => 'YouTube',
+            'twitter'   => 'Twitter / X',
+            'x'         => 'X (Twitter)',
+            'threads'   => 'Threads',
+            'tiktok'    => 'TikTok',
+            'linkedin'  => 'LinkedIn',
+            'whatsapp'  => 'WhatsApp',
+            'otro'      => 'No está la red social',
+        ),
+        'default' => 'facebook',
+    ));
 }
 
 /**
