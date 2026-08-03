@@ -67,7 +67,7 @@ function gg_enqueue_admin_styles($hook) {
             'gg-admin-options',
             GANAGANA_URI . '/assets/css/admin-options.css',
             array(),
-            '1.0.0'
+            filemtime(GANAGANA_DIR . '/assets/css/admin-options.css')
         );
     }
 

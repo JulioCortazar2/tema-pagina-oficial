@@ -170,26 +170,75 @@
                     </div>
                 </div>
 
-                <!-- Columnas Dinámicas del Footer (CMB2 Repeater v2) -->
+                <!-- Columnas Dinámicas del Footer (Estructura de 2 Grupos CMB2) -->
                 <?php 
                 $footer_columnas = gg_get_option('footer_columnas');
+                $footer_enlaces  = gg_get_option('footer_enlaces');
                 
                 if (!empty($footer_columnas) && is_array($footer_columnas)) :
+                    $has_new_enlaces = !empty($footer_enlaces) && is_array($footer_enlaces);
+
                     foreach ($footer_columnas as $col) :
-                        $col_titulo  = !empty($col['titulo_columna']) ? esc_html($col['titulo_columna']) : 'Sección';
+                        $col_titulo  = !empty($col['titulo_columna']) ? trim($col['titulo_columna']) : 'Sección';
                         $col_slug    = gg_get_columna_slug($col_titulo);
-                        // CMB2: parser v2 soporta "Texto | slug | id" y fallback "Texto | URL"
-                        $col_enlaces = !empty($col['enlaces_raw']) ? gg_parse_enlaces_raw_v2($col['enlaces_raw'], $col_slug) : array();
+                        $col_enlaces = array();
+
+                        if ($has_new_enlaces) {
+                            // Lógica nueva (Grupo B): filtrar por columna e igualar por su título
+                            $matched_links = array();
+                            foreach ($footer_enlaces as $link_item) {
+                                $link_col    = !empty($link_item['columna']) ? trim($link_item['columna']) : '';
+                                $link_texto  = !empty($link_item['texto_enlace']) ? trim($link_item['texto_enlace']) : '';
+                                $page_id     = !empty($link_item['pagina_id']) ? absint($link_item['pagina_id']) : 0;
+                                $url_externa = !empty($link_item['url_externa']) ? trim($link_item['url_externa']) : '';
+                                $is_blank    = !empty($link_item['target_blank']);
+                                $orden       = isset($link_item['orden']) && is_numeric($link_item['orden']) ? (int)$link_item['orden'] : 0;
+
+                                if ($link_col === $col_titulo && $link_texto) {
+                                    $final_url = '';
+                                    if (!empty($url_externa)) {
+                                        $final_url = esc_url($url_externa);
+                                    } elseif ($page_id > 0) {
+                                        $permalink = get_permalink($page_id);
+                                        if ($permalink && !is_wp_error($permalink)) {
+                                            $final_url = $permalink;
+                                        }
+                                    }
+
+                                    if (!empty($final_url)) {
+                                        $matched_links[] = array(
+                                            'texto'  => $link_texto,
+                                            'url'    => $final_url,
+                                            'target' => $is_blank ? '_blank' : '_self',
+                                            'orden'  => $orden,
+                                        );
+                                    }
+                                }
+                            }
+
+                            // Ordenar enlaces por el campo 'orden' (ascendente)
+                            usort($matched_links, function($a, $b) {
+                                return $a['orden'] - $b['orden'];
+                            });
+
+                            $col_enlaces = $matched_links;
+                        } else {
+                            // Lógica Fallback: Usar enlaces_raw previo si footer_enlaces está vacío
+                            if (!empty($col['enlaces_raw'])) {
+                                $col_enlaces = gg_parse_enlaces_raw_v2($col['enlaces_raw'], $col_slug);
+                            }
+                        }
                         ?>
                         <div class="gg-footer-col">
-                            <h4 class="gg-footer-title"><?php echo $col_titulo; ?></h4>
+                            <h4 class="gg-footer-title"><?php echo esc_html($col_titulo); ?></h4>
                             <ul class="gg-footer-links">
                                 <?php foreach ($col_enlaces as $link) : 
-                                    $link_texto = !empty($link['texto']) ? esc_html($link['texto']) : '';
-                                    $link_url   = !empty($link['url']) ? esc_url($link['url']) : '#';
+                                    $link_texto  = !empty($link['texto']) ? esc_html($link['texto']) : '';
+                                    $link_url    = !empty($link['url']) ? esc_url($link['url']) : '#';
+                                    $link_target = !empty($link['target']) && $link['target'] === '_blank' ? ' target="_blank" rel="noopener noreferrer"' : '';
                                     if ($link_texto) :
                                 ?>
-                                    <li><a href="<?php echo $link_url; ?>"><?php echo $link_texto; ?></a></li>
+                                    <li><a href="<?php echo $link_url; ?>"<?php echo $link_target; ?>><?php echo $link_texto; ?></a></li>
                                 <?php 
                                     endif;
                                 endforeach; ?>
@@ -198,6 +247,7 @@
                         <?php
                     endforeach;
                 else : 
+
                     // Fallback predeterminado de 3 columnas
                 ?>
                     <div class="gg-footer-col">

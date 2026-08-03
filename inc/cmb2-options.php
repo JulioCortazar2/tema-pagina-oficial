@@ -198,10 +198,13 @@ function gg_register_theme_options() {
         'type' => 'text_url',
     ));
 
+    // ---------------------------------------------------------
+    // GRUPO A: COLUMNAS DEL FOOTER
+    // ---------------------------------------------------------
     $cols_group = $footer->add_field(array(
         'id'          => 'footer_columnas',
         'type'        => 'group',
-        'description' => 'Columnas de enlaces del footer (2 a 4 columnas). Cada columna tiene un título y una lista de enlaces.',
+        'description' => 'Define las columnas principales del footer (ej: Nuestros Productos, Atención al Cliente).',
         'options'     => array(
             'group_title'   => 'Columna #{#}',
             'add_button'    => '+ Agregar Columna',
@@ -214,36 +217,83 @@ function gg_register_theme_options() {
         'id'   => 'titulo_columna',
         'type' => 'text',
     ));
-    $footer->add_group_field($cols_group, array(
-        'name'        => 'Enlaces (uno por línea)',
-        'description' => 'Formato preferido para SEO y migraciones:<br><code>Texto del enlace | slug-pagina | id-pagina</code><br>Ejemplo:<br><code>Historia Empresarial | historia-empresarial | 284</code><br><br><i>(Nota: También soporta el formato antiguo <code>Texto|https://url-destino.com</code>)</i>',
-        'id'          => 'enlaces_raw',
-        'type'        => 'textarea',
-    ));
 
-    // --- Panel de Inventario de Páginas (Ayuda para copiar/pegar) ---
-    $inventory_items = function_exists('gg_get_pages_inventory') ? gg_get_pages_inventory() : array();
-    $inventory_html = '<div style="background:#F7FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:15px;margin-top:15px;">';
-    $inventory_html .= '<h4 style="margin:0 0 10px 0;color:#2A5747;font-size:0.9rem;text-transform:uppercase;">📋 Inventario de Páginas Creadas en WordPress</h4>';
-    $inventory_html .= '<p style="font-size:0.8rem;color:#4A5568;margin-bottom:10px;">Copia y pega la línea de la página que desees en la caja de enlaces de la columna correspondiente:</p>';
-
-    if (!empty($inventory_items)) {
-        $inventory_html .= '<textarea readonly style="width:100%;height:140px;font-family:monospace;font-size:0.78rem;background:#ffffff;border:1px solid #CBD5E0;border-radius:4px;padding:8px;color:#2D3748;" onclick="this.select();">';
-        foreach ($inventory_items as $item) {
-            $inventory_html .= esc_html($item['formatted']) . "\n";
+    // ---------------------------------------------------------
+    // PANEL INFORMATIVO / REFERENCIA VISUAL DE COLUMNAS
+    // ---------------------------------------------------------
+    $columnas_existentes = gg_get_option('footer_columnas');
+    $nombres_cols = array();
+    if (!empty($columnas_existentes) && is_array($columnas_existentes)) {
+        foreach ($columnas_existentes as $c) {
+            if (!empty($c['titulo_columna'])) {
+                $nombres_cols[] = '<strong>' . esc_html($c['titulo_columna']) . '</strong>';
+            }
         }
-        $inventory_html .= '</textarea>';
-        $inventory_html .= '<span style="font-size:0.72rem;color:#718096;display:block;margin-top:4px;">💡 Haz clic dentro de la caja de arriba para seleccionar todo el texto.</span>';
-    } else {
-        $inventory_html .= '<p style="font-size:0.8rem;color:#718096;">No hay páginas publicadas creadas en este sitio aún.</p>';
     }
-    $inventory_html .= '</div>';
+    $notice_text = !empty($nombres_cols) ? implode(' · ', $nombres_cols) : '<i>(No hay columnas creadas arriba aún. Crea primero las columnas y guarda los cambios).</i>';
 
     $footer->add_field(array(
-        'id'   => 'footer_pages_inventory_notice',
+        'id'   => 'footer_columnas_referencia_notice',
         'type' => 'title',
-        'name' => $inventory_html,
+        'name' => '<div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:12px 16px;margin:20px 0 10px 0;border-radius:4px;color:#1e3a8a;font-size:0.9rem;">' .
+                  '📋 <strong>Columnas disponibles actualmente:</strong> ' . $notice_text .
+                  '</div>',
     ));
+
+    // ---------------------------------------------------------
+    // GRUPO B: ENLACES DEL FOOTER (Lista plana)
+    // ---------------------------------------------------------
+    $enlaces_group = $footer->add_field(array(
+        'id'          => 'footer_enlaces',
+        'type'        => 'group',
+        'description' => 'Agrega cada enlace individual, selecciona su página de destino y asignalo a la columna correspondiente.',
+        'options'     => array(
+            'group_title'   => 'Enlace #{#}',
+            'add_button'    => '+ Agregar Enlace',
+            'remove_button' => 'Eliminar Enlace',
+            'sortable'      => true,
+        ),
+    ));
+    $footer->add_group_field($enlaces_group, array(
+        'name' => 'Texto del Enlace (Nombre Visible)',
+        'id'   => 'texto_enlace',
+        'type' => 'text',
+    ));
+    $footer->add_group_field($enlaces_group, array(
+        'name'       => 'Página de Destino',
+        'id'         => 'pagina_id',
+        'type'       => 'select',
+        'options_cb' => 'gg_footer_opciones_paginas',
+    ));
+    $footer->add_group_field($enlaces_group, array(
+        'name' => 'URL Externa (Opcional)',
+        'desc' => 'Ej: https://www.ejemplo.com (Si colocas una URL aquí, se usará en lugar de la página de destino)',
+        'id'   => 'url_externa',
+        'type' => 'text_url',
+    ));
+    $footer->add_group_field($enlaces_group, array(
+        'name' => 'Abrir en nueva pestaña',
+        'id'   => 'target_blank',
+        'type' => 'checkbox',
+    ));
+    $footer->add_group_field($enlaces_group, array(
+        'name'       => 'Columna a la que pertenece',
+        'id'         => 'columna',
+        'type'       => 'select',
+        'options_cb' => 'gg_footer_opciones_columnas',
+    ));
+    $footer->add_group_field($enlaces_group, array(
+        'name'       => 'Orden de aparición',
+        'desc'       => 'Posición dentro de su columna (0 = primero, 1 = segundo, etc.)',
+        'id'         => 'orden',
+        'type'       => 'text',
+        'default'    => '0',
+        'attributes' => array(
+            'type' => 'number',
+            'min'  => '0',
+        ),
+    ));
+
 
     // =========================================================
     // SECCIÓN 5: COPYRIGHT

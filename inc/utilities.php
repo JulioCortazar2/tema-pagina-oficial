@@ -39,6 +39,7 @@ function gg_get_option($field_id) {
         'footer_empresa_ubicacion' => 'gg_footer',
         'footer_redes_sociales'    => 'gg_footer',
         'footer_columnas'          => 'gg_footer',
+        'footer_enlaces'           => 'gg_footer',
         'copyright_texto'          => 'gg_copyright',
         'copyright_links'          => 'gg_copyright',
     );
@@ -265,3 +266,55 @@ function gg_migrate_footer_links_format() {
         }
     }
 }
+
+/**
+ * Devuelve un array [ID => Título] de páginas publicadas para el select de CMB2.
+ *
+ * @return array Lista de páginas.
+ */
+function gg_footer_opciones_paginas() {
+    $pages = get_pages(array(
+        'post_type'   => 'page',
+        'post_status' => 'publish',
+        'sort_column' => 'post_title',
+        'sort_order'  => 'ASC',
+        'number'      => 0,
+    ));
+
+    $options = array(
+        '' => '— Selecciona una página —',
+    );
+
+    if (!empty($pages)) {
+        foreach ($pages as $p) {
+            $options[$p->ID] = $p->post_title . ' (ID: ' . $p->ID . ')';
+        }
+    }
+
+    return $options;
+}
+
+/**
+ * Devuelve un array [titulo => titulo] con los títulos de las columnas del Grupo A.
+ *
+ * @return array Lista de títulos de columnas.
+ */
+function gg_footer_opciones_columnas() {
+    $columnas = gg_get_option('footer_columnas');
+
+    $options = array(
+        '' => '— Selecciona una columna —',
+    );
+
+    if (!empty($columnas) && is_array($columnas)) {
+        foreach ($columnas as $col) {
+            $titulo = !empty($col['titulo_columna']) ? trim($col['titulo_columna']) : '';
+            if ($titulo) {
+                $options[$titulo] = $titulo;
+            }
+        }
+    }
+
+    return $options;
+}
+

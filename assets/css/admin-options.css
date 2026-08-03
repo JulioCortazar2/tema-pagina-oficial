@@ -241,6 +241,7 @@
 
 /* Título del repeater (Link #1, Botón #1, etc.) */
 .cmb2-options-page .cmb-group-title,
+.cmb2-options-page .cmb-repeatable-grouping h3,
 .cmb2-options-page .cmb-repeatable-grouping h4 {
     background: var(--gg-green-dark) !important;
     color: var(--gg-yellow) !important;
@@ -249,8 +250,8 @@
     font-weight: 700 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.06em !important;
-    padding: 8px 16px !important;
-    margin: 0 !important;
+    padding: 10px 16px !important;
+    margin: 0 -1em !important;
     border-radius: var(--gg-radius-sm) var(--gg-radius-sm) 0 0 !important;
 }
 
@@ -376,14 +377,20 @@
 /* ============================================================
    MENÚ LATERAL — HIGHLIGHT DE SECCIONES GANAGANA
    ============================================================ */
-#adminmenu .toplevel_page_gg_topbar > a,
-#adminmenu .toplevel_page_gg_topbar .wp-menu-name {
-    color: var(--gg-yellow) !important;
+#adminmenu li.toplevel_page_gg_topbar a,
+#adminmenu li.toplevel_page_gg_topbar .wp-menu-name,
+#adminmenu li.toplevel_page_gg_topbar.wp-has-current-submenu a,
+#adminmenu li.toplevel_page_gg_topbar.wp-has-current-submenu .wp-menu-name,
+#adminmenu li.toplevel_page_gg_topbar.current a,
+#adminmenu li.toplevel_page_gg_topbar.current .wp-menu-name,
+#adminmenu li.toplevel_page_gg_topbar a.wp-has-current-submenu {
+    color: var(--gg-white) !important;
     font-weight: 700 !important;
 }
 
-#adminmenu .toplevel_page_gg_topbar > a .wp-menu-image::before {
-    color: var(--gg-yellow) !important;
+#adminmenu li.toplevel_page_gg_topbar > a .wp-menu-image::before,
+#adminmenu li.toplevel_page_gg_topbar.wp-has-current-submenu > a .wp-menu-image::before {
+    color: var(--gg-white) !important;
 }
 
 /* ============================================================
