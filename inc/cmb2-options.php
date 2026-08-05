@@ -394,6 +394,77 @@ function gg_register_theme_options() {
         ),
         'default' => 'facebook',
     ));
+
+    // =========================================================
+    // SECCIÓN 7: BOTONES FLOTANTES DERECHOS (Acciones Rápidas)
+    // =========================================================
+    $botones_derechos = new_cmb2_box(array(
+        'id'           => 'gg_botones_derechos_options',
+        'title'        => 'Botones Flotantes Derechos',
+        'object_types' => array('options-page'),
+        'option_key'   => 'gg_botones_derechos',
+        'parent_slug'  => 'gg_topbar',
+        'tab_title'    => 'Botones Derechos',
+    ));
+
+    $right_group = $botones_derechos->add_field(array(
+        'id'          => 'botones_derechos_items',
+        'type'        => 'group',
+        'description' => 'Configura las esferas del lado derecho que se expanden hacia la izquierda al pasar el cursor.',
+        'options'     => array(
+            'group_title'   => 'Botón Derecho #{#}',
+            'add_button'    => '+ Agregar Botón Derecho',
+            'remove_button' => 'Eliminar',
+            'sortable'      => true,
+        ),
+    ));
+    $botones_derechos->add_group_field($right_group, array(
+        'name' => 'Texto del Botón (Visible al Expandir)',
+        'desc' => 'Ej: GG PUNTOS, RECARGAS, CONTACTO',
+        'id'   => 'texto',
+        'type' => 'text',
+    ));
+    $botones_derechos->add_group_field($right_group, array(
+        'name' => 'URL de Destino',
+        'desc' => 'Ej: https://webganagana.com.co/puntos',
+        'id'   => 'url',
+        'type' => 'text_url',
+    ));
+    $botones_derechos->add_group_field($right_group, array(
+        'name' => 'Abrir en nueva pestaña',
+        'id'   => 'target_blank',
+        'type' => 'checkbox',
+    ));
+    $botones_derechos->add_group_field($right_group, array(
+        'name' => 'Imagen del Ícono (Esfera)',
+        'desc' => 'Sube una imagen o ícono personalizado en formato PNG, SVG o JPG.',
+        'id'   => 'imagen_icono',
+        'type' => 'file',
+        'options' => array(
+            'url' => false,
+        ),
+    ));
+    $botones_derechos->add_group_field($right_group, array(
+        'name'    => 'Color del Círculo (Esfera)',
+        'desc'    => 'Color de fondo del botón esférico por defecto',
+        'id'      => 'color_circulo',
+        'type'    => 'colorpicker',
+        'default' => '#1A382D',
+    ));
+    $botones_derechos->add_group_field($right_group, array(
+        'name'    => 'Color de Fondo al Expandirse',
+        'desc'    => 'Color del fondo de la etiqueta de texto al abrirse',
+        'id'      => 'color_bg_expandido',
+        'type'    => 'colorpicker',
+        'default' => '#ffe82c',
+    ));
+    $botones_derechos->add_group_field($right_group, array(
+        'name'    => 'Color del Texto al Expandirse',
+        'desc'    => 'Color del texto al abrirse',
+        'id'      => 'color_texto_expandido',
+        'type'    => 'colorpicker',
+        'default' => '#1A382D',
+    ));
 }
 
 /**

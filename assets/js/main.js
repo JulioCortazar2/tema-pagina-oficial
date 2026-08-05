@@ -1,13 +1,6 @@
-/**
- * Tema GanaGana Custom - Lógica JavaScript Principal
- * Mega Menu Walker + Hamburguesa Móvil
- */
-
 document.addEventListener('DOMContentLoaded', function () {
 
-    // =============================================
-    // 1. MENÚ HAMBURGUESA MÓVIL
-    // =============================================
+    // --- 1. Menú Hamburguesa Móvil ---
     var mobileToggle = document.getElementById('gg-mobile-toggle');
     var navContainer = document.getElementById('gg-site-navigation');
 
@@ -19,11 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // =============================================
-    // 2. MEGA MENU - SUBMENÚS EN MÓVIL
-    // En móvil, los items con .megamenu-dropdown
-    // se abren/cierran con click en el nav-link
-    // =============================================
+    // --- 2. Mega Menú Submenús Móvil ---
     var navItemsWithChildren = document.querySelectorAll('.nav-item.menu-item-has-children');
 
     navItemsWithChildren.forEach(function (item) {
@@ -31,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (parentLink) {
             parentLink.addEventListener('click', function (e) {
-                // Solo en pantallas donde está activa la hamburguesa (móvil)
                 if (window.innerWidth <= 900) {
                     var megaDrop = item.querySelector(':scope > .megamenu-dropdown');
                     if (megaDrop) {
@@ -40,14 +28,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         var isOpen = item.classList.contains('is-open');
 
-                        // Cerrar todos los demás mega menus abiertos
                         navItemsWithChildren.forEach(function (otherItem) {
                             if (otherItem !== item) {
                                 otherItem.classList.remove('is-open');
                             }
                         });
 
-                        // Alternar este
                         if (!isOpen) {
                             item.classList.add('is-open');
                         } else {
@@ -59,16 +45,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // =============================================
-    // 3. CERRAR MENÚ MÓVIL AL HACER CLIC FUERA
-    // =============================================
+    // --- 3. Clic fuera para cerrar menú ---
     document.addEventListener('click', function (e) {
         if (navContainer && mobileToggle) {
             if (navContainer.classList.contains('is-active')) {
                 if (!navContainer.contains(e.target) && !mobileToggle.contains(e.target)) {
                     navContainer.classList.remove('is-active');
                     mobileToggle.classList.remove('is-active');
-                    // Cerrar mega menus abiertos
                     navItemsWithChildren.forEach(function (item) {
                         item.classList.remove('is-open');
                     });
@@ -77,9 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // =============================================
-    // 4. TECLA ESCAPE PARA CERRAR MENÚ
-    // =============================================
+    // --- 4. Tecla ESC para cerrar ---
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' || e.key === 'Esc') {
             if (navContainer && navContainer.classList.contains('is-active')) {
@@ -92,9 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // =============================================
-    // 5. WIDGET FLOTANTE DE REDES SOCIALES
-    // =============================================
+    // --- 5. Redes Flotantes ---
     var floatingToggle = document.getElementById('gg-floating-socials-toggle');
     var floatingWidget = document.getElementById('gg-floating-socials');
 
@@ -106,7 +85,6 @@ document.addEventListener('DOMContentLoaded', function () {
             floatingToggle.setAttribute('aria-expanded', !isOpen);
         });
 
-        // Cerrar al hacer clic fuera
         document.addEventListener('click', function (e) {
             if (floatingWidget.classList.contains('is-open')) {
                 if (!floatingWidget.contains(e.target)) {

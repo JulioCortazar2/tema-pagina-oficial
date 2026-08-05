@@ -11,9 +11,7 @@
 <?php wp_body_open(); ?>
 
 <header class="gg-site-header">
-    <!-- =============================================
-         BARRA SUPERIOR (VERDE OSCURO #2A5747)
-         ============================================= -->
+    <!-- --- Topbar --- -->
     <div class="gg-topbar">
         <div class="gg-container gg-topbar-inner">
             <div class="gg-topbar-right">
@@ -34,7 +32,6 @@
                         endif;
                     endforeach;
                 else : 
-                    // Links de prueba/fallback predeterminados
                 ?>
                     <a href="<?php echo esc_url(home_url('/gg-puntos')); ?>" class="gg-topbar-link">GG PUNTOS</a>
                     <a href="<?php echo esc_url(home_url('/red-transaccional')); ?>" class="gg-topbar-link">RED TRANSACCIONAL</a>
@@ -45,31 +42,24 @@
         </div>
     </div>
 
-    <!-- =============================================
-         BARRA DE NAVEGACIÓN (AMARILLA #ffe82c)
-         ============================================= -->
+    <!-- --- Navbar --- -->
     <div class="gg-navbar">
         <div class="gg-container gg-navbar-inner">
 
-            <!-- LOGO (Izquierda) -->
+            <!-- Logo -->
             <?php
-            // Lee la URL configurada en Ajustes GanaGana > Header
-            // Si está vacía, usa el inicio del sitio como fallback
             $logo_url = gg_get_option('logo_url');
             $logo_href = !empty($logo_url) ? esc_url($logo_url) : esc_url(home_url('/'));
             ?>
             <div class="gg-logo">
                 <?php if (has_custom_logo()) : ?>
                     <?php
-                    // the_custom_logo() genera su propio <a href="home_url()"> que no se puede
-                    // cambiar directamente, así que envolvemos el output con nuestro enlace.
-                    $custom_logo_img = get_custom_logo(); // Obtiene el HTML del logo
-                    // Reemplaza el href del enlace generado por WordPress con la URL configurada
+                    $custom_logo_img = get_custom_logo();
                     $custom_logo_img = preg_replace(
                         '/href=["\']([^"\']*)["\']/',
                         'href="' . $logo_href . '"',
                         $custom_logo_img,
-                        1 // Solo reemplaza el primer <a>
+                        1
                     );
                     echo $custom_logo_img;
                     ?>
@@ -80,7 +70,7 @@
                 <?php endif; ?>
             </div>
 
-            <!-- MENÚ PRINCIPAL (Centro) - Usa Walker Mega Menu -->
+            <!-- Menú Principal -->
             <nav class="gg-nav-container" id="gg-site-navigation" aria-label="Menú Principal">
                 <?php
                 if (has_nav_menu('primary-menu')) {
@@ -92,7 +82,6 @@
                         'walker'         => new GG_Mega_Menu_Walker(),
                     ));
                 } else {
-                    // Fallback visual con estructura megamenu
                 ?>
                     <ul class="nav-menu">
                         <li class="nav-item menu-item-has-children">
@@ -140,10 +129,8 @@
                 ?>
             </nav>
 
-            <!-- ACCIONES HEADER (Buscador + Botón Promociones - Derecha) -->
+            <!-- Acciones Header -->
             <div class="gg-navbar-actions">
-
-                <!-- Buscador -->
                 <div class="gg-search-wrapper">
                     <form role="search" method="get" class="gg-search-form" action="<?php echo esc_url(home_url('/')); ?>">
                         <input type="search" class="gg-search-input" placeholder="Buscar..." value="<?php echo get_search_query(); ?>" name="s" title="Buscar" />
@@ -153,7 +140,6 @@
                     </form>
                 </div>
 
-                <!-- Botón Destacado PROMOCIONES -->
                 <?php 
                 $btn_promo_texto = gg_get_option('btn_promociones_texto');
                 $btn_promo_url   = gg_get_option('btn_promociones_url');
@@ -166,13 +152,11 @@
                     <span><?php echo $texto_promo; ?></span>
                 </a>
 
-                <!-- Botón Hamburguesa Móvil -->
                 <button class="gg-mobile-toggle" id="gg-mobile-toggle" aria-label="Abrir menú de navegación">
                     <span class="gg-hamburger-bar"></span>
                     <span class="gg-hamburger-bar"></span>
                     <span class="gg-hamburger-bar"></span>
                 </button>
-
             </div>
 
         </div>

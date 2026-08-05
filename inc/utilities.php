@@ -43,6 +43,7 @@ function gg_get_option($field_id) {
         'copyright_texto'          => 'gg_copyright',
         'copyright_links'          => 'gg_copyright',
         'redes_flotantes_items'    => 'gg_redes_flotantes',
+        'botones_derechos_items'   => 'gg_botones_derechos',
     );
 
     $option_key = isset($map[$field_id]) ? $map[$field_id] : 'gg_topbar';

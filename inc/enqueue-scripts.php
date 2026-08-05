@@ -1,22 +1,10 @@
 <?php
-/**
- * Tema GanaGana Custom — Carga de Scripts y Estilos (Enqueue)
- *
- * Administra la inclusión de hojas de estilo (CSS) y archivos JavaScript
- * tanto en el frontend como en la interfaz de administración (wp-admin).
- *
- * @package GanaGanaCustom
- */
-
 if (!defined('ABSPATH')) {
-    exit; // Evita el acceso directo
+    exit;
 }
 
-/**
- * 1. Encola los estilos y scripts del frontend.
- */
+// --- 1. Frontend Enqueue ---
 function ganagana_enqueue_assets() {
-    // Google Font: Montserrat
     wp_enqueue_style(
         'google-font-montserrat',
         'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap',
@@ -24,7 +12,6 @@ function ganagana_enqueue_assets() {
         null
     );
 
-    // CSS Principal con cache-busting automático vía filemtime
     $css_path = GANAGANA_DIR . '/assets/css/main.css';
     $css_ver  = file_exists($css_path) ? filemtime($css_path) : '1.0.0';
     wp_enqueue_style(
@@ -34,7 +21,6 @@ function ganagana_enqueue_assets() {
         $css_ver
     );
 
-    // JS Principal con cache-busting automático
     $js_path = GANAGANA_DIR . '/assets/js/main.js';
     $js_ver  = file_exists($js_path) ? filemtime($js_path) : '1.0.0';
     wp_enqueue_script(
@@ -47,13 +33,8 @@ function ganagana_enqueue_assets() {
 }
 add_action('wp_enqueue_scripts', 'ganagana_enqueue_assets');
 
-/**
- * 2. Encola los estilos y scripts del panel de administración (wp-admin).
- *
- * @param string $hook Identificador de la pantalla actual en wp-admin.
- */
+// --- 2. Admin Enqueue ---
 function gg_enqueue_admin_styles($hook) {
-    // CSS para páginas de opciones del tema en Ajustes GanaGana
     $gg_pages = array(
         'toplevel_page_gg_topbar',
         'ajustes-ganagana_page_gg_header_promo',
@@ -61,6 +42,7 @@ function gg_enqueue_admin_styles($hook) {
         'ajustes-ganagana_page_gg_footer',
         'ajustes-ganagana_page_gg_copyright',
         'ajustes-ganagana_page_gg_redes_flotantes',
+        'ajustes-ganagana_page_gg_botones_derechos',
     );
 
     if (in_array($hook, $gg_pages, true)) {
@@ -72,11 +54,9 @@ function gg_enqueue_admin_styles($hook) {
         );
     }
 
-    // JS + CSS para la vista previa de cabecera en el editor de páginas
     if (in_array($hook, array('post.php', 'post-new.php'), true)) {
         $screen = get_current_screen();
         if ($screen && $screen->post_type === 'page') {
-            // Carga la librería nativa de medios de WordPress
             wp_enqueue_media();
 
             wp_enqueue_script(
@@ -87,7 +67,6 @@ function gg_enqueue_admin_styles($hook) {
                 true
             );
 
-            // Pasa variables de soporte al JS
             wp_localize_script('gg-admin-page-header', 'ggPageHeader', array(
                 'placeholderUrl' => GANAGANA_URI . '/assets/images/logo.png',
                 'siteTitle'      => get_bloginfo('name'),

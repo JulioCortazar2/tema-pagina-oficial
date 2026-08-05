@@ -409,6 +409,99 @@
     </div>
     <?php endif; ?>
 
+    <!-- =============================================
+         BOTONES FLOTANTES DERECHOS (Acciones Rápidas / Cápsulas Expandibles)
+         ============================================= -->
+    <?php
+    $botones_derechos = gg_get_option('botones_derechos_items');
+    $items_derechos = array();
+
+    if (!empty($botones_derechos) && is_array($botones_derechos)) {
+        foreach ($botones_derechos as $b) {
+            $b_texto = !empty($b['texto']) ? trim($b['texto']) : '';
+            $b_url   = !empty($b['url']) ? esc_url($b['url']) : '';
+            $b_img   = !empty($b['imagen_icono']) ? esc_url($b['imagen_icono']) : '';
+            $b_c_circulo = !empty($b['color_circulo']) ? $b['color_circulo'] : '#1A382D';
+            $b_c_bg_exp  = !empty($b['color_bg_expandido']) ? $b['color_bg_expandido'] : '#ffe82c';
+            $b_c_txt_exp = !empty($b['color_texto_expandido']) ? $b['color_texto_expandido'] : '#1A382D';
+            $b_target    = !empty($b['target_blank']) ? '_blank' : '_self';
+
+            if (!empty($b_url) || !empty($b_texto)) {
+                $items_derechos[] = array(
+                    'texto'          => $b_texto,
+                    'url'            => $b_url ? $b_url : '#',
+                    'imagen'         => $b_img,
+                    'color_circulo'  => $b_c_circulo,
+                    'color_bg_exp'   => $b_c_bg_exp,
+                    'color_txt_exp'  => $b_c_txt_exp,
+                    'target'         => $b_target,
+                );
+            }
+        }
+    }
+
+    // Fallback con los botones de muestra representados en las imágenes si no se ha configurado nada aún
+    if (empty($items_derechos)) {
+        $items_derechos = array(
+            array(
+                'texto'          => 'APP MOVIL',
+                'url'            => '#',
+                'imagen'         => '',
+                'color_circulo'  => '#ffe82c',
+                'color_bg_exp'   => '#1A382D',
+                'color_txt_exp'  => '#ffe82c',
+                'target'         => '_self',
+                'icon_fallback'  => '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1A382D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>',
+            ),
+            array(
+                'texto'          => 'GG PUNTOS',
+                'url'            => '#',
+                'imagen'         => '',
+                'color_circulo'  => '#1A382D',
+                'color_bg_exp'   => '#ffe82c',
+                'color_txt_exp'  => '#1A382D',
+                'target'         => '_self',
+                'icon_fallback'  => '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffe82c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"></circle><path d="M18 8a6 6 0 0 1-6 6"></path><path d="M18 14a6 6 0 0 1-6 6"></path></svg>',
+            ),
+        );
+    }
+
+    if (!empty($items_derechos)) :
+    ?>
+    <div class="gg-floating-right-widget" id="gg-floating-right-widget">
+        <?php foreach ($items_derechos as $bd) : 
+            $bd_texto    = esc_html($bd['texto']);
+            $bd_url      = esc_url($bd['url']);
+            $bd_target   = $bd['target'] === '_blank' ? ' target="_blank" rel="noopener noreferrer"' : '';
+            $c_circulo   = esc_attr($bd['color_circulo']);
+            $c_bg_exp    = esc_attr($bd['color_bg_exp']);
+            $c_txt_exp   = esc_attr($bd['color_txt_exp']);
+            $bd_img      = !empty($bd['imagen']) ? esc_url($bd['imagen']) : '';
+            $bd_fallback = !empty($bd['icon_fallback']) ? $bd['icon_fallback'] : '';
+        ?>
+            <a href="<?php echo $bd_url; ?>"<?php echo $bd_target; ?> 
+               class="gg-right-pill-btn" 
+               title="<?php echo $bd_texto; ?>"
+               style="--btn-circle-bg: <?php echo $c_circulo; ?>; --btn-exp-bg: <?php echo $c_bg_exp; ?>; --btn-exp-color: <?php echo $c_txt_exp; ?>;">
+                
+                <span class="gg-right-pill-label">
+                    <?php echo $bd_texto; ?>
+                </span>
+
+                <span class="gg-right-pill-circle">
+                    <?php if ($bd_img) : ?>
+                        <img src="<?php echo $bd_img; ?>" alt="<?php echo $bd_texto; ?>" class="gg-right-pill-img">
+                    <?php elseif ($bd_fallback) : ?>
+                        <?php echo $bd_fallback; ?>
+                    <?php else : ?>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <?php endif; ?>
+                </span>
+            </a>
+        <?php endforeach; ?>
+    </div>
+    <?php endif; ?>
+
     <?php wp_footer(); ?>
 </body>
 </html>
