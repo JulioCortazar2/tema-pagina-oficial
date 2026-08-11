@@ -1,6 +1,6 @@
 /* ==========================================================================
    GanaGana Custom Theme — Admin Options Page Styles
-   Aplica solo en las páginas: Ajustes GanaGana (CMB2 Options)
+   Aplica solo en las páginas: Topbar (CMB2 Options)
    ========================================================================== */
 
 /* --- Fuente e importaciones --- */
@@ -52,8 +52,8 @@
     gap: 14px;
     background: linear-gradient(135deg, var(--gg-green-dark) 0%, var(--gg-green-mid) 100%) !important;
     color: var(--gg-white) !important;
-    margin: 20px 0 28px !important;
-    padding: 24px 30px !important;
+    margin: 16px 0 20px !important;
+    padding: 16px 26px !important;
     border-radius: var(--gg-radius) !important;
     font-size: 1.3rem !important;
     font-weight: 800 !important;
@@ -88,7 +88,7 @@
     border: 1px solid var(--gg-border);
     border-radius: var(--gg-radius);
     box-shadow: var(--gg-shadow);
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     overflow: hidden;
     transition: var(--gg-transition);
 }
@@ -104,7 +104,7 @@
 .cmb2-options-page .hndle {
     background: linear-gradient(90deg, var(--gg-green-dark), var(--gg-green-mid)) !important;
     border-radius: var(--gg-radius) var(--gg-radius) 0 0 !important;
-    padding: 14px 20px !important;
+    padding: 10px 20px !important;
     border-bottom: 3px solid var(--gg-yellow) !important;
     cursor: default !important;
 }
@@ -126,23 +126,49 @@
 }
 
 /* ============================================================
-   TABLA DE CAMPOS CMB2
+   FILAS DE CAMPOS CMB2 — Label y campo en la misma línea
    ============================================================ */
-.cmb2-options-page .cmb-th,
-.cmb2-options-page .cmb-td {
-    padding: 16px 20px !important;
+.cmb2-options-page .cmb-row:not(.cmb-repeatable-grouping):not(.cmb-remove-field-row) {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    column-gap: 18px;
+    row-gap: 4px;
+    padding: 8px 20px !important;
+    margin: 0 !important;
     border-bottom: 1px solid var(--gg-gray-mid) !important;
-    vertical-align: middle !important;
+    float: none !important;
 }
 
-.cmb2-options-page .cmb-wrap:last-child .cmb-th,
-.cmb2-options-page .cmb-wrap:last-child .cmb-td {
+.cmb2-options-page .cmb-row:not(.cmb-repeatable-grouping):not(.cmb-remove-field-row):last-child {
     border-bottom: none !important;
 }
 
 /* Alternado de filas */
-.cmb2-options-page .cmb-row:nth-child(even) {
+.cmb2-options-page .cmb-row:not(.cmb-repeatable-grouping):nth-child(even) {
     background-color: #FAFBFD;
+}
+
+.cmb2-options-page .cmb-row:not(.cmb-repeatable-grouping):not(.cmb-remove-field-row) > .cmb-th {
+    flex: 0 0 190px !important;
+    width: 190px !important;
+    max-width: 190px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    float: none !important;
+}
+
+.cmb2-options-page .cmb-row:not(.cmb-repeatable-grouping):not(.cmb-remove-field-row) > .cmb-td {
+    flex: 1 1 260px !important;
+    min-width: 200px;
+    padding: 0 !important;
+    margin: 0 !important;
+    float: none !important;
+}
+
+.cmb2-options-page .cmb-remove-field-row {
+    padding: 6px 20px 10px !important;
+    text-align: right;
 }
 
 /* Label */
@@ -153,6 +179,8 @@
     color: var(--gg-green-dark) !important;
     text-transform: uppercase !important;
     letter-spacing: 0.05em !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 /* Description */
@@ -161,8 +189,9 @@
     color: #718096 !important;
     font-size: 0.78rem !important;
     font-style: normal !important;
-    margin-top: 6px;
-    line-height: 1.5;
+    margin-top: 4px;
+    line-height: 1.4;
+    flex-basis: 100%;
 }
 
 /* ============================================================
@@ -176,7 +205,7 @@
 .cmb2-options-page textarea {
     width: 100% !important;
     max-width: 560px !important;
-    padding: 10px 14px !important;
+    padding: 7px 12px !important;
     border: 2px solid var(--gg-border) !important;
     border-radius: var(--gg-radius-sm) !important;
     font-family: 'Montserrat', sans-serif !important;
@@ -198,9 +227,9 @@
 }
 
 .cmb2-options-page textarea {
-    min-height: 120px !important;
+    min-height: 80px !important;
     resize: vertical !important;
-    line-height: 1.6 !important;
+    line-height: 1.5 !important;
 }
 
 /* Checkbox */
@@ -217,11 +246,11 @@
 .cmb2-options-page .cmb-group-description {
     background: linear-gradient(90deg, rgba(26,56,45,0.05), transparent);
     border-left: 4px solid var(--gg-yellow);
-    padding: 10px 16px;
+    padding: 8px 14px;
     border-radius: 0 var(--gg-radius-sm) var(--gg-radius-sm) 0;
     font-size: 0.82rem !important;
     color: var(--gg-gray-text) !important;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
 }
 
 /* Cada entrada del repeater */
@@ -229,7 +258,7 @@
     background: var(--gg-gray-light) !important;
     border: 1px solid var(--gg-border) !important;
     border-radius: var(--gg-radius-sm) !important;
-    margin-bottom: 14px !important;
+    margin-bottom: 8px !important;
     overflow: hidden;
     transition: var(--gg-transition);
 }
@@ -250,9 +279,14 @@
     font-weight: 700 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.06em !important;
-    padding: 10px 16px !important;
+    padding: 7px 16px !important;
     margin: 0 -1em !important;
     border-radius: var(--gg-radius-sm) var(--gg-radius-sm) 0 0 !important;
+}
+
+/* Ocultar la "x" superior redundante: ya existe el botón "Eliminar" al pie de cada grupo */
+.cmb2-options-page .cmb-repeatable-grouping > .dashicons-no-alt.cmb-remove-group-row {
+    display: none !important;
 }
 
 /* ============================================================
@@ -357,7 +391,7 @@
 .cmb2-options-page .cmb-submit-wrap {
     background: var(--gg-white);
     border-top: 2px solid var(--gg-gray-mid);
-    padding: 16px 24px;
+    padding: 12px 20px;
     margin-top: 4px;
     display: flex;
     align-items: center;

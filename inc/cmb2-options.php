@@ -2,7 +2,7 @@
 /**
  * Tema GanaGana Custom — Registro de Opciones y Meta Boxes (CMB2)
  *
- * Registra el panel de administración "Ajustes GanaGana" con sus pestañas
+ * Registra el panel de administración "Topbar" con sus pestañas
  * (Topbar, Header, Pre-footer, Footer, Copyright) y el meta box de cabecera por página.
  *
  * @package GanaGanaCustom
@@ -90,6 +90,90 @@ function gg_register_theme_options() {
         'name' => 'URL del Botón Promociones',
         'id'   => 'btn_promociones_url',
         'type' => 'text_url',
+    ));
+
+    // =========================================================
+    // SECCIÓN 2.5: IMÁGENES FINAL DE PÁGINA (Franja de logos institucionales)
+    // =========================================================
+    $img_final = new_cmb2_box(array(
+        'id'           => 'gg_img_final_pagina_options',
+        'title'        => 'Imágenes Final de Página',
+        'object_types' => array('options-page'),
+        'option_key'   => 'gg_img_final_pagina',
+        'parent_slug'  => 'gg_topbar',
+        'menu_title'   => 'img_FinalPagina',
+        'tab_title'    => 'img_FinalPagina',
+    ));
+    $img_final->add_field(array(
+        'name'    => esc_html__('Color de Fondo — Franja de Logos', 'ganagana'),
+        'desc'    => esc_html__('Color de fondo de la franja de logos institucionales.', 'ganagana'),
+        'id'      => 'logos_bg_color',
+        'type'    => 'colorpicker',
+        'default' => '#ffffff',
+    ));
+    $img_final->add_field(array(
+        'name'       => esc_html__('Altura Máxima de Logos (px)', 'ganagana'),
+        'desc'       => esc_html__('Altura base de los logos en escritorio, en píxeles. Se reduce automáticamente en móvil.', 'ganagana'),
+        'id'         => 'logos_altura_max',
+        'type'       => 'text_small',
+        'default'    => '70',
+        'attributes' => array(
+            'type' => 'number',
+            'min'  => '20',
+        ),
+    ));
+
+    $logos_group = $img_final->add_field(array(
+        'id'          => 'logos_institucionales',
+        'type'        => 'group',
+        'desc'        => esc_html__('Logos institucionales que se muestran en una franja al final de la página (ej: Vigilado Supersalud, Aliado de Su Red). Cantidad ilimitada, arrastra para reordenar.', 'ganagana'),
+        'options'     => array(
+            'group_title'   => esc_html__('Logo #{#}', 'ganagana'),
+            'add_button'    => esc_html__('+ Agregar Logo', 'ganagana'),
+            'remove_button' => esc_html__('Eliminar Logo', 'ganagana'),
+            'sortable'      => true,
+        ),
+    ));
+    $img_final->add_group_field($logos_group, array(
+        'name'       => esc_html__('Imagen del Logo', 'ganagana'),
+        'desc'       => esc_html__('Obligatorio para que el logo se muestre en el frontend. Sube o selecciona una imagen de la Biblioteca de Medios.', 'ganagana'),
+        'id'         => 'imagen',
+        'type'       => 'file',
+        'options'    => array(
+            'url' => false,
+        ),
+        'query_args' => array(
+            'type' => 'image',
+        ),
+    ));
+    $img_final->add_group_field($logos_group, array(
+        'name' => esc_html__('Texto Alternativo (Alt)', 'ganagana'),
+        'desc' => esc_html__('Descripción para accesibilidad y SEO. Si se deja vacío, se usa el texto alternativo definido en la Biblioteca de Medios.', 'ganagana'),
+        'id'   => 'alt',
+        'type' => 'text',
+    ));
+    $img_final->add_group_field($logos_group, array(
+        'name' => esc_html__('URL de Destino (Opcional)', 'ganagana'),
+        'desc' => esc_html__('Si se define, el logo será clicable y enlazará a esta dirección.', 'ganagana'),
+        'id'   => 'url',
+        'type' => 'text_url',
+    ));
+    $img_final->add_group_field($logos_group, array(
+        'name' => esc_html__('Abrir en nueva pestaña', 'ganagana'),
+        'id'   => 'target_blank',
+        'type' => 'checkbox',
+    ));
+    $img_final->add_group_field($logos_group, array(
+        'name'       => esc_html__('Escala Visual (%)', 'ganagana'),
+        'desc'       => esc_html__('Ajusta el tamaño relativo del logo entre 50% y 150% para compensar proporciones muy distintas entre logos. Valor por defecto: 100.', 'ganagana'),
+        'id'         => 'escala',
+        'type'       => 'text_small',
+        'default'    => '100',
+        'attributes' => array(
+            'type' => 'number',
+            'min'  => '50',
+            'max'  => '150',
+        ),
     ));
 
     // =========================================================
@@ -330,7 +414,14 @@ function gg_register_theme_options() {
         'type' => 'text',
     ));
     $copyright->add_group_field($legal_group, array(
+        'name'       => 'Página de Destino',
+        'id'         => 'pagina_id',
+        'type'       => 'select',
+        'options_cb' => 'gg_footer_opciones_paginas',
+    ));
+    $copyright->add_group_field($legal_group, array(
         'name' => 'URL',
+        'desc' => 'Ej: https://www.ejemplo.com (Si colocas una URL aquí, se usará en lugar de la página de destino)',
         'id'   => 'url',
         'type' => 'text_url',
     ));
@@ -465,6 +556,20 @@ function gg_register_theme_options() {
         'type'    => 'colorpicker',
         'default' => '#1A382D',
     ));
+}
+
+/**
+ * WordPress duplica automáticamente el título del menú padre como título del
+ * primer submenú (add_menu_page usa el mismo $menu_title para ambos). Esta
+ * corrección restaura "Topbar" como nombre de esa primera pestaña, ahora que
+ * el título del menú padre es "Ajustes GanaGana".
+ */
+add_action('admin_menu', 'gg_fix_topbar_submenu_label', 999);
+function gg_fix_topbar_submenu_label() {
+    global $submenu;
+    if (isset($submenu['gg_topbar'][0][0])) {
+        $submenu['gg_topbar'][0][0] = 'Topbar';
+    }
 }
 
 /**

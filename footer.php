@@ -7,6 +7,8 @@
 
     <footer class="gg-site-footer">
 
+        <?php get_template_part('template-parts/footer/logos-institucionales'); ?>
+
         <!-- =============================================
              SECCIÓN 1: BARRA PRE-FOOTER (Verde con Botones Amarillos)
              ============================================= -->
@@ -314,8 +316,20 @@
                     $copyright_links = gg_get_option('copyright_links');
                     if (!empty($copyright_links) && is_array($copyright_links)) :
                         foreach ($copyright_links as $leg) :
-                            $leg_texto = !empty($leg['texto']) ? esc_html($leg['texto']) : '';
-                            $leg_url   = !empty($leg['url']) ? esc_url($leg['url']) : '#';
+                            $leg_texto   = !empty($leg['texto']) ? esc_html($leg['texto']) : '';
+                            $leg_url_raw = !empty($leg['url']) ? trim($leg['url']) : '';
+                            $leg_page_id = !empty($leg['pagina_id']) ? absint($leg['pagina_id']) : 0;
+
+                            $leg_url = '#';
+                            if (!empty($leg_url_raw)) {
+                                $leg_url = esc_url($leg_url_raw);
+                            } elseif ($leg_page_id > 0) {
+                                $leg_permalink = get_permalink($leg_page_id);
+                                if ($leg_permalink && !is_wp_error($leg_permalink)) {
+                                    $leg_url = esc_url($leg_permalink);
+                                }
+                            }
+
                             if ($leg_texto) :
                             ?>
                                 <a href="<?php echo $leg_url; ?>"><?php echo $leg_texto; ?></a>
@@ -420,7 +434,10 @@
         foreach ($botones_derechos as $b) {
             $b_texto = !empty($b['texto']) ? trim($b['texto']) : '';
             $b_url   = !empty($b['url']) ? esc_url($b['url']) : '';
-            $b_img   = !empty($b['imagen_icono']) ? esc_url($b['imagen_icono']) : '';
+            $b_img   = !empty($b['imagen_icono_id']) ? wp_get_attachment_image_url((int) $b['imagen_icono_id'], 'full') : '';
+            if (!$b_img && !empty($b['imagen_icono'])) {
+                $b_img = esc_url($b['imagen_icono']);
+            }
             $b_c_circulo = !empty($b['color_circulo']) ? $b['color_circulo'] : '#1A382D';
             $b_c_bg_exp  = !empty($b['color_bg_expandido']) ? $b['color_bg_expandido'] : '#ffe82c';
             $b_c_txt_exp = !empty($b['color_texto_expandido']) ? $b['color_texto_expandido'] : '#1A382D';

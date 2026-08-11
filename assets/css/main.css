@@ -693,6 +693,106 @@ ul, ol {
     padding-left: 6px;
 }
 
+/* --- 2.5 FRANJA DE LOGOS INSTITUCIONALES --- */
+.gg-footer-logos {
+    background: var(--gg-logos-bg, #ffffff);
+    width: 100%;
+}
+
+.gg-footer-logos__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 24px 40px;
+    margin: 0 auto;
+    padding: 32px 20px;
+    max-width: 1200px;
+    list-style: none;
+}
+
+.gg-footer-logos__item {
+    flex: 0 0 calc((100% - 4 * 40px) / 5);
+    max-width: calc((100% - 4 * 40px) / 5);
+    height: var(--gg-logos-altura, 70px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gg-footer-logos__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    max-width: 100%;
+}
+
+.gg-footer-logos__item img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    transform: scale(var(--gg-logo-escala, 1));
+    transition: opacity .2s ease;
+}
+
+.gg-footer-logos__link:hover img {
+    opacity: .8;
+}
+
+@media (max-width: 1199px) {
+    .gg-footer-logos__item {
+        flex-basis: calc((100% - 3 * 40px) / 4);
+        max-width: calc((100% - 3 * 40px) / 4);
+    }
+}
+
+@media (max-width: 991px) {
+    .gg-footer-logos__list {
+        gap: 20px 28px;
+        padding: 28px 20px;
+    }
+    .gg-footer-logos__item {
+        flex-basis: calc((100% - 2 * 28px) / 3);
+        max-width: calc((100% - 2 * 28px) / 3);
+        height: calc(var(--gg-logos-altura, 70px) * 0.8);
+    }
+}
+
+/* Móvil: máximo 3 por fila, tamaño reducido para que ningún logo quede desproporcionado */
+@media (max-width: 767px) {
+    .gg-footer-logos__list {
+        gap: 16px 18px;
+        padding: 24px 16px;
+    }
+    .gg-footer-logos__item {
+        flex-basis: calc((100% - 2 * 18px) / 3);
+        max-width: calc((100% - 2 * 18px) / 3);
+        height: calc(var(--gg-logos-altura, 70px) * 0.62);
+    }
+}
+
+/* Celular pequeño: 2 por fila, ya que 3 columnas dejarían los logos con texto ilegibles */
+@media (max-width: 480px) {
+    .gg-footer-logos__list {
+        gap: 14px 16px;
+        padding: 20px 14px;
+    }
+    .gg-footer-logos__item {
+        flex-basis: calc((100% - 16px) / 2);
+        max-width: calc((100% - 16px) / 2);
+        height: calc(var(--gg-logos-altura, 70px) * 0.7);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gg-footer-logos__item img {
+        transition: none;
+    }
+}
+
 /* --- 3. BARRA COPYRIGHT --- */
 .gg-copyright-bar {
     background-color: var(--gg-copyright-bg);

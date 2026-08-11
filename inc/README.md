@@ -28,7 +28,7 @@ Este directorio contiene los módulos PHP que componen la funcionalidad del tema
 ### 4. `cmb2-options.php`
 - **Descripción:** Gestiona la creación de pantallas de configuración y meta campos mediante el framework CMB2.
 - **Funciones:**
-  - `gg_register_theme_options()`: Registra el panel "Ajustes GanaGana" y sus sub-pestañas (Topbar, Header, Pre-footer, Footer, Copyright).
+  - `gg_register_theme_options()`: Registra el panel "Topbar" y sus subpáginas (Topbar, Header, Pre-footer, Footer, Copyright).
   - `gg_register_page_header_meta()`: Registra el meta box lateral en el editor de páginas para configurar la cabecera individual (Default, Hero 100% ancho, Sin cabecera).
 
 ### 5. `walkers.php`

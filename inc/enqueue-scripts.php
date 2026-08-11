@@ -38,6 +38,7 @@ function gg_enqueue_admin_styles($hook) {
     $gg_pages = array(
         'toplevel_page_gg_topbar',
         'ajustes-ganagana_page_gg_header_promo',
+        'ajustes-ganagana_page_gg_img_final_pagina',
         'ajustes-ganagana_page_gg_prefooter',
         'ajustes-ganagana_page_gg_footer',
         'ajustes-ganagana_page_gg_copyright',
