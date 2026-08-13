@@ -1,20 +1,8 @@
 <?php
-/**
- * Tema GanaGana Custom — Soporte del Tema, Menús, Widgets y Rewrite Rules (Hooks)
- *
- * Registra las características nativas del tema, menús de navegación,
- * zonas de widgets (sidebars) y reglas de reescritura de URL amigables.
- *
- * @package GanaGanaCustom
- */
-
 if (!defined('ABSPATH')) {
-    exit; // Evita el acceso directo
+    exit;
 }
 
-/**
- * 1. Registra el soporte nativo del tema.
- */
 function ganagana_theme_support() {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
@@ -36,9 +24,6 @@ function ganagana_theme_support() {
 }
 add_action('after_setup_theme', 'ganagana_theme_support');
 
-/**
- * 2. Registra las ubicaciones de menús de navegación.
- */
 function ganagana_register_menus() {
     register_nav_menus(array(
         'primary-menu' => __('Menú Principal Header', 'ganagana'),
@@ -46,9 +31,6 @@ function ganagana_register_menus() {
 }
 add_action('init', 'ganagana_register_menus');
 
-/**
- * 3. Registra las áreas de widgets (sidebar).
- */
 function ganagana_widgets_init() {
     register_sidebar(array(
         'name'          => __('Barra Lateral Principal', 'ganagana'),
@@ -62,9 +44,6 @@ function ganagana_widgets_init() {
 }
 add_action('widgets_init', 'ganagana_widgets_init');
 
-/**
- * 4. Registrar Rewrite Rules para URLs amigables del Footer: /columna-slug/pagina-slug/
- */
 function gg_register_footer_rewrite_rules() {
     add_rewrite_rule(
         '^([^/]+)/([^/]+)/?$',
@@ -75,11 +54,8 @@ function gg_register_footer_rewrite_rules() {
 add_action('init', 'gg_register_footer_rewrite_rules');
 
 /**
- * 5. Evita que WordPress aplique redirección 301 canónica en las URLs estructuradas del footer.
- *
- * @param string $redirect_url  URL de destino canónica.
- * @param string $requested_url URL solicitada originalmente por el usuario.
- * @return string|false URL de redirección o false para desactivar.
+ * Sin esto, WP redirige 301 las URLs de dos segmentos del footer
+ * (/columna-slug/pagina-slug/) hacia su permalink canónico real.
  */
 function gg_disable_canonical_redirect_for_footer($redirect_url, $requested_url) {
     if ($redirect_url && preg_match('#/[^/]+/[^/]+/#', $requested_url)) {
@@ -89,9 +65,6 @@ function gg_disable_canonical_redirect_for_footer($redirect_url, $requested_url)
 }
 add_filter('redirect_canonical', 'gg_disable_canonical_redirect_for_footer', 10, 2);
 
-/**
- * 6. Refresca reglas de reescritura en la activación del tema.
- */
 function gg_flush_rewrite_rules_on_activation() {
     gg_register_footer_rewrite_rules();
     flush_rewrite_rules();

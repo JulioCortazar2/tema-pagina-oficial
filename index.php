@@ -1,21 +1,14 @@
 <?php
-/**
- * Tema GanaGana Custom - index.php
- * Página Principal / Blog / Noticias
- */
-
 get_header();
 ?>
 
 <div class="gg-container">
 
-    <!-- Hero Header Blog -->
     <div class="gg-page-header">
         <h1 class="gg-page-title">Noticias y Novedades</h1>
         <p class="gg-page-subtitle">Entérate de las últimas promociones, ganadores y comunicados de GanaGana</p>
     </div>
 
-    <!-- Contenido Principal + Sidebar -->
     <div class="gg-layout-grid">
         
         <div class="gg-layout-main">
@@ -58,7 +51,6 @@ get_header();
                     <?php endwhile; ?>
                 </div>
 
-                <!-- Paginación -->
                 <div class="gg-pagination">
                     <?php
                     the_posts_pagination(array(
@@ -79,7 +71,6 @@ get_header();
             <?php endif; ?>
         </div>
 
-        <!-- Sidebar -->
         <aside class="gg-layout-sidebar">
             <?php get_sidebar(); ?>
         </aside>

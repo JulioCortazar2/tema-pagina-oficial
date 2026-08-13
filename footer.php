@@ -1,7 +1,4 @@
 <?php
-/**
- * Tema GanaGana Custom - footer.php
- */
 ?>
     </main><!-- #gg-main-content -->
 
@@ -40,8 +37,20 @@
                     $prefooter_botones = gg_get_option('prefooter_botones');
                     if (!empty($prefooter_botones) && is_array($prefooter_botones)) :
                         foreach ($prefooter_botones as $btn) :
-                            $texto  = !empty($btn['texto_boton']) ? esc_html($btn['texto_boton']) : '';
-                            $url    = !empty($btn['url_boton']) ? esc_url($btn['url_boton']) : '#';
+                            $texto     = !empty($btn['texto_boton']) ? esc_html($btn['texto_boton']) : '';
+                            $url_raw   = !empty($btn['url_boton']) ? trim($btn['url_boton']) : '';
+                            $pagina_id = !empty($btn['pagina_id']) ? absint($btn['pagina_id']) : 0;
+
+                            $url = '#';
+                            if (!empty($url_raw)) {
+                                $url = esc_url($url_raw);
+                            } elseif ($pagina_id > 0) {
+                                $permalink = get_permalink($pagina_id);
+                                if ($permalink && !is_wp_error($permalink)) {
+                                    $url = esc_url($permalink);
+                                }
+                            }
+
                             $target = !empty($btn['target_blank']) ? '_blank' : '_self';
                             if ($texto) :
                             ?>
@@ -51,8 +60,7 @@
                             <?php 
                             endif;
                         endforeach;
-                    else : 
-                        // Fallback predeterminado
+                    else :
                     ?>
                         <a href="<?php echo esc_url(home_url('/puntos-de-venta')); ?>" class="gg-btn-yellow">PUNTOS DE VENTA</a>
                         <a href="<?php echo esc_url(home_url('/consultar-ganadores')); ?>" class="gg-btn-yellow">CONSULTAR GANADORES</a>
@@ -107,10 +115,8 @@
                     <!-- Redes Sociales — SVG Inline Map -->
                     <?php
                     /**
-                     * Mapa de íconos SVG por red social.
-                     * Clave: nombre en minúsculas que escribe el admin en el formulario.
-                     * Valor: SVG inline listo para usar.
-                     * Para agregar una red nueva: añade su clave y SVG aquí.
+                     * Clave = nombre en minúsculas que escribe el admin; para
+                     * sumar una red nueva, agrega su clave y SVG aquí.
                      */
                     function gg_get_social_svg($nombre, $nombre_alt = '') {
                         $iconos = array(
@@ -139,7 +145,6 @@
                             return $iconos[$nombre_key];
                         }
 
-                        // Fallback / "otro": muestra las 2 primeras letras del nombre en mayúsculas
                         $texto_base = !empty($nombre_alt) ? $nombre_alt : $nombre;
                         $letras = strtoupper(substr(trim($texto_base), 0, 2));
 
@@ -165,7 +170,6 @@
                                 <?php
                             endforeach;
                         else :
-                            // Fallback hardcodeado
                         ?>
                             <a href="https://www.facebook.com/ganaganaoficial/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="gg-social-icon gg-social-facebook"><?php echo gg_get_social_svg('facebook'); ?></a>
                             <a href="https://twitter.com/ganaganaoficial/" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="gg-social-icon gg-social-twitter"><?php echo gg_get_social_svg('twitter'); ?></a>
@@ -189,7 +193,6 @@
                         $col_enlaces = array();
 
                         if ($has_new_enlaces) {
-                            // Lógica nueva (Grupo B): filtrar por columna e igualar por su título
                             $matched_links = array();
                             foreach ($footer_enlaces as $link_item) {
                                 $link_col    = !empty($link_item['columna']) ? trim($link_item['columna']) : '';
@@ -221,14 +224,12 @@
                                 }
                             }
 
-                            // Ordenar enlaces por el campo 'orden' (ascendente)
                             usort($matched_links, function($a, $b) {
                                 return $a['orden'] - $b['orden'];
                             });
 
                             $col_enlaces = $matched_links;
                         } else {
-                            // Lógica Fallback: Usar enlaces_raw previo si footer_enlaces está vacío
                             if (!empty($col['enlaces_raw'])) {
                                 $col_enlaces = gg_parse_enlaces_raw_v2($col['enlaces_raw'], $col_slug);
                             }
@@ -251,9 +252,7 @@
                         </div>
                         <?php
                     endforeach;
-                else : 
-
-                    // Fallback predeterminado de 3 columnas
+                else :
                 ?>
                     <div class="gg-footer-col">
                         <h4 class="gg-footer-title">NUESTROS PRODUCTOS</h4>
@@ -336,8 +335,7 @@
                             <?php 
                             endif;
                         endforeach;
-                    else : 
-                        // Fallback enlaces legales
+                    else :
                     ?>
                         <a href="#">Términos y Condiciones</a>
                         <a href="#">Política de Privacidad</a>
@@ -377,7 +375,6 @@
         }
     }
 
-    // Fallback con URLs reales oficiales de GanaGana si no hay nada configurado aún en el panel
     if (empty($items_flotantes)) {
         $items_flotantes = array(
             array('nombre' => 'Instagram', 'url' => 'https://www.instagram.com/ganaganaoficial/', 'icono' => 'instagram', 'target' => '_blank'),
@@ -457,7 +454,6 @@
         }
     }
 
-    // Fallback con los botones de muestra representados en las imágenes si no se ha configurado nada aún
     if (empty($items_derechos)) {
         $items_derechos = array(
             array(

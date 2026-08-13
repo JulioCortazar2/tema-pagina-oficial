@@ -1,13 +1,4 @@
 <?php
-/**
- * Partial: Franja de Logos Institucionales del Footer.
- *
- * Se muestra justo arriba de la barra de copyright. No imprime nada si no
- * hay logos configurados en el panel de opciones del Footer.
- *
- * @package GanaGanaCustom
- */
-
 if (!defined('ABSPATH')) {
     exit;
 }

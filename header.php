@@ -18,10 +18,22 @@
                 <?php 
                 $topbar_links = gg_get_option('topbar_links');
                 
-                if (!empty($topbar_links) && is_array($topbar_links)) : 
+                if (!empty($topbar_links) && is_array($topbar_links)) :
                     foreach ($topbar_links as $item) :
-                        $texto  = !empty($item['texto']) ? esc_html($item['texto']) : '';
-                        $url    = !empty($item['url']) ? esc_url($item['url']) : '#';
+                        $texto     = !empty($item['texto']) ? esc_html($item['texto']) : '';
+                        $url_raw   = !empty($item['url']) ? trim($item['url']) : '';
+                        $pagina_id = !empty($item['pagina_id']) ? absint($item['pagina_id']) : 0;
+
+                        $url = '#';
+                        if (!empty($url_raw)) {
+                            $url = esc_url($url_raw);
+                        } elseif ($pagina_id > 0) {
+                            $permalink = get_permalink($pagina_id);
+                            if ($permalink && !is_wp_error($permalink)) {
+                                $url = esc_url($permalink);
+                            }
+                        }
+
                         $target = !empty($item['target_blank']) ? '_blank' : '_self';
                         if ($texto) :
                         ?>
@@ -48,8 +60,21 @@
 
             <!-- Logo -->
             <?php
-            $logo_url = gg_get_option('logo_url');
-            $logo_href = !empty($logo_url) ? esc_url($logo_url) : esc_url(home_url('/'));
+            $logo_url       = gg_get_option('logo_url');
+            $logo_pagina_id = absint(gg_get_option('logo_pagina_id'));
+
+            $logo_href = '';
+            if (!empty($logo_url)) {
+                $logo_href = esc_url($logo_url);
+            } elseif ($logo_pagina_id > 0) {
+                $logo_permalink = get_permalink($logo_pagina_id);
+                if ($logo_permalink && !is_wp_error($logo_permalink)) {
+                    $logo_href = esc_url($logo_permalink);
+                }
+            }
+            if (empty($logo_href)) {
+                $logo_href = esc_url(home_url('/'));
+            }
             ?>
             <div class="gg-logo">
                 <?php if (has_custom_logo()) : ?>
@@ -140,12 +165,25 @@
                     </form>
                 </div>
 
-                <?php 
-                $btn_promo_texto = gg_get_option('btn_promociones_texto');
-                $btn_promo_url   = gg_get_option('btn_promociones_url');
-                
+                <?php
+                $btn_promo_texto     = gg_get_option('btn_promociones_texto');
+                $btn_promo_url       = gg_get_option('btn_promociones_url');
+                $btn_promo_pagina_id = absint(gg_get_option('btn_promociones_pagina_id'));
+
                 $texto_promo = !empty($btn_promo_texto) ? esc_html($btn_promo_texto) : 'PROMOCIONES';
-                $url_promo   = !empty($btn_promo_url) ? esc_url($btn_promo_url) : esc_url(home_url('/promociones'));
+
+                $url_promo = '';
+                if (!empty($btn_promo_url)) {
+                    $url_promo = esc_url($btn_promo_url);
+                } elseif ($btn_promo_pagina_id > 0) {
+                    $promo_permalink = get_permalink($btn_promo_pagina_id);
+                    if ($promo_permalink && !is_wp_error($promo_permalink)) {
+                        $url_promo = esc_url($promo_permalink);
+                    }
+                }
+                if (empty($url_promo)) {
+                    $url_promo = esc_url(home_url('/promociones'));
+                }
                 ?>
                 <a href="<?php echo $url_promo; ?>" class="gg-btn-promociones">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
@@ -162,5 +200,7 @@
         </div>
     </div>
 </header>
+
+<?php do_action( 'gg_antes_del_contenido_principal' ); ?>
 
 <main id="gg-main-content" class="gg-main-content">

@@ -3,7 +3,6 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-// --- 1. Frontend Enqueue ---
 function ganagana_enqueue_assets() {
     wp_enqueue_style(
         'google-font-montserrat',
@@ -33,7 +32,6 @@ function ganagana_enqueue_assets() {
 }
 add_action('wp_enqueue_scripts', 'ganagana_enqueue_assets');
 
-// --- 2. Admin Enqueue ---
 function gg_enqueue_admin_styles($hook) {
     $gg_pages = array(
         'toplevel_page_gg_topbar',
@@ -44,6 +42,7 @@ function gg_enqueue_admin_styles($hook) {
         'ajustes-ganagana_page_gg_copyright',
         'ajustes-ganagana_page_gg_redes_flotantes',
         'ajustes-ganagana_page_gg_botones_derechos',
+        'ajustes-ganagana_page_gg_servicios',
     );
 
     if (in_array($hook, $gg_pages, true)) {

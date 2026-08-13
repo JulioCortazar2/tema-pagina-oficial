@@ -1,9 +1,4 @@
 <?php
-/**
- * Tema GanaGana Custom - single.php
- * Plantilla de Post / Entrada Individual
- */
-
 get_header();
 ?>
 
@@ -16,12 +11,10 @@ get_header();
             <div class="gg-layout-main">
                 <article id="post-<?php the_ID(); ?>" <?php post_class('gg-article'); ?>>
 
-                    <!-- Título de la Entrada -->
                     <h1 class="gg-page-title" style="color: var(--gg-green-darker); margin-bottom: 15px; font-size: 2rem;">
                         <?php the_title(); ?>
                     </h1>
 
-                    <!-- Metadatos (Fecha, Autor, Categoría) -->
                     <div class="gg-single-meta">
                         <span>Publicado el: <strong><?php echo get_the_date(); ?></strong></span>
                         <span>Por: <strong><?php the_author(); ?></strong></span>
@@ -30,14 +23,12 @@ get_header();
                         <?php endif; ?>
                     </div>
 
-                    <!-- Imagen Destacada -->
                     <?php if (has_post_thumbnail()) : ?>
                         <div class="gg-single-thumb">
                             <?php the_post_thumbnail('large'); ?>
                         </div>
                     <?php endif; ?>
 
-                    <!-- Contenido del Artículo -->
                     <div class="gg-entry-content">
                         <?php 
                         the_content(); 
@@ -49,30 +40,20 @@ get_header();
                         ?>
                     </div>
 
-                    <!-- Etiquetas / Tags -->
                     <?php if (has_tag()) : ?>
                         <div class="gg-post-tags" style="margin-top: 30px; padding-top: 15px; border-top: 1px solid var(--gg-border-color);">
                             <strong>Etiquetas: </strong> <?php the_tags('', ', ', ''); ?>
                         </div>
                     <?php endif; ?>
 
-                    <!-- Navegación Post Anterior / Siguiente -->
                     <div class="gg-post-navigation" style="display: flex; justify-content: space-between; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--gg-border-color);">
                         <div class="nav-previous"><?php previous_post_link('%link', '← %title'); ?></div>
                         <div class="nav-next"><?php next_post_link('%link', '%title →'); ?></div>
                     </div>
 
-                    <!-- Sección de Comentarios -->
-                    <?php
-                    if (comments_open() || get_comments_number()) :
-                        comments_template();
-                    endif;
-                    ?>
-
                 </article>
             </div>
 
-            <!-- Sidebar -->
             <aside class="gg-layout-sidebar">
                 <?php get_sidebar(); ?>
             </aside>

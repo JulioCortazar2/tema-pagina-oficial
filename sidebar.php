@@ -1,8 +1,4 @@
 <?php
-/**
- * Tema GanaGana Custom - sidebar.php
- * Área de Widgets Lateral
- */
 ?>
 
 <div class="gg-sidebar">
@@ -13,7 +9,6 @@
 
     <?php else : ?>
 
-        <!-- Fallback de Widgets predeterminados si la barra lateral está vacía -->
         <div class="widget widget_search">
             <h3 class="widget-title">Buscar</h3>
             <form role="search" method="get" class="gg-search-form" action="<?php echo esc_url(home_url('/')); ?>">
@@ -30,7 +25,8 @@
                 <?php
                 $recent_posts = wp_get_recent_posts(array(
                     'numberposts' => 5,
-                    'post_status' => 'publish'
+                    'post_status' => 'publish',
+                    'post_type'   => 'post'
                 ));
                 foreach ($recent_posts as $post_item) :
                 ?>
@@ -40,13 +36,6 @@
                         </a>
                     </li>
                 <?php endforeach; wp_reset_query(); ?>
-            </ul>
-        </div>
-
-        <div class="widget widget_categories">
-            <h3 class="widget-title">Categorías</h3>
-            <ul>
-                <?php wp_list_categories(array('title_li' => '')); ?>
             </ul>
         </div>
 

@@ -1,17 +1,10 @@
 <?php
-/**
- * Tema GanaGana Custom - page.php
- * Plantilla de Página Estática Genérica
- */
-
 get_header();
 ?>
 
 <?php while (have_posts()) : the_post(); ?>
 
     <?php
-    // ─── SISTEMA DE CABECERA POR PÁGINA ─────────────────────────────────
-    // Lee los meta fields configurados en el panel lateral del editor.
     $header_mode    = get_post_meta(get_the_ID(), 'page_header_mode', true);
     $header_mode    = !empty($header_mode) ? $header_mode : 'default';
 
@@ -36,12 +29,10 @@ get_header();
     $overlay_meta    = get_post_meta(get_the_ID(), 'page_header_overlay', true);
     $has_overlay     = ($overlay_meta === 'off') ? false : true;
 
-    // Altura con unidad
     $hero_height_css = ($hero_height === '100vh') ? '100vh' : $hero_height . 'px';
     ?>
 
     <?php if ($header_mode === 'default') : ?>
-        <!-- MODO: Barra verde predeterminada (dentro de contenedor) -->
         <div class="gg-container">
             <div class="gg-page-header">
                 <h1 class="gg-page-title"><?php the_title(); ?></h1>
@@ -49,7 +40,6 @@ get_header();
         </div>
 
     <?php elseif ($header_mode === 'hero') : ?>
-        <!-- MODO: Imagen hero de 100% ANCHO REAL DE PANTALLA -->
         <div class="gg-page-hero"
              style="
                  position: relative;
@@ -112,11 +102,8 @@ get_header();
             <?php endif; ?>
         </div>
 
-    <?php endif;
-    // Si $header_mode === 'hidden': no renderiza cabecera
-    ?>
+    <?php endif; ?>
 
-    <!-- Contenido de la página (dentro de contenedor) -->
     <div class="gg-container">
         <div class="gg-layout-full">
             <article id="post-<?php the_ID(); ?>" <?php post_class('gg-article'); ?>>

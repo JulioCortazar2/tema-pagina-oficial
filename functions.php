@@ -3,12 +3,10 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-// --- Constantes ---
 define('GANAGANA_VERSION', '1.0.0');
 define('GANAGANA_DIR', get_template_directory());
 define('GANAGANA_URI', get_template_directory_uri());
 
-// --- Módulos /inc/ ---
 require_once GANAGANA_DIR . '/inc/utilities.php';
 require_once GANAGANA_DIR . '/inc/enqueue-scripts.php';
 require_once GANAGANA_DIR . '/inc/hooks.php';

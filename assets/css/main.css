@@ -1512,7 +1512,7 @@ ul, ol {
     height: 50px;
     border-radius: 50%;
     background-color: #1A382D;
-    border: 2px solid #FBD000;
+    border: none;
     color: #FBD000;
     display: flex;
     align-items: center;
@@ -1538,7 +1538,7 @@ ul, ol {
 
 .gg-floating-socials-widget.is-open .gg-floating-socials-toggle {
     background-color: #FBD000;
-    border-color: #1A382D;
+    border: none;
     color: #1A382D;
 }
 
@@ -1674,8 +1674,8 @@ ul, ol {
     display: inline-flex;
     align-items: center;
     justify-content: flex-end;
-    height: 64px;
-    border-radius: 32px;
+    height: 96px;
+    border-radius: 48px;
     text-decoration: none;
     pointer-events: auto;
     position: relative;
@@ -1683,11 +1683,11 @@ ul, ol {
     transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     background-color: var(--btn-circle-bg, #1A382D);
     overflow: hidden;
-    max-width: 64px; /* Estado retraído: esfera circular grande */
+    max-width: 96px; /* Estado retraído: esfera circular grande (150% del tamaño original) */
 }
 
 .gg-right-pill-btn:hover {
-    max-width: 360px; /* Se expande suavemente hacia la izquierda */
+    max-width: 400px; /* Se expande suavemente hacia la izquierda */
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
     background-color: var(--btn-exp-bg, #ffe82c);
 }
@@ -1701,8 +1701,8 @@ ul, ol {
 
 /* Círculo del ícono a la derecha */
 .gg-right-pill-circle {
-    width: 64px;
-    height: 64px;
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
     background-color: var(--btn-circle-bg, #1A382D);
     display: flex;
@@ -1714,6 +1714,11 @@ ul, ol {
     transition: transform 0.3s ease;
     border: none;
     overflow: hidden;
+}
+
+.gg-right-pill-circle svg {
+    width: 42px;
+    height: 42px;
 }
 
 .gg-right-pill-btn:hover .gg-right-pill-circle {

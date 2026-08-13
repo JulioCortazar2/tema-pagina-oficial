@@ -1,15 +1,9 @@
 <?php
-/**
- * Tema GanaGana Custom - search.php
- * Plantilla para Resultados de Búsqueda
- */
-
 get_header();
 ?>
 
 <div class="gg-container">
 
-    <!-- Header de Búsqueda -->
     <div class="gg-page-header">
         <div class="gg-container">
             <h1 class="gg-page-title">
@@ -66,7 +60,6 @@ get_header();
                     <?php endwhile; ?>
                 </div>
 
-                <!-- Paginación -->
                 <div class="gg-pagination">
                     <?php
                     the_posts_pagination(array(
@@ -96,7 +89,6 @@ get_header();
             <?php endif; ?>
         </div>
 
-        <!-- Sidebar -->
         <aside class="gg-layout-sidebar">
             <?php get_sidebar(); ?>
         </aside>
