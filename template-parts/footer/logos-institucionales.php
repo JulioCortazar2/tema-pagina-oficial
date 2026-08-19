@@ -9,8 +9,7 @@ if (empty($gg_logos) || !is_array($gg_logos)) {
     return;
 }
 
-$gg_logos_bg     = gg_get_option('logos_bg_color');
-$gg_logos_bg     = !empty($gg_logos_bg) ? $gg_logos_bg : '#ffffff';
+$gg_logos_bg     = '#ffffff';
 $gg_logos_altura = absint(gg_get_option('logos_altura_max'));
 $gg_logos_altura = $gg_logos_altura > 0 ? $gg_logos_altura : 70;
 
@@ -34,12 +33,6 @@ if (empty($gg_logos_items)) {
             $gg_url     = !empty($gg_logo['url']) ? $gg_logo['url'] : '';
             $gg_blank   = !empty($gg_logo['target_blank']);
 
-            $gg_escala_raw = isset($gg_logo['escala']) ? (float) $gg_logo['escala'] : 100;
-            if ($gg_escala_raw < 50 || $gg_escala_raw > 150) {
-                $gg_escala_raw = 100;
-            }
-            $gg_escala = $gg_escala_raw / 100;
-
             $gg_img_attr = array(
                 'loading'  => 'lazy',
                 'decoding' => 'async',
@@ -54,7 +47,7 @@ if (empty($gg_logos_items)) {
                 continue;
             }
         ?>
-            <li class="gg-footer-logos__item" style="--gg-logo-escala: <?php echo esc_attr($gg_escala); ?>;">
+            <li class="gg-footer-logos__item" style="--gg-logo-escala: 1;">
                 <?php if (!empty($gg_url)) : ?>
                     <a class="gg-footer-logos__link" href="<?php echo esc_url($gg_url); ?>"<?php echo $gg_blank ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>>
                         <?php echo $gg_img_html; ?>

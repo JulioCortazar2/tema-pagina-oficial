@@ -15,4 +15,5 @@ require_once GANAGANA_DIR . '/inc/walkers.php';
 require_once GANAGANA_DIR . '/inc/custom-post-types.php';
 require_once GANAGANA_DIR . '/inc/custom-taxonomies.php';
 require_once GANAGANA_DIR . '/inc/security.php';
+require_once GANAGANA_DIR . '/inc/roles-extra.php';
 require_once GANAGANA_DIR . '/inc/elementor-support.php';

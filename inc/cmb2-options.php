@@ -18,6 +18,7 @@ function gg_register_theme_options() {
         'page_title'   => 'Ajustes del Tema GanaGana',
         'icon_url'     => 'dashicons-admin-generic',
         'position'     => 60,
+        'capability'   => 'gg_manage_theme_options',
     ));
 
     $topbar_group = $topbar->add_field(array(
@@ -55,11 +56,12 @@ function gg_register_theme_options() {
 
     $header_promo = new_cmb2_box(array(
         'id'           => 'gg_header_promo_options',
-        'title'        => 'Header — Logo y Botón Promociones',
+        'title'        => 'Opciones Menu Principal',
         'object_types' => array('options-page'),
         'option_key'   => 'gg_header_promo',
         'parent_slug'  => 'gg_topbar',
-        'tab_title'    => 'Header',
+        'tab_title'    => 'Opciones Menu Principal',
+        'capability'   => 'gg_manage_theme_options',
     ));
     $header_promo->add_field(array(
         'name'        => 'URL del Logo (al hacer clic)',
@@ -75,39 +77,41 @@ function gg_register_theme_options() {
         'options_cb' => 'gg_footer_opciones_paginas',
     ));
     $header_promo->add_field(array(
-        'name'    => 'Texto del Botón Promociones',
+        'name'    => 'Texto del Botón del Menú',
         'id'      => 'btn_promociones_texto',
         'type'    => 'text',
         'default' => 'PROMOCIONES',
     ));
     $header_promo->add_field(array(
-        'name'        => 'URL del Botón Promociones',
+        'name'        => 'URL del Botón del Menú',
         'description' => 'Tiene prioridad sobre la página seleccionada abajo.',
         'id'          => 'btn_promociones_url',
         'type'        => 'text_url',
     ));
     $header_promo->add_field(array(
-        'name'       => 'Página Interna del Botón Promociones (Opcional)',
+        'name'       => 'Página Interna del Botón del Menú (Opcional)',
         'description'=> 'Alternativa a la URL de arriba. Se usa solo si la URL del Botón está vacía.',
         'id'         => 'btn_promociones_pagina_id',
         'type'       => 'select',
         'options_cb' => 'gg_footer_opciones_paginas',
     ));
+    $header_promo->add_field(array(
+        'name'    => 'Mostrar Botón del Menú',
+        'desc'    => 'Activa/desactiva la visibilidad del botón que aparece al lado de la barra de búsqueda.',
+        'id'      => 'mostrar_btn_menu',
+        'type'    => 'checkbox',
+        'default' => 'on',
+    ));
 
     $img_final = new_cmb2_box(array(
         'id'           => 'gg_img_final_pagina_options',
-        'title'        => 'Imágenes Final de Página',
+        'title'        => 'Imagenes Relacionadas',
         'object_types' => array('options-page'),
         'option_key'   => 'gg_img_final_pagina',
         'parent_slug'  => 'gg_topbar',
-        'menu_title'   => 'img_FinalPagina',
-        'tab_title'    => 'img_FinalPagina',
-    ));
-    $img_final->add_field(array(
-        'name'    => esc_html__('Color de Fondo — Franja de Logos', 'ganagana'),
-        'id'      => 'logos_bg_color',
-        'type'    => 'colorpicker',
-        'default' => '#ffffff',
+        'menu_title'   => 'Imagenes Relacionadas',
+        'tab_title'    => 'Imagenes Relacionadas',
+        'capability'   => 'gg_manage_theme_options',
     ));
     $img_final->add_field(array(
         'name'       => esc_html__('Altura Máxima de Logos (px)', 'ganagana'),
@@ -157,17 +161,6 @@ function gg_register_theme_options() {
         'id'   => 'target_blank',
         'type' => 'checkbox',
     ));
-    $img_final->add_group_field($logos_group, array(
-        'name'       => esc_html__('Escala Visual (%)', 'ganagana'),
-        'id'         => 'escala',
-        'type'       => 'text_small',
-        'default'    => '100',
-        'attributes' => array(
-            'type' => 'number',
-            'min'  => '50',
-            'max'  => '150',
-        ),
-    ));
 
     $prefooter = new_cmb2_box(array(
         'id'           => 'gg_prefooter_options',
@@ -176,6 +169,7 @@ function gg_register_theme_options() {
         'option_key'   => 'gg_prefooter',
         'parent_slug'  => 'gg_topbar',
         'tab_title'    => 'Pre-Footer',
+        'capability'   => 'gg_manage_theme_options',
     ));
     $prefooter->add_field(array(
         'name'    => 'Texto Central',
@@ -224,6 +218,7 @@ function gg_register_theme_options() {
         'option_key'   => 'gg_footer',
         'parent_slug'  => 'gg_topbar',
         'tab_title'    => 'Footer',
+        'capability'   => 'gg_manage_theme_options',
     ));
     $footer->add_field(array(
         'name'    => 'Nombre de la Empresa',
@@ -347,6 +342,7 @@ function gg_register_theme_options() {
         'option_key'   => 'gg_copyright',
         'parent_slug'  => 'gg_topbar',
         'tab_title'    => 'Copyright',
+        'capability'   => 'gg_manage_theme_options',
     ));
     $copyright->add_field(array(
         'name'        => 'Texto de Copyright',
@@ -385,11 +381,12 @@ function gg_register_theme_options() {
 
     $redes_flotantes = new_cmb2_box(array(
         'id'           => 'gg_redes_flotantes_options',
-        'title'        => 'Redes Sociales Flotantes',
+        'title'        => 'Redes Sociales',
         'object_types' => array('options-page'),
         'option_key'   => 'gg_redes_flotantes',
         'parent_slug'  => 'gg_topbar',
-        'tab_title'    => 'Redes Flotantes',
+        'tab_title'    => 'Redes Sociales',
+        'capability'   => 'gg_manage_theme_options',
     ));
 
     $flotantes_group = $redes_flotantes->add_field(array(
@@ -444,6 +441,7 @@ function gg_register_theme_options() {
         'option_key'   => 'gg_botones_derechos',
         'parent_slug'  => 'gg_topbar',
         'tab_title'    => 'Botones Derechos',
+        'capability'   => 'gg_manage_theme_options',
     ));
 
     $right_group = $botones_derechos->add_field(array(
@@ -505,6 +503,7 @@ function gg_register_theme_options() {
         'option_key'   => 'gg_servicios',
         'parent_slug'  => 'gg_topbar',
         'tab_title'    => 'Servicios',
+        'capability'   => 'gg_manage_theme_options',
     ));
 
     $servicios_group = $servicios->add_field(array(
@@ -631,10 +630,16 @@ function gg_register_page_header_meta() {
     ));
 
     $cmb->add_field(array(
-        'name'    => 'Mostrar título',
-        'id'      => 'page_header_show_title',
-        'type'    => 'checkbox',
-        'default' => 'on',
+        'name'            => 'Mostrar título',
+        'id'              => 'page_header_show_title',
+        'type'            => 'checkbox',
+        'default'         => 'on',
+        // CMB2 borra el meta al desmarcar un checkbox en vez de guardar 'off',
+        // lo que impedía distinguir "desmarcado" de "nunca guardado" (ambos
+        // devolvían '' en get_post_meta y siempre se mostraba el título).
+        'sanitization_cb' => function ($value) {
+            return $value === 'on' ? 'on' : 'off';
+        },
     ));
 
     $cmb->add_field(array(
@@ -645,10 +650,13 @@ function gg_register_page_header_meta() {
     ));
 
     $cmb->add_field(array(
-        'name'    => 'Capa oscura (overlay)',
-        'id'      => 'page_header_overlay',
-        'type'    => 'checkbox',
-        'default' => 'on',
+        'name'            => 'Capa oscura (overlay)',
+        'id'              => 'page_header_overlay',
+        'type'            => 'checkbox',
+        'default'         => 'on',
+        'sanitization_cb' => function ($value) {
+            return $value === 'on' ? 'on' : 'off';
+        },
     ));
 
     $cmb->add_field(array(

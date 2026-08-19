@@ -18,9 +18,6 @@ get_header();
                     <div class="gg-single-meta">
                         <span>Publicado el: <strong><?php echo get_the_date(); ?></strong></span>
                         <span>Por: <strong><?php the_author(); ?></strong></span>
-                        <?php if (has_category()) : ?>
-                            <span>Categoría: <strong><?php the_category(', '); ?></strong></span>
-                        <?php endif; ?>
                     </div>
 
                     <?php if (has_post_thumbnail()) : ?>

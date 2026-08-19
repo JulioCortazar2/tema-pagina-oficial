@@ -166,29 +166,34 @@
                 </div>
 
                 <?php
-                $btn_promo_texto     = gg_get_option('btn_promociones_texto');
-                $btn_promo_url       = gg_get_option('btn_promociones_url');
-                $btn_promo_pagina_id = absint(gg_get_option('btn_promociones_pagina_id'));
+                $mostrar_btn_menu = gg_get_option('mostrar_btn_menu');
+                if ($mostrar_btn_menu === 'on') {
+                    $btn_promo_texto     = gg_get_option('btn_promociones_texto');
+                    $btn_promo_url       = gg_get_option('btn_promociones_url');
+                    $btn_promo_pagina_id = absint(gg_get_option('btn_promociones_pagina_id'));
 
-                $texto_promo = !empty($btn_promo_texto) ? esc_html($btn_promo_texto) : 'PROMOCIONES';
+                    $texto_promo = !empty($btn_promo_texto) ? esc_html($btn_promo_texto) : 'PROMOCIONES';
 
-                $url_promo = '';
-                if (!empty($btn_promo_url)) {
-                    $url_promo = esc_url($btn_promo_url);
-                } elseif ($btn_promo_pagina_id > 0) {
-                    $promo_permalink = get_permalink($btn_promo_pagina_id);
-                    if ($promo_permalink && !is_wp_error($promo_permalink)) {
-                        $url_promo = esc_url($promo_permalink);
+                    $url_promo = '';
+                    if (!empty($btn_promo_url)) {
+                        $url_promo = esc_url($btn_promo_url);
+                    } elseif ($btn_promo_pagina_id > 0) {
+                        $promo_permalink = get_permalink($btn_promo_pagina_id);
+                        if ($promo_permalink && !is_wp_error($promo_permalink)) {
+                            $url_promo = esc_url($promo_permalink);
+                        }
                     }
-                }
-                if (empty($url_promo)) {
-                    $url_promo = esc_url(home_url('/promociones'));
+                    if (empty($url_promo)) {
+                        $url_promo = esc_url(home_url('/promociones'));
+                    }
+                    ?>
+                    <a href="<?php echo $url_promo; ?>" class="gg-btn-promociones">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                        <span><?php echo $texto_promo; ?></span>
+                    </a>
+                    <?php
                 }
                 ?>
-                <a href="<?php echo $url_promo; ?>" class="gg-btn-promociones">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
-                    <span><?php echo $texto_promo; ?></span>
-                </a>
 
                 <button class="gg-mobile-toggle" id="gg-mobile-toggle" aria-label="Abrir menú de navegación">
                     <span class="gg-hamburger-bar"></span>

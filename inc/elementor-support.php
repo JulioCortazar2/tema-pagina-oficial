@@ -19,3 +19,13 @@ function gg_elementor_page_layout_support() {
     }
 }
 add_action('wp', 'gg_elementor_page_layout_support');
+
+function gg_ocultar_elementor_para_editor() {
+    $user = wp_get_current_user();
+
+    if ( in_array( 'editor', (array) $user->roles ) ) {
+        remove_menu_page( 'elementor' );
+        remove_menu_page( 'elementor-home' );
+    }
+}
+add_action( 'admin_menu', 'gg_ocultar_elementor_para_editor', 999 );

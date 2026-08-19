@@ -25,7 +25,6 @@ function gg_get_option($field_id) {
         'footer_redes_sociales'    => 'gg_footer',
         'footer_columnas'          => 'gg_footer',
         'footer_enlaces'           => 'gg_footer',
-        'logos_bg_color'           => 'gg_img_final_pagina',
         'logos_altura_max'         => 'gg_img_final_pagina',
         'logos_institucionales'    => 'gg_img_final_pagina',
         'copyright_texto'          => 'gg_copyright',
