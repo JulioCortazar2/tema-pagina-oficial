@@ -52,6 +52,14 @@ function gg_enqueue_admin_styles($hook) {
             array(),
             filemtime(GANAGANA_DIR . '/assets/css/admin-options.css')
         );
+
+        wp_enqueue_script(
+            'gg-admin-group-titles',
+            GANAGANA_URI . '/assets/js/admin-group-titles.js',
+            array('jquery'),
+            filemtime(GANAGANA_DIR . '/assets/js/admin-group-titles.js'),
+            true
+        );
     }
 
     if (in_array($hook, array('post.php', 'post-new.php'), true)) {

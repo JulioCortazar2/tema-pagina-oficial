@@ -29,6 +29,7 @@ function gg_register_theme_options() {
             'add_button'    => '+ Agregar Link',
             'remove_button' => 'Eliminar Link',
             'sortable'      => true,
+            'closed'        => true,
         ),
     ));
     $topbar->add_group_field($topbar_group, array(
@@ -133,6 +134,7 @@ function gg_register_theme_options() {
             'add_button'    => esc_html__('+ Agregar Logo', 'ganagana'),
             'remove_button' => esc_html__('Eliminar Logo', 'ganagana'),
             'sortable'      => true,
+            'closed'        => true,
         ),
     ));
     $img_final->add_group_field($logos_group, array(
@@ -186,6 +188,7 @@ function gg_register_theme_options() {
             'add_button'    => '+ Agregar Botón',
             'remove_button' => 'Eliminar Botón',
             'sortable'      => true,
+            'closed'        => true,
         ),
     ));
     $prefooter->add_group_field($prefooter_btns, array(
@@ -220,6 +223,13 @@ function gg_register_theme_options() {
         'tab_title'    => 'Footer',
         'capability'   => 'gg_manage_theme_options',
     ));
+
+    $footer->add_field(array(
+        'id'   => 'info_principal_heading',
+        'type' => 'title',
+        'name' => '<div style="background-color: #1A382D; color: #FFFFFF; padding: 12px 15px; margin: 20px 0 15px 0; border-left: 4px solid #FFE82C; font-size: 14px; font-weight: 600;">Información Principal</div>',
+    ));
+
     $footer->add_field(array(
         'name'    => 'Nombre de la Empresa',
         'id'      => 'footer_empresa_nombre',
@@ -247,6 +257,12 @@ function gg_register_theme_options() {
         'type' => 'text',
     ));
 
+    $footer->add_field(array(
+        'id'   => 'redes_heading',
+        'type' => 'title',
+        'name' => '<div style="background-color: #1A382D; color: #FFFFFF; padding: 12px 15px; margin: 20px 0 15px 0; border-left: 4px solid #FFE82C; font-size: 14px; font-weight: 600;">Redes Sociales</div>',
+    ));
+
     $redes_group = $footer->add_field(array(
         'id'          => 'footer_redes_sociales',
         'type'        => 'group',
@@ -255,6 +271,7 @@ function gg_register_theme_options() {
             'add_button'    => '+ Agregar Red Social',
             'remove_button' => 'Eliminar',
             'sortable'      => true,
+            'closed'        => true,
         ),
     ));
     $footer->add_group_field($redes_group, array(
@@ -269,6 +286,12 @@ function gg_register_theme_options() {
         'type' => 'text_url',
     ));
 
+    $footer->add_field(array(
+        'id'   => 'columnas_heading',
+        'type' => 'title',
+        'name' => '<div style="background-color: #1A382D; color: #FFFFFF; padding: 12px 15px; margin: 20px 0 15px 0; border-left: 4px solid #FFE82C; font-size: 14px; font-weight: 600;">Columnas del Footer</div>',
+    ));
+
     $cols_group = $footer->add_field(array(
         'id'          => 'footer_columnas',
         'type'        => 'group',
@@ -277,12 +300,19 @@ function gg_register_theme_options() {
             'add_button'    => '+ Agregar Columna',
             'remove_button' => 'Eliminar Columna',
             'sortable'      => true,
+            'closed'        => true,
         ),
     ));
     $footer->add_group_field($cols_group, array(
         'name' => 'Título de la Columna',
         'id'   => 'titulo_columna',
         'type' => 'text',
+    ));
+
+    $footer->add_field(array(
+        'id'   => 'enlaces_heading',
+        'type' => 'title',
+        'name' => '<div style="background-color: #1A382D; color: #FFFFFF; padding: 12px 15px; margin: 20px 0 15px 0; border-left: 4px solid #FFE82C; font-size: 14px; font-weight: 600;">Vinculación de Enlaces</div>',
     ));
 
     $enlaces_group = $footer->add_field(array(
@@ -293,6 +323,7 @@ function gg_register_theme_options() {
             'add_button'    => '+ Agregar Enlace',
             'remove_button' => 'Eliminar Enlace',
             'sortable'      => true,
+            'closed'        => true,
         ),
     ));
     $footer->add_group_field($enlaces_group, array(
@@ -359,6 +390,7 @@ function gg_register_theme_options() {
             'add_button'    => '+ Agregar Enlace Legal',
             'remove_button' => 'Eliminar',
             'sortable'      => true,
+            'closed'        => true,
         ),
     ));
     $copyright->add_group_field($legal_group, array(
@@ -397,6 +429,7 @@ function gg_register_theme_options() {
             'add_button'    => '+ Agregar Red Social',
             'remove_button' => 'Eliminar',
             'sortable'      => true,
+            'closed'        => true,
         ),
     ));
     $redes_flotantes->add_group_field($flotantes_group, array(
@@ -452,6 +485,7 @@ function gg_register_theme_options() {
             'add_button'    => '+ Agregar Botón Derecho',
             'remove_button' => 'Eliminar',
             'sortable'      => true,
+            'closed'        => true,
         ),
     ));
     $botones_derechos->add_group_field($right_group, array(
@@ -514,6 +548,7 @@ function gg_register_theme_options() {
             'add_button'    => '+ Agregar Servicio',
             'remove_button' => 'Eliminar Servicio',
             'sortable'      => true,
+            'closed'        => true,
         ),
     ));
     $servicios->add_group_field($servicios_group, array(
