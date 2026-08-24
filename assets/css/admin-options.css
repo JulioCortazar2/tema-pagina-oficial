@@ -1,14 +1,7 @@
-/* ==========================================================================
-   GanaGana Custom Theme — Admin Options Page Styles
-   Aplica solo en las páginas: Topbar (CMB2 Options)
-   ========================================================================== */
+/* GanaGana Custom Theme — Admin Options Page Styles. Aplica solo en las páginas: Topbar (CMB2 Options) */
 
-/* --- Fuente e importaciones --- */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 
-/* ============================================================
-   VARIABLES DE COLOR
-   ============================================================ */
 :root {
     --gg-green-dark:   #1A382D;
     --gg-green-mid:    #2A5C46;
@@ -27,9 +20,6 @@
     --gg-transition:   all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ============================================================
-   RESET BASE DEL BODY EN PÁGINAS DE ADMIN GanaGana
-   ============================================================ */
 #wpwrap,
 #wpcontent {
     background: var(--gg-gray-light) !important;
@@ -42,9 +32,6 @@
     padding: 0 20px 40px;
 }
 
-/* ============================================================
-   CABECERA HERO — BRANDING GANAGANA
-   ============================================================ */
 .wrap > h2,
 .wrap > h1 {
     display: flex !important;
@@ -57,7 +44,7 @@
     border-radius: var(--gg-radius) !important;
     font-size: 1.3rem !important;
     font-weight: 800 !important;
-    letter-spacing: 0.04em !important; 
+    letter-spacing: 0.04em !important;
     text-transform: uppercase !important;
     box-shadow: var(--gg-shadow) !important;
     border: none !important;
@@ -75,9 +62,6 @@
     pointer-events: none;
 }
 
-/* ============================================================
-   CONTENEDOR PRINCIPAL CMB2
-   ============================================================ */
 #cmb2-metabox-gg_topbar_options,
 #cmb2-metabox-gg_header_promo_options,
 #cmb2-metabox-gg_prefooter_options,
@@ -97,9 +81,6 @@
     box-shadow: var(--gg-shadow-hover);
 }
 
-/* ============================================================
-   CABECERA DE CADA SECCIÓN (metabox title)
-   ============================================================ */
 .cmb2-options-page .postbox-header,
 .cmb2-options-page .hndle {
     background: linear-gradient(90deg, var(--gg-green-dark), var(--gg-green-mid)) !important;
@@ -125,9 +106,6 @@
     display: none !important;
 }
 
-/* ============================================================
-   FILAS DE CAMPOS CMB2 — Label y campo en la misma línea
-   ============================================================ */
 .cmb2-options-page .cmb-row:not(.cmb-repeatable-grouping):not(.cmb-remove-field-row) {
     display: flex !important;
     flex-wrap: wrap !important;
@@ -144,7 +122,6 @@
     border-bottom: none !important;
 }
 
-/* Alternado de filas */
 .cmb2-options-page .cmb-row:not(.cmb-repeatable-grouping):nth-child(even) {
     background-color: #FAFBFD;
 }
@@ -171,7 +148,6 @@
     text-align: right;
 }
 
-/* Label */
 .cmb2-options-page .cmb-th label {
     font-family: 'Montserrat', sans-serif !important;
     font-size: 0.82rem !important;
@@ -183,7 +159,6 @@
     margin: 0 !important;
 }
 
-/* Description */
 .cmb2-options-page .cmb2-metabox-description,
 .cmb2-options-page .cmb2-metabox .description {
     color: #718096 !important;
@@ -194,9 +169,6 @@
     flex-basis: 100%;
 }
 
-/* ============================================================
-   INPUTS, SELECTS Y TEXTAREAS
-   ============================================================ */
 .cmb2-options-page input[type="text"],
 .cmb2-options-page input[type="url"],
 .cmb2-options-page input[type="email"],
@@ -232,7 +204,6 @@
     line-height: 1.5 !important;
 }
 
-/* Checkbox */
 .cmb2-options-page input[type="checkbox"] {
     width: 18px !important;
     height: 18px !important;
@@ -240,9 +211,6 @@
     cursor: pointer;
 }
 
-/* ============================================================
-   GRUPOS / REPEATERS
-   ============================================================ */
 .cmb2-options-page .cmb-group-description {
     background: linear-gradient(90deg, rgba(26,56,45,0.05), transparent);
     border-left: 4px solid var(--gg-yellow);
@@ -253,7 +221,6 @@
     margin-bottom: 10px;
 }
 
-/* Cada entrada del repeater */
 .cmb2-options-page .cmb-repeatable-grouping {
     background: var(--gg-gray-light) !important;
     border: 1px solid var(--gg-border) !important;
@@ -289,11 +256,6 @@
     display: none !important;
 }
 
-/* ============================================================
-   BOTONES
-   ============================================================ */
-
-/* Botón de Guardar principal */
 .cmb2-options-page #submit,
 .cmb2-options-page .cmb-submit-wrap input[type="submit"],
 .cmb2-options-page p.cmb-submit input {
@@ -319,7 +281,6 @@
     transform: translateY(-2px);
 }
 
-/* Botón Agregar del repeater */
 .cmb2-options-page .cmb-add-group-row,
 .cmb2-options-page .cmb-add-row-button {
     background: transparent !important;
@@ -342,7 +303,6 @@
     color: var(--gg-yellow) !important;
 }
 
-/* Botón Eliminar del repeater */
 .cmb2-options-page .cmb-remove-group-row,
 .cmb2-options-page .cmb-remove-row-button {
     background: transparent !important;
@@ -363,9 +323,6 @@
     color: white !important;
 }
 
-/* ============================================================
-   MENSAJES DE ACTUALIZACIÓN / ÉXITO
-   ============================================================ */
 .cmb2-options-page .updated,
 #setting-error-settings_updated {
     background: linear-gradient(90deg, var(--gg-green-dark), var(--gg-green-mid)) !important;
@@ -385,9 +342,6 @@
     margin: 0 !important;
 }
 
-/* ============================================================
-   WRAP DE SUBMIT — BARRA EN LA PARTE INFERIOR
-   ============================================================ */
 .cmb2-options-page .cmb-submit-wrap {
     background: var(--gg-white);
     border-top: 2px solid var(--gg-gray-mid);
@@ -408,9 +362,6 @@
     flex: 1;
 }
 
-/* ============================================================
-   MENÚ LATERAL — HIGHLIGHT DE SECCIONES GANAGANA
-   ============================================================ */
 #adminmenu li.toplevel_page_gg_topbar a,
 #adminmenu li.toplevel_page_gg_topbar .wp-menu-name,
 #adminmenu li.toplevel_page_gg_topbar.wp-has-current-submenu a,
@@ -427,9 +378,6 @@
     color: var(--gg-white) !important;
 }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
 @media (max-width: 782px) {
     .cmb2-options-page .cmb-th,
     .cmb2-options-page .cmb-td {

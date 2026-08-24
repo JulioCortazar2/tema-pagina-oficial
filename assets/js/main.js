@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // --- 1. Menú Hamburguesa Móvil ---
+    // Menú hamburguesa móvil
     var mobileToggle = document.getElementById('gg-mobile-toggle');
     var navContainer = document.getElementById('gg-site-navigation');
 
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // --- 2. Mega Menú Submenús Móvil ---
+    // Submenús del mega menú en móvil
     var navItemsWithChildren = document.querySelectorAll('.nav-item.menu-item-has-children');
 
     navItemsWithChildren.forEach(function (item) {
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // --- 3. Clic fuera para cerrar menú ---
+    // Clic fuera del menú para cerrarlo
     document.addEventListener('click', function (e) {
         if (navContainer && mobileToggle) {
             if (navContainer.classList.contains('is-active')) {
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // --- 4. Tecla ESC para cerrar ---
+    // Tecla ESC para cerrar el menú
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' || e.key === 'Esc') {
             if (navContainer && navContainer.classList.contains('is-active')) {
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // --- 5. Redes Flotantes ---
+    // Widget de redes sociales flotantes
     var floatingToggle = document.getElementById('gg-floating-socials-toggle');
     var floatingWidget = document.getElementById('gg-floating-socials');
 

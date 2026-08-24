@@ -1,5 +1,3 @@
-/* --- Estilos Principales GanaGana Custom --- */
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
 
 :root {
@@ -22,7 +20,6 @@
     --gg-font: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* --- Reset y Estilos Base --- */
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -65,12 +62,10 @@ ul, ol {
     padding: 0 20px;
 }
 
-/* Alignments de WP */
 .alignleft { float: left; margin-right: 20px; margin-bottom: 20px; }
 .alignright { float: right; margin-left: 20px; margin-bottom: 20px; }
 .aligncenter { display: block; margin: 0 auto 20px; }
 
-/* --- Header --- */
 .gg-site-header {
     width: 100%;
     position: sticky;
@@ -79,7 +74,6 @@ ul, ol {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* --- BARRA SUPERIOR (VERDE OSCURO #2A5747) --- */
 .gg-topbar {
     background-color: var(--gg-topbar-bg);
     color: #ffffff;
@@ -127,7 +121,6 @@ ul, ol {
     width: 100%;
 }
 
-/* --- BARRA DE NAVEGACIÓN (AMARILLA #ffe82c) --- */
 .gg-navbar {
     background-color: var(--gg-navbar-bg);
     padding: 10px 0 8px 0;
@@ -142,7 +135,6 @@ ul, ol {
     position: relative;
 }
 
-/* Logo */
 .gg-logo {
     display: flex;
     align-items: center;
@@ -276,7 +268,6 @@ ul, ol {
     opacity: 1;
 }
 
-/* --- Mega Menu Dropdown --- */
 .megamenu-dropdown {
     display: none;
     position: absolute;
@@ -307,7 +298,6 @@ ul, ol {
     display: block;
 }
 
-/* Secciones en columnas */
 .megamenu-sections {
     display: flex;
     gap: 40px;
@@ -334,7 +324,6 @@ ul, ol {
     letter-spacing: 0.3px;
 }
 
-/* Links dentro de secciones */
 .megamenu-links {
     list-style: none;
     padding: 0;
@@ -392,7 +381,6 @@ ul, ol {
     color: #ffffff;
 }
 
-/* Acciones Navbar (Buscador + Promociones + Hamburguesa) */
 .gg-navbar-actions {
     display: flex;
     align-items: center;
@@ -400,7 +388,6 @@ ul, ol {
     margin-bottom: 10px;
 }
 
-/* Buscador Formulario */
 .gg-search-wrapper {
     position: relative;
 }
@@ -454,7 +441,6 @@ ul, ol {
     transform: scale(1.1);
 }
 
-/* Botón Destacado PROMOCIONES */
 .gg-btn-promociones {
     display: inline-flex;
     align-items: center;
@@ -478,7 +464,6 @@ ul, ol {
     box-shadow: 0 6px 14px rgba(26, 56, 45, 0.35);
 }
 
-/* Menú Hamburguesa (Móvil) */
 .gg-mobile-toggle {
     display: none;
     flex-direction: column;
@@ -525,19 +510,16 @@ ul, ol {
     transform: translateY(-6.5px) rotate(-45deg);
 }
 
-/* --- Main Content --- */
 .gg-main-content {
     min-height: 60vh;
     padding: 40px 0;
 }
 
-/* --- Footer --- */
 .gg-site-footer {
     width: 100%;
     margin-top: auto;
 }
 
-/* --- 1. BARRA PRE-FOOTER (VERDE CON BOTONES AMARILLOS) --- */
 .gg-prefooter {
     background-color: var(--gg-prefooter-bg);
     color: #ffffff;
@@ -599,7 +581,6 @@ ul, ol {
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
 }
 
-/* --- 2. FOOTER PRINCIPAL (VERDE OSCURO #1A382D, 4 COLUMNAS) --- */
 .gg-footer-main {
     background-color: var(--gg-footer-main-bg);
     color: #ffffff;
@@ -693,7 +674,6 @@ ul, ol {
     padding-left: 6px;
 }
 
-/* --- 2.5 FRANJA DE LOGOS INSTITUCIONALES --- */
 .gg-footer-logos {
     background: var(--gg-logos-bg, #ffffff);
     width: 100%;
@@ -793,7 +773,6 @@ ul, ol {
     }
 }
 
-/* --- 3. BARRA COPYRIGHT --- */
 .gg-copyright-bar {
     background-color: var(--gg-copyright-bg);
     color: #9CA3AF;
@@ -826,9 +805,6 @@ ul, ol {
     color: var(--gg-yellow);
 }
 
-/* --- Plantillas y Layout --- */
-
-/* Layout con Sidebar */
 .gg-layout-grid {
     display: grid;
     grid-template-columns: 1fr 320px;
@@ -839,7 +815,6 @@ ul, ol {
     width: 100%;
 }
 
-/* Encabezados de Sección / Portada */
 .gg-page-header {
     background: linear-gradient(135deg, var(--gg-green-dark) 0%, var(--gg-green-darker) 100%);
     color: #ffffff;
@@ -1006,7 +981,6 @@ ul, ol {
     margin: 30px 0 15px;
 }
 
-/* Sidebar Widgets */
 .gg-sidebar {
     display: flex;
     flex-direction: column;
@@ -1049,7 +1023,6 @@ ul, ol {
     color: var(--gg-green-dark);
 }
 
-/* Página 404 */
 .gg-404-container {
     text-align: center;
     padding: 60px 20px;
@@ -1080,13 +1053,11 @@ ul, ol {
     margin-bottom: 30px;
 }
 
-/* Buscador 404 */
 .gg-404-search {
     max-width: 450px;
     margin: 0 auto 30px;
 }
 
-/* Paginación */
 .gg-pagination {
     margin-top: 40px;
     display: flex;
@@ -1115,21 +1086,18 @@ ul, ol {
     color: #ffffff;
 }
 
-/* --- Responsive Design --- */
-
 @media (max-width: 1024px) {
     .gg-footer-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
     }
-    
+
     .gg-layout-grid {
         grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 900px) {
-    /* Barra Superior Colapsable */
     .gg-topbar-inner {
         justify-content: center;
     }
@@ -1156,7 +1124,6 @@ ul, ol {
         margin-bottom: 0;
     }
 
-    /* Menú Móvil Hamburguesa - SIEMPRE VISIBLE EN MÓVIL */
     .gg-mobile-toggle {
         display: flex !important;
     }
@@ -1242,7 +1209,6 @@ ul, ol {
         display: none;
     }
 
-    /* Mega menu dropdown: se apila verticalmente en móvil a 100% de ancho */
     .megamenu-dropdown {
         position: static;
         width: 100%;
@@ -1413,8 +1379,6 @@ ul, ol {
     }
 }
 
-/* --- Cabeceras de Página --- */
-
 /* Modo Default: Barra Verde */
 .gg-page-header {
     background-color: var(--gg-green-dark);
@@ -1494,7 +1458,6 @@ ul, ol {
     }
 }
 
-/* --- Widget Flotante Redes --- */
 .gg-floating-socials-widget {
     position: fixed;
     left: 15px;
@@ -1571,7 +1534,6 @@ ul, ol {
     pointer-events: auto;
 }
 
-/* Esferas circulares de cada red social (tamaño uniforme) */
 .gg-floating-social-btn {
     width: 44px;
     height: 44px;
@@ -1594,7 +1556,6 @@ ul, ol {
     color: #FFFFFF;
 }
 
-/* Colores de marca */
 .gg-floating-social-btn.gg-social-facebook {
     background: #1877F2;
 }
@@ -1634,7 +1595,6 @@ ul, ol {
     color: #FBD000;
 }
 
-/* --- Widget Flotante Redes (Móvil) --- */
 @media (max-width: 900px) {
     .gg-floating-socials-widget {
         left: 15px !important;
@@ -1655,7 +1615,6 @@ ul, ol {
     }
 }
 
-/* --- Widget Flotante Acciones Rápidas --- */
 .gg-floating-right-widget {
     position: fixed;
     right: 20px;
@@ -1691,7 +1650,6 @@ ul, ol {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
     background-color: var(--btn-exp-bg, #ffe82c);
 }
-/* Centrado de iconos en contenedores */
 .icon-centered {
     display: flex !important;
     justify-content: center !important;
@@ -1699,7 +1657,6 @@ ul, ol {
     width: 100% !important;
 }
 
-/* Círculo del ícono a la derecha */
 .gg-right-pill-circle {
     width: 96px;
     height: 96px;
@@ -1732,7 +1689,6 @@ ul, ol {
     border-radius: 50%;
 }
 
-/* Etiqueta expandible a la izquierda */
 .gg-right-pill-label {
     background-color: var(--btn-exp-bg, #ffe82c);
     color: var(--btn-exp-color, #1A382D);
@@ -1758,7 +1714,6 @@ ul, ol {
     transform: translateX(0);
 }
 
-/* Responsividad en dispositivos móviles */
 @media (max-width: 768px) {
     .gg-floating-right-widget {
         right: 15px;
@@ -1790,7 +1745,6 @@ ul, ol {
     }
 }
 
-/* --- Estilos Personalizados Políticas (Elementor) --- */
 .politicas-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

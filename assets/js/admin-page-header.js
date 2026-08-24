@@ -27,7 +27,6 @@
             });
         }
 
-        // Generar HTML del Live Preview
         function renderPreview() {
             var mode = $modeSelect.val();
 
@@ -107,7 +106,6 @@
             return $('<div>').text(text).html();
         }
 
-        // Mostrar / Ocultar campos según el modo
         function toggleFields() {
             var mode = $modeSelect.val();
             var $heroRows = getHeroRows();
@@ -120,7 +118,6 @@
             renderPreview();
         }
 
-        // Eventos
         $modeSelect.on('change', toggleFields);
         $imageField.on('change input', renderPreview);
         $heightSelect.on('change', renderPreview);
@@ -129,7 +126,6 @@
         $colorInput.on('change input', renderPreview);
         $overlayCheck.on('change', renderPreview);
 
-        // Escuchar cambios en el título del editor
         $(document).on('input keyup change', '.editor-post-title__input, #title', renderPreview);
 
         // Observar cuando WP Media Modal actualiza el valor del campo file
@@ -140,7 +136,6 @@
             observer.observe($imageField[0], { attributes: true, attributeFilter: ['value'] });
         }
 
-        // Ejecutar al cargar
         toggleFields();
     });
 
