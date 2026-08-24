@@ -1,18 +1,14 @@
 <?php
 ?>
-    </main><!-- #gg-main-content -->
+    </main>
 
     <footer class="gg-site-footer">
 
         <?php get_template_part('template-parts/footer/logos-institucionales'); ?>
 
-        <!-- =============================================
-             SECCIÓN 1: BARRA PRE-FOOTER (Verde con Botones Amarillos)
-             ============================================= -->
         <div class="gg-prefooter">
             <div class="gg-container gg-prefooter-inner">
 
-                <!-- Ícono Compartir / Atención Izquierda -->
                 <div class="gg-prefooter-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="18" cy="5" r="3"></circle>
@@ -23,7 +19,6 @@
                     </svg>
                 </div>
 
-                <!-- Texto Central -->
                 <div class="gg-prefooter-text">
                     <?php 
                     $prefooter_texto = gg_get_option('prefooter_texto');
@@ -31,7 +26,6 @@
                     ?>
                 </div>
 
-                <!-- Botones Amarillos -->
                 <div class="gg-prefooter-buttons">
                     <?php 
                     $prefooter_botones = gg_get_option('prefooter_botones');
@@ -70,13 +64,9 @@
             </div>
         </div>
 
-        <!-- =============================================
-             SECCIÓN 2: FOOTER PRINCIPAL (Verde Oscuro #1A382D, 4 Columnas)
-             ============================================= -->
         <div class="gg-footer-main">
             <div class="gg-container gg-footer-grid">
 
-                <!-- Columna 1: Info Empresa y Redes Sociales -->
                 <div class="gg-footer-col gg-footer-col-company">
                     <?php 
                     $empresa_nombre    = gg_get_option('footer_empresa_nombre');
@@ -112,12 +102,7 @@
                         </li>
                     </ul>
 
-                    <!-- Redes Sociales — SVG Inline Map -->
                     <?php
-                    /**
-                     * Clave = nombre en minúsculas que escribe el admin; para
-                     * sumar una red nueva, agrega su clave y SVG aquí.
-                     */
                     function gg_get_social_svg($nombre, $nombre_alt = '') {
                         $iconos = array(
 
@@ -152,7 +137,6 @@
                     }
                     ?>
 
-                    <!-- Redes Sociales -->
                     <div class="gg-footer-socials">
                         <?php 
                         $redes_sociales = gg_get_option('footer_redes_sociales');
@@ -179,8 +163,7 @@
                     </div>
                 </div>
 
-                <!-- Columnas Dinámicas del Footer (Estructura de 2 Grupos CMB2) -->
-                <?php 
+                <?php
                 $footer_columnas = gg_get_option('footer_columnas');
                 $footer_enlaces  = gg_get_option('footer_enlaces');
                 
@@ -291,13 +274,9 @@
             </div>
         </div>
 
-        <!-- =============================================
-             SECCIÓN 3: BARRA COPYRIGHT (Verde, Línea Divisoria)
-             ============================================= -->
         <div class="gg-copyright-bar">
             <div class="gg-container gg-copyright-inner">
 
-                <!-- Texto Copyright -->
                 <div class="gg-copyright-text">
                     <?php 
                     $copyright_texto = gg_get_option('copyright_texto');
@@ -309,7 +288,6 @@
                     <?php endif; ?>
                 </div>
 
-                <!-- Enlaces Legales a la Derecha -->
                 <div class="gg-copyright-links">
                     <?php 
                     $copyright_links = gg_get_option('copyright_links');
@@ -348,9 +326,6 @@
 
     </footer>
 
-    <!-- =============================================
-         WIDGET FLOTANTE DE REDES SOCIALES (Centro Izquierda / Móvil Abajo)
-         ============================================= -->
     <?php
     $redes_flotantes = gg_get_option('redes_flotantes_items');
     $items_flotantes = array();
@@ -363,7 +338,6 @@
             $icono  = !empty($item['icono_red']) ? strtolower(trim($item['icono_red'])) : 'otro';
             $target = !empty($item['target_blank']) ? '_blank' : '_self';
 
-            // Solo agrega si tiene una URL válida (no vacía y no '#')
             if (!empty($url)) {
                 $items_flotantes[] = array(
                     'nombre' => $nombre ? $nombre : ucfirst($icono),
@@ -420,9 +394,6 @@
     </div>
     <?php endif; ?>
 
-    <!-- =============================================
-         BOTONES FLOTANTES DERECHOS (Acciones Rápidas / Cápsulas Expandibles)
-         ============================================= -->
     <?php
     $botones_derechos = gg_get_option('botones_derechos_items');
     $items_derechos = array();

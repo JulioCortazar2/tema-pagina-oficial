@@ -11,7 +11,6 @@
 <?php wp_body_open(); ?>
 
 <header class="gg-site-header">
-    <!-- --- Topbar --- -->
     <div class="gg-topbar">
         <div class="gg-container gg-topbar-inner">
             <div class="gg-topbar-right">
@@ -54,11 +53,9 @@
         </div>
     </div>
 
-    <!-- --- Navbar --- -->
     <div class="gg-navbar">
         <div class="gg-container gg-navbar-inner">
 
-            <!-- Logo -->
             <?php
             $logo_url       = gg_get_option('logo_url');
             $logo_pagina_id = absint(gg_get_option('logo_pagina_id'));
@@ -95,7 +92,6 @@
                 <?php endif; ?>
             </div>
 
-            <!-- Menú Principal -->
             <nav class="gg-nav-container" id="gg-site-navigation" aria-label="Menú Principal">
                 <?php
                 if (has_nav_menu('primary-menu')) {
@@ -154,7 +150,6 @@
                 ?>
             </nav>
 
-            <!-- Acciones Header -->
             <div class="gg-navbar-actions">
                 <div class="gg-search-wrapper">
                     <form role="search" method="get" class="gg-search-form" action="<?php echo esc_url(home_url('/')); ?>">
