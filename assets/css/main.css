@@ -203,6 +203,12 @@ ul, ol {
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+/* El disparador de un dropdown sin destino real es un <span>, no un <a>:
+   el cursor pointer se pierde por defecto y hay que restaurarlo a mano. */
+.nav-item > span.nav-link {
+    cursor: pointer;
+}
+
 .nav-item:hover > a,
 .nav-item:hover > .nav-link,
 .nav-item.is-open > a,

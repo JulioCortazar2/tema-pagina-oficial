@@ -26,13 +26,20 @@ class GG_Mega_Menu_Walker extends Walker_Nav_Menu {
             $classes = implode(' ', $item->classes);
             $has_children = in_array('menu-item-has-children', $item->classes, true);
 
+            // Ítem sin destino real (Custom Link dejado como "#" o vacío en
+            // el admin, típicamente el disparador de un dropdown): se
+            // renderiza como <span>, no como <a>, para no exponer un enlace
+            // roto a buscadores ni lectores de pantalla.
+            $es_placeholder = empty($item->url) || '#' === $item->url;
+            $tag = $es_placeholder ? 'span' : 'a';
+
             $output .= '<li class="nav-item ' . esc_attr($classes) . '">';
-            $output .= '<a href="' . esc_url($item->url) . '" class="nav-link">';
+            $output .= '<' . $tag . ($es_placeholder ? '' : ' href="' . esc_url($item->url) . '"') . ' class="nav-link">';
             $output .= esc_html($item->title);
             if ($has_children) {
                 $output .= ' <span class="dropdown-arrow">▾</span>';
             }
-            $output .= '</a>';
+            $output .= '</' . $tag . '>';
 
         } elseif ($depth === 1) {
             $output .= '<li class="megamenu-section">';
