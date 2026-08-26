@@ -23,7 +23,7 @@
                         $url_raw   = !empty($item['url']) ? trim($item['url']) : '';
                         $pagina_id = !empty($item['pagina_id']) ? absint($item['pagina_id']) : 0;
 
-                        $url = '#';
+                        $url = '';
                         if (!empty($url_raw)) {
                             $url = esc_url($url_raw);
                         } elseif ($pagina_id > 0) {
@@ -34,21 +34,18 @@
                         }
 
                         $target = !empty($item['target_blank']) ? '_blank' : '_self';
-                        if ($texto) :
+                        if ($texto && $url) :
                         ?>
                             <a href="<?php echo $url; ?>" target="<?php echo $target; ?>" class="gg-topbar-link">
                                 <?php echo $texto; ?>
                             </a>
-                        <?php 
+                        <?php
                         endif;
                     endforeach;
-                else : 
+                endif;
+                // Sin "topbar_links" configurado (Ajustes GanaGana → Topbar)
+                // no se muestra nada aquí: nunca enlaces de relleno.
                 ?>
-                    <a href="<?php echo esc_url(home_url('/gg-puntos')); ?>" class="gg-topbar-link">GG PUNTOS</a>
-                    <a href="<?php echo esc_url(home_url('/red-transaccional')); ?>" class="gg-topbar-link">RED TRANSACCIONAL</a>
-                    <a href="<?php echo esc_url(home_url('/noticias')); ?>" class="gg-topbar-link">NOTICIAS</a>
-                    <a href="<?php echo esc_url(home_url('/contacto')); ?>" class="gg-topbar-link">CONTACTO</a>
-                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -102,51 +99,10 @@
                         'depth'          => 3,
                         'walker'         => new GG_Mega_Menu_Walker(),
                     ));
-                } else {
-                ?>
-                    <ul class="nav-menu">
-                        <li class="nav-item menu-item-has-children">
-                            <a href="#" class="nav-link">JUEGOS <span class="dropdown-arrow">▾</span></a>
-                            <div class="megamenu-dropdown">
-                                <ul class="megamenu-sections">
-                                    <li class="megamenu-section">
-                                        <span class="section-title">CHANCES</span>
-                                        <ul class="megamenu-links">
-                                            <li class="megamenu-link-item"><a href="#">Chance</a></li>
-                                            <li class="megamenu-link-item"><a href="#">Chance Mas</a></li>
-                                            <li class="megamenu-link-item"><a href="#">Billonario</a></li>
-                                            <li class="megamenu-link-item"><a href="#">Triplata</a></li>
-                                            <li class="megamenu-link-item"><a href="#">Billetón</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="megamenu-section">
-                                        <span class="section-title">BALOTOS</span>
-                                        <ul class="megamenu-links">
-                                            <li class="megamenu-link-item"><a href="#">Balotos</a></li>
-                                            <li class="megamenu-link-item"><a href="#">Baloto Revancha</a></li>
-                                            <li class="megamenu-link-item"><a href="#">MiLoto</a></li>
-                                            <li class="megamenu-link-item"><a href="#">Color Loto</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="megamenu-section">
-                                        <span class="section-title">OTROS</span>
-                                        <ul class="megamenu-links">
-                                            <li class="megamenu-link-item"><a href="#">Raspa &amp; Listo <span class="menu-badge badge-new">NUEVO</span></a></li>
-                                            <li class="megamenu-link-item"><a href="#">BetPlay <span class="menu-badge badge-recarga">RECARGA</span></a></li>
-                                            <li class="megamenu-link-item"><a href="#">Smanario</a></li>
-                                            <li class="megamenu-link-item"><a href="#">KENO <span class="menu-badge badge-new">NUEVO</span></a></li>
-                                            <li class="megamenu-link-item"><a href="#">Gordito GanaGana</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item"><a href="#" class="nav-link">SERVICIOS <span class="dropdown-arrow">▾</span></a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">PROMOCIONES <span class="dropdown-arrow">▾</span></a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">RESULTADOS <span class="dropdown-arrow">▾</span></a></li>
-                    </ul>
-                <?php
                 }
+                // Sin menú asignado a "primary-menu" (Apariencia → Menús) no
+                // se muestra nada aquí: nunca un menú de relleno con enlaces
+                // falsos.
                 ?>
             </nav>
 

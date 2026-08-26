@@ -44,29 +44,7 @@ function ganagana_widgets_init() {
 }
 add_action('widgets_init', 'ganagana_widgets_init');
 
-function gg_register_footer_rewrite_rules() {
-    add_rewrite_rule(
-        '^([^/]+)/([^/]+)/?$',
-        'index.php?pagename=$matches[2]',
-        'top'
-    );
-}
-add_action('init', 'gg_register_footer_rewrite_rules');
-
-/**
- * Sin esto, WP redirige 301 las URLs de dos segmentos del footer
- * (/columna-slug/pagina-slug/) hacia su permalink canónico real.
- */
-function gg_disable_canonical_redirect_for_footer($redirect_url, $requested_url) {
-    if ($redirect_url && preg_match('#/[^/]+/[^/]+/#', $requested_url)) {
-        return false;
-    }
-    return $redirect_url;
-}
-add_filter('redirect_canonical', 'gg_disable_canonical_redirect_for_footer', 10, 2);
-
 function gg_flush_rewrite_rules_on_activation() {
-    gg_register_footer_rewrite_rules();
     flush_rewrite_rules();
 }
 add_action('after_switch_theme', 'gg_flush_rewrite_rules_on_activation');

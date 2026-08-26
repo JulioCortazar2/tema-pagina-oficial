@@ -221,55 +221,25 @@
                         <div class="gg-footer-col">
                             <h4 class="gg-footer-title"><?php echo esc_html($col_titulo); ?></h4>
                             <ul class="gg-footer-links">
-                                <?php foreach ($col_enlaces as $link) : 
+                                <?php foreach ($col_enlaces as $link) :
                                     $link_texto  = !empty($link['texto']) ? esc_html($link['texto']) : '';
-                                    $link_url    = !empty($link['url']) ? esc_url($link['url']) : '#';
+                                    $link_url    = !empty($link['url']) ? esc_url($link['url']) : '';
                                     $link_target = !empty($link['target']) && $link['target'] === '_blank' ? ' target="_blank" rel="noopener noreferrer"' : '';
-                                    if ($link_texto) :
+                                    if ($link_texto && $link_url) :
                                 ?>
                                     <li><a href="<?php echo $link_url; ?>"<?php echo $link_target; ?>><?php echo $link_texto; ?></a></li>
-                                <?php 
+                                <?php
                                     endif;
                                 endforeach; ?>
                             </ul>
                         </div>
                         <?php
                     endforeach;
-                else :
+                endif;
+                // Sin "footer_columnas"/"footer_enlaces" configurados
+                // (Ajustes GanaGana → Footer) no se muestra nada aquí: nunca
+                // columnas de relleno con enlaces falsos.
                 ?>
-                    <div class="gg-footer-col">
-                        <h4 class="gg-footer-title">NUESTROS PRODUCTOS</h4>
-                        <ul class="gg-footer-links">
-                            <li><a href="#">Chance Tradicional</a></li>
-                            <li><a href="#">Super Chance</a></li>
-                            <li><a href="#">Baloto & Revancha</a></li>
-                            <li><a href="#">Loterías de Colombia</a></li>
-                            <li><a href="#">Giros Nacionales</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="gg-footer-col">
-                        <h4 class="gg-footer-title">ATENCIÓN AL CLIENTE</h4>
-                        <ul class="gg-footer-links">
-                            <li><a href="#">Preguntas Frecuentes</a></li>
-                            <li><a href="#">Puntos de Venta Cercanos</a></li>
-                            <li><a href="#">Pago de Premios</a></li>
-                            <li><a href="#">Formulario de Contacto</a></li>
-                            <li><a href="#">PQRS</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="gg-footer-col">
-                        <h4 class="gg-footer-title">LA EMPRESA</h4>
-                        <ul class="gg-footer-links">
-                            <li><a href="#">Quiénes Somos</a></li>
-                            <li><a href="#">Trabaje con Nosotros</a></li>
-                            <li><a href="#">Responsabilidad Social</a></li>
-                            <li><a href="#">Noticias & Comunicados</a></li>
-                            <li><a href="#">Transparencia</a></li>
-                        </ul>
-                    </div>
-                <?php endif; ?>
 
             </div>
         </div>
@@ -297,7 +267,7 @@
                             $leg_url_raw = !empty($leg['url']) ? trim($leg['url']) : '';
                             $leg_page_id = !empty($leg['pagina_id']) ? absint($leg['pagina_id']) : 0;
 
-                            $leg_url = '#';
+                            $leg_url = '';
                             if (!empty($leg_url_raw)) {
                                 $leg_url = esc_url($leg_url_raw);
                             } elseif ($leg_page_id > 0) {
@@ -307,18 +277,17 @@
                                 }
                             }
 
-                            if ($leg_texto) :
+                            if ($leg_texto && $leg_url) :
                             ?>
                                 <a href="<?php echo $leg_url; ?>"><?php echo $leg_texto; ?></a>
-                            <?php 
+                            <?php
                             endif;
                         endforeach;
-                    else :
+                    endif;
+                    // Sin "copyright_links" configurado (Ajustes GanaGana →
+                    // Copyright) no se muestra nada aquí: nunca enlaces de
+                    // relleno.
                     ?>
-                        <a href="#">Términos y Condiciones</a>
-                        <a href="#">Política de Privacidad</a>
-                        <a href="#">Habeas Data</a>
-                    <?php endif; ?>
                 </div>
 
             </div>
