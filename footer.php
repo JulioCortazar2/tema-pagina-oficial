@@ -30,6 +30,7 @@
                     <?php 
                     $prefooter_botones = gg_get_option('prefooter_botones');
                     if (!empty($prefooter_botones) && is_array($prefooter_botones)) :
+                        $boton_indice = 0;
                         foreach ($prefooter_botones as $btn) :
                             $texto     = !empty($btn['texto_boton']) ? esc_html($btn['texto_boton']) : '';
                             $url_raw   = !empty($btn['url_boton']) ? trim($btn['url_boton']) : '';
@@ -46,18 +47,21 @@
                             }
 
                             $target = !empty($btn['target_blank']) ? '_blank' : '_self';
+                            // El primer botón configurado es la acción principal (relleno); el resto queda como secundaria (outline).
+                            $clase_boton = $boton_indice === 0 ? 'gg-btn-yellow' : 'gg-btn-yellow gg-btn-yellow--secondary';
                             if ($texto) :
                             ?>
-                                <a href="<?php echo $url; ?>" target="<?php echo $target; ?>" class="gg-btn-yellow">
+                                <a href="<?php echo $url; ?>" target="<?php echo $target; ?>" class="<?php echo esc_attr($clase_boton); ?>">
                                     <?php echo $texto; ?>
                                 </a>
-                            <?php 
+                            <?php
+                                $boton_indice++;
                             endif;
                         endforeach;
                     else :
                     ?>
-                        <a href="<?php echo esc_url(home_url('/puntos-de-venta')); ?>" class="gg-btn-yellow">PUNTOS DE VENTA</a>
                         <a href="<?php echo esc_url(home_url('/consultar-ganadores')); ?>" class="gg-btn-yellow">CONSULTAR GANADORES</a>
+                        <a href="<?php echo esc_url(home_url('/puntos-de-venta')); ?>" class="gg-btn-yellow gg-btn-yellow--secondary">PUNTOS DE VENTA</a>
                     <?php endif; ?>
                 </div>
 
@@ -331,14 +335,7 @@
     ?>
     <div class="gg-floating-socials-widget" id="gg-floating-socials">
         <button type="button" class="gg-floating-socials-toggle" id="gg-floating-socials-toggle" aria-label="Compartir en Redes Sociales" aria-expanded="false">
-            <svg class="gg-icon-share" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="18" cy="5" r="3"></circle>
-                <circle cx="6" cy="12" r="3"></circle>
-                <circle cx="18" cy="19" r="3"></circle>
-                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-            </svg>
-            <svg class="gg-icon-close" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="gg-icon-toggle" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="12" y1="5" x2="12" y2="19"></line>
                 <line x1="5" y1="12" x2="19" y2="12"></line>
             </svg>

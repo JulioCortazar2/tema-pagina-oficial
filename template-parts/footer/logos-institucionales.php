@@ -47,7 +47,7 @@ if (empty($gg_logos_items)) {
                 continue;
             }
         ?>
-            <li class="gg-footer-logos__item" style="--gg-logo-escala: 1;">
+            <li class="gg-footer-logos__item">
                 <?php if (!empty($gg_url)) : ?>
                     <a class="gg-footer-logos__link" href="<?php echo esc_url($gg_url); ?>"<?php echo $gg_blank ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>>
                         <?php echo $gg_img_html; ?>

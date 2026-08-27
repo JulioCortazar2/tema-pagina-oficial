@@ -41,61 +41,14 @@ get_header();
 
     <?php elseif ($header_mode === 'hero') : ?>
         <div class="gg-page-hero"
-             style="
-                 position: relative;
-                 width: 100%;
-                 height: <?php echo esc_attr($hero_height_css); ?>;
-                 background-image: url('<?php echo esc_url($hero_image_url); ?>');
-                 background-position: <?php echo esc_attr($hero_position); ?>;
-                 background-size: cover;
-                 background-repeat: no-repeat;
-                 display: flex;
-                 align-items: center;
-                 justify-content: center;
-                 text-align: center;
-                 overflow: hidden;
-                 margin-bottom: 35px;
-             ">
+             style="--gg-hero-height: <?php echo esc_attr($hero_height_css); ?>; --gg-hero-image: url('<?php echo esc_url($hero_image_url); ?>'); --gg-hero-position: <?php echo esc_attr($hero_position); ?>;">
             <?php if ($has_overlay) : ?>
-                <div class="gg-page-hero-overlay"
-                     style="
-                         position: absolute;
-                         top: 0;
-                         left: 0;
-                         width: 100%;
-                         height: 100%;
-                         background: linear-gradient(180deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.70) 100%);
-                         z-index: 1;
-                         pointer-events: none;
-                     "></div>
+                <div class="gg-page-hero-overlay"></div>
             <?php endif; ?>
 
             <?php if ($show_title) : ?>
-                <div class="gg-page-hero-content"
-                     style="
-                         position: relative;
-                         z-index: 2;
-                         width: 100%;
-                         max-width: 900px;
-                         margin: 0 auto;
-                         padding: 20px;
-                         text-align: center;
-                         display: flex;
-                         flex-direction: column;
-                         align-items: center;
-                         justify-content: center;
-                     ">
-                    <h1 class="gg-page-hero-title"
-                        style="
-                            color: <?php echo esc_attr($title_color); ?>;
-                            text-align: center;
-                            margin: 0 auto;
-                            width: 100%;
-                            display: block;
-                            font-weight: 800;
-                            text-transform: uppercase;
-                            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
-                        ">
+                <div class="gg-page-hero-content">
+                    <h1 class="gg-page-hero-title" style="--gg-hero-title-color: <?php echo esc_attr($title_color); ?>;">
                         <?php the_title(); ?>
                     </h1>
                 </div>

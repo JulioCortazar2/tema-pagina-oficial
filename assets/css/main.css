@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
 
 :root {
-    --gg-topbar-bg: #2A5747;
+    --gg-topbar-bg: #2a5747;
     --gg-navbar-bg: #ffe82c;
     --gg-prefooter-bg: #23493C;
     --gg-footer-main-bg: #1A382D;
@@ -20,7 +20,9 @@
     --gg-font: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -57,7 +59,8 @@ img {
     display: block;
 }
 
-ul, ol {
+ul,
+ol {
     list-style: none;
 }
 
@@ -68,9 +71,22 @@ ul, ol {
     padding: 0 20px;
 }
 
-.alignleft { float: left; margin-right: 20px; margin-bottom: 20px; }
-.alignright { float: right; margin-left: 20px; margin-bottom: 20px; }
-.aligncenter { display: block; margin: 0 auto 20px; }
+.alignleft {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.alignright {
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.aligncenter {
+    display: block;
+    margin: 0 auto 20px;
+}
 
 .gg-site-header {
     width: 100%;
@@ -184,8 +200,8 @@ ul, ol {
     align-items: flex-end;
 }
 
-.nav-item > a,
-.nav-item > .nav-link {
+.nav-item>a,
+.nav-item>.nav-link {
     display: inline-flex;
     align-items: center;
     gap: 4px;
@@ -205,38 +221,38 @@ ul, ol {
 
 /* El disparador de un dropdown sin destino real es un <span>, no un <a>:
    el cursor pointer se pierde por defecto y hay que restaurarlo a mano. */
-.nav-item > span.nav-link {
+.nav-item>span.nav-link {
     cursor: pointer;
 }
 
-.nav-item:hover > a,
-.nav-item:hover > .nav-link,
-.nav-item.is-open > a,
-.nav-item.is-open > .nav-link {
+.nav-item:hover>a,
+.nav-item:hover>.nav-link,
+.nav-item.is-open>a,
+.nav-item.is-open>.nav-link {
     background-color: var(--gg-green-dark);
     color: #ffffff !important;
 }
 
-.nav-item.current-menu-item > a,
-.nav-item.current-menu-item > .nav-link,
-.nav-item.current-menu-ancestor > a,
-.nav-item.current-menu-ancestor > .nav-link {
+.nav-item.current-menu-item>a,
+.nav-item.current-menu-item>.nav-link,
+.nav-item.current-menu-ancestor>a,
+.nav-item.current-menu-ancestor>.nav-link {
     color: var(--gg-green-darker);
     font-weight: 800;
 }
 
-.nav-item:hover.current-menu-item > a,
-.nav-item:hover.current-menu-item > .nav-link,
-.nav-item:hover.current-menu-ancestor > a,
-.nav-item:hover.current-menu-ancestor > .nav-link {
+.nav-item:hover.current-menu-item>a,
+.nav-item:hover.current-menu-item>.nav-link,
+.nav-item:hover.current-menu-ancestor>a,
+.nav-item:hover.current-menu-ancestor>.nav-link {
     color: #ffffff !important;
 }
 
 /* Curvas cóncavas inferiores (Fillets) solo al hacer HOVER o al estar abierto */
-.nav-item:hover > a::before,
-.nav-item:hover > .nav-link::before,
-.nav-item.is-open > a::before,
-.nav-item.is-open > .nav-link::before {
+.nav-item:hover>a::before,
+.nav-item:hover>.nav-link::before,
+.nav-item.is-open>a::before,
+.nav-item.is-open>.nav-link::before {
     content: '';
     position: absolute;
     bottom: 0;
@@ -247,10 +263,10 @@ ul, ol {
     pointer-events: none;
 }
 
-.nav-item:hover > a::after,
-.nav-item:hover > .nav-link::after,
-.nav-item.is-open > a::after,
-.nav-item.is-open > .nav-link::after {
+.nav-item:hover>a::after,
+.nav-item:hover>.nav-link::after,
+.nav-item.is-open>a::after,
+.nav-item.is-open>.nav-link::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -271,10 +287,10 @@ ul, ol {
     vertical-align: middle;
 }
 
-.nav-item:hover > a .dropdown-arrow,
-.nav-item:hover > .nav-link .dropdown-arrow,
-.nav-item.is-open > a .dropdown-arrow,
-.nav-item.is-open > .nav-link .dropdown-arrow {
+.nav-item:hover>a .dropdown-arrow,
+.nav-item:hover>.nav-link .dropdown-arrow,
+.nav-item.is-open>a .dropdown-arrow,
+.nav-item.is-open>.nav-link .dropdown-arrow {
     color: #ffffff !important;
     transform: rotate(180deg);
     opacity: 1;
@@ -300,13 +316,14 @@ ul, ol {
         opacity: 0;
         transform: translateY(8px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-.nav-item:hover > .megamenu-dropdown {
+.nav-item:hover>.megamenu-dropdown {
     display: block;
 }
 
@@ -585,12 +602,28 @@ ul, ol {
     letter-spacing: 0.5px;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
     white-space: nowrap;
+    border: 2px solid transparent;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .gg-btn-yellow:hover {
     background-color: var(--gg-yellow-hover);
     transform: translateY(-2px);
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Variante secundaria: misma familia visual, menor peso para no competir con la acción principal */
+.gg-btn-yellow--secondary {
+    background-color: transparent;
+    border-color: var(--gg-yellow);
+    color: var(--gg-yellow);
+    box-shadow: none;
+}
+
+.gg-btn-yellow--secondary:hover {
+    background-color: var(--gg-yellow);
+    color: var(--gg-green-darker);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
 }
 
 .gg-footer-main {
@@ -746,6 +779,7 @@ ul, ol {
         gap: 20px 28px;
         padding: 28px 20px;
     }
+
     .gg-footer-logos__item {
         flex-basis: calc((100% - 2 * 28px) / 3);
         max-width: calc((100% - 2 * 28px) / 3);
@@ -759,6 +793,7 @@ ul, ol {
         gap: 16px 18px;
         padding: 24px 16px;
     }
+
     .gg-footer-logos__item {
         flex-basis: calc((100% - 2 * 18px) / 3);
         max-width: calc((100% - 2 * 18px) / 3);
@@ -772,6 +807,7 @@ ul, ol {
         gap: 14px 16px;
         padding: 20px 14px;
     }
+
     .gg-footer-logos__item {
         flex-basis: calc((100% - 16px) / 2);
         max-width: calc((100% - 16px) / 2);
@@ -987,10 +1023,50 @@ ul, ol {
     margin-bottom: 20px;
 }
 
-.gg-entry-content h2, .gg-entry-content h3, .gg-entry-content h4 {
+.gg-entry-content h2,
+.gg-entry-content h3,
+.gg-entry-content h4 {
     color: var(--gg-green-darker);
     font-weight: 800;
     margin: 30px 0 15px;
+}
+
+/* El reset global "ul, ol { list-style: none; }" (más arriba en este archivo)
+   quita viñetas/numeración en todo el sitio a propósito (menús, tarjetas,
+   footer). Pero eso también apaga las listas escritas dentro del contenido
+   de texto: entradas del blog y el widget "Editor de Texto"/"Contenido de
+   la entrada" de Elementor, donde sí deben verse como listas normales. */
+.gg-entry-content ul,
+.elementor-widget-text-editor ul,
+.elementor-widget-theme-post-content ul {
+    list-style: disc;
+    padding-left: 1.4em;
+    margin-bottom: 20px;
+}
+
+.gg-entry-content ol,
+.elementor-widget-text-editor ol,
+.elementor-widget-theme-post-content ol {
+    list-style: decimal;
+    padding-left: 1.4em;
+    margin-bottom: 20px;
+}
+
+.gg-entry-content ul ul,
+.gg-entry-content ol ol,
+.gg-entry-content ul ol,
+.gg-entry-content ol ul,
+.elementor-widget-text-editor ul ul,
+.elementor-widget-text-editor ol ol,
+.elementor-widget-text-editor ul ol,
+.elementor-widget-text-editor ol ul {
+    margin-bottom: 0;
+}
+
+.gg-entry-content li,
+.elementor-widget-text-editor li,
+.elementor-widget-theme-post-content li {
+    margin-bottom: 8px;
 }
 
 .gg-sidebar {
@@ -1092,6 +1168,25 @@ ul, ol {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
+/* Pestañas 2x2 */
+.elementor-widget-tabs .elementor-tabs-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* opcional, espaciado entre tabs */
+}
+
+.elementor-widget-tabs .elementor-tab-title {
+    flex-basis: calc(50% - 5px);
+    /* 50% menos la mitad del gap */
+    box-sizing: border-box;
+}
+
+/* Si necesitas ajustar el ancho del contenido también */
+.elementor-widget-tabs .elementor-tab-content {
+    width: 100%;
+}
+
 .gg-pagination .page-numbers.current,
 .gg-pagination .page-numbers:hover {
     background-color: var(--gg-green-dark);
@@ -1178,7 +1273,7 @@ ul, ol {
         list-style: none;
     }
 
-    .nav-item > .nav-link {
+    .nav-item>.nav-link {
         display: flex !important;
         justify-content: space-between !important;
         align-items: center !important;
@@ -1195,29 +1290,29 @@ ul, ol {
         transition: background-color 0.2s ease, color 0.2s ease;
     }
 
-    .nav-item > .nav-link::before,
-    .nav-item > .nav-link::after {
+    .nav-item>.nav-link::before,
+    .nav-item>.nav-link::after {
         display: none !important;
     }
 
-    .nav-item:hover > .nav-link {
+    .nav-item:hover>.nav-link {
         background-color: #ffffff;
         color: var(--gg-green-darker) !important;
     }
 
-    .nav-item.is-open > .nav-link {
+    .nav-item.is-open>.nav-link {
         background-color: var(--gg-green-dark) !important;
         color: #ffffff !important;
         border-bottom: 2px solid var(--gg-yellow);
     }
 
-    .nav-item.is-open > .nav-link .dropdown-arrow {
+    .nav-item.is-open>.nav-link .dropdown-arrow {
         color: #ffffff !important;
         transform: rotate(180deg);
     }
 
     /* En móvil, :hover NO debe mantener abierto el megamenu, solo la clase .is-open */
-    .nav-item:hover > .megamenu-dropdown {
+    .nav-item:hover>.megamenu-dropdown {
         display: none;
     }
 
@@ -1238,7 +1333,7 @@ ul, ol {
         display: none;
     }
 
-    .nav-item.is-open > .megamenu-dropdown {
+    .nav-item.is-open>.megamenu-dropdown {
         display: block !important;
     }
 
@@ -1410,17 +1505,23 @@ ul, ol {
     letter-spacing: 0.03em;
 }
 
-/* Modo Hero: Imagen Ancho Completo */
+/* Modo Hero: Imagen Ancho Completo
+   Las propiedades que varían por página (imagen, alto, posición, color de
+   título) llegan como variables CSS inline —solo esas—; el resto del
+   comportamiento vive aquí para poder cachearse como hoja de estilos. */
 .gg-page-hero {
     position: relative;
     width: 100%;
+    height: var(--gg-hero-height, 400px);
     margin-top: 0;
     margin-bottom: 35px;
+    background-image: var(--gg-hero-image, none);
+    background-position: var(--gg-hero-position, center center);
     background-size: cover;
     background-repeat: no-repeat;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     overflow: hidden;
 }
@@ -1431,7 +1532,7 @@ ul, ol {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.65) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.70) 100%);
     z-index: 1;
     pointer-events: none;
 }
@@ -1450,14 +1551,20 @@ ul, ol {
 }
 
 .gg-page-hero-title {
+    color: var(--gg-hero-title-color, #ffffff);
     font-size: 2.8rem;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.04em;
     margin: 0;
     text-align: center;
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
     line-height: 1.25;
+}
+
+/* El encabezado de imagen ancho completo debe quedar pegado al navbar (desktop y móvil) */
+.gg-main-content:has(> .gg-page-hero) {
+    padding-top: 0;
 }
 
 @media (max-width: 768px) {
@@ -1507,8 +1614,8 @@ ul, ol {
     background-color: #132b22;
 }
 
-.gg-floating-socials-toggle .gg-icon-close {
-    display: none;
+.gg-floating-socials-toggle .gg-icon-toggle {
+    transition: transform 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .gg-floating-socials-widget.is-open .gg-floating-socials-toggle {
@@ -1517,12 +1624,8 @@ ul, ol {
     color: #1A382D;
 }
 
-.gg-floating-socials-widget.is-open .gg-floating-socials-toggle .gg-icon-share {
-    display: none;
-}
-
-.gg-floating-socials-widget.is-open .gg-floating-socials-toggle .gg-icon-close {
-    display: block;
+.gg-floating-socials-widget.is-open .gg-floating-socials-toggle .gg-icon-toggle {
+    transform: rotate(45deg);
 }
 
 /* Lista desplegada (En Desktop: Despliega hacia ABAJO debajo del botón) */
@@ -1573,7 +1676,7 @@ ul, ol {
 }
 
 .gg-floating-social-btn.gg-social-instagram {
-    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
 }
 
 .gg-floating-social-btn.gg-social-youtube {
@@ -1654,14 +1757,17 @@ ul, ol {
     transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     background-color: var(--btn-circle-bg, #1A382D);
     overflow: hidden;
-    max-width: 96px; /* Estado retraído: esfera circular grande (150% del tamaño original) */
+    max-width: 96px;
+    /* Estado retraído: esfera circular grande (150% del tamaño original) */
 }
 
 .gg-right-pill-btn:hover {
-    max-width: 400px; /* Se expande suavemente hacia la izquierda */
+    max-width: 400px;
+    /* Se expande suavemente hacia la izquierda */
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
     background-color: var(--btn-exp-bg, #ffe82c);
 }
+
 .icon-centered {
     display: flex !important;
     justify-content: center !important;
@@ -1814,6 +1920,55 @@ ul, ol {
     font-size: 13px;
     line-height: 1.6;
     color: #555;
+}
+
+/* ==========================================================================
+   Indicador de carga reutilizable (gg-spinner)
+   Usado por cualquier zona del sitio que trae contenido por AJAX o carga
+   diferida (resultados, simulador, visores de PDF, etc.) para que nunca se
+   quede en blanco mientras espera respuesta.
+   ========================================================================== */
+.gg-spinner {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgba(26, 56, 45, 0.15);
+    border-top-color: var(--gg-green-dark);
+    border-radius: 50%;
+    animation: gg-spin 0.7s linear infinite;
+}
+
+.gg-spinner--sm {
+    width: 18px;
+    height: 18px;
+    border-width: 2px;
+}
+
+.gg-spinner--light {
+    border-color: rgba(255, 255, 255, 0.3);
+    border-top-color: #ffffff;
+}
+
+.gg-loading-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 5;
+}
+
+@keyframes gg-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gg-spinner {
+        animation-duration: 1.4s;
+    }
 }
 
 @media (max-width: 900px) {
