@@ -35,7 +35,7 @@ html {
 
 @media (min-width: 992px) {
     html {
-        font-size: 18px;
+        font-size: 17px;
     }
 }
 
@@ -1863,6 +1863,100 @@ ol {
     }
 }
 
+.gg-back-to-top {
+    position: fixed;
+    right: 132px;
+    bottom: 25px;
+    z-index: 999997;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(31, 41, 55, 0.7);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px) scale(0.85);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease, background 0.2s ease;
+}
+
+.gg-back-to-top:hover {
+    background: rgba(31, 41, 55, 0.85);
+}
+
+.gg-back-to-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.gg-btt-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.gg-btt-ring-track,
+.gg-btt-ring-bar {
+    fill: none;
+    stroke-width: 3;
+}
+
+.gg-btt-ring-track {
+    stroke: transparent;
+}
+
+.gg-btt-ring-bar {
+    stroke: var(--gg-yellow);
+    stroke-linecap: round;
+    stroke-dasharray: 169.65;
+    stroke-dashoffset: 169.65;
+    transition: stroke-dashoffset 0.1s linear;
+}
+
+.gg-btt-icon-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    transform: translate(-50%, -50%);
+}
+
+.gg-btt-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.gg-btt-icon-fill {
+    clip-path: inset(100% -10px -10px -10px);
+    transition: clip-path 0.1s linear;
+}
+
+@media (max-width: 768px) {
+    .gg-back-to-top {
+        right: 81px;
+        bottom: 20px;
+        width: 46px;
+        height: 46px;
+    }
+
+    .gg-btt-icon-wrap {
+        width: 19px;
+        height: 19px;
+    }
+}
+
 .politicas-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1974,5 +2068,63 @@ ol {
 @media (max-width: 900px) {
     .politicas-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 992px) {
+    /* Topbar con tipografía fija en px: no debe escalar con el tamaño base
+       de la página en desktop, o crece innecesariamente en altura. */
+    .gg-topbar {
+        padding: 6px 0;
+        font-size: 13px;
+    }
+
+    /* Widget de redes sociales flotantes, ~10% más compacto en desktop */
+    .gg-floating-socials-toggle {
+        width: 45px;
+        height: 45px;
+    }
+
+    .gg-floating-social-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .gg-floating-socials-list {
+        gap: 9px;
+    }
+
+    /* Widget de botones flotantes derechos, ~10% más compacto en desktop */
+    .gg-floating-right-widget {
+        right: 18px;
+        gap: 14px;
+    }
+
+    .gg-right-pill-btn {
+        height: 86px;
+        border-radius: 43px;
+        max-width: 86px;
+    }
+
+    .gg-right-pill-circle {
+        width: 86px;
+        height: 86px;
+    }
+
+    .gg-right-pill-circle svg {
+        width: 38px;
+        height: 38px;
+    }
+
+    /* Botón "volver arriba", realineado al nuevo ancho del widget derecho */
+    .gg-back-to-top {
+        right: 118px;
+        width: 54px;
+        height: 54px;
+    }
+
+    .gg-btt-icon-wrap {
+        width: 22px;
+        height: 22px;
     }
 }

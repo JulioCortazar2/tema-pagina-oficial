@@ -95,4 +95,44 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Botón flotante "Volver arriba" con progreso de scroll
+    var backToTop = document.getElementById('gg-back-to-top');
+
+    if (backToTop) {
+        var ringBar = backToTop.querySelector('.gg-btt-ring-bar');
+        var iconFill = backToTop.querySelector('.gg-btt-icon-fill');
+        var ringCircumference = 2 * Math.PI * 27;
+        var ticking = false;
+
+        function updateBackToTop() {
+            var scrollTop = window.scrollY || document.documentElement.scrollTop;
+            var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var progress = docHeight > 0 ? Math.min(Math.max(scrollTop / docHeight, 0), 1) : 0;
+
+            ringBar.style.strokeDashoffset = ringCircumference * (1 - progress);
+            iconFill.style.clipPath = 'inset(' + ((1 - progress) * 100) + '% -10px -10px -10px)';
+
+            if (scrollTop > 400) {
+                backToTop.classList.add('is-visible');
+            } else {
+                backToTop.classList.remove('is-visible');
+            }
+
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', function () {
+            if (!ticking) {
+                window.requestAnimationFrame(updateBackToTop);
+                ticking = true;
+            }
+        }, { passive: true });
+
+        updateBackToTop();
+
+        backToTop.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
 });

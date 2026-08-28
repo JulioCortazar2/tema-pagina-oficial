@@ -104,6 +104,19 @@ function gg_ocultar_categorias_etiquetas_para_editor() {
 }
 add_action( 'admin_menu', 'gg_ocultar_categorias_etiquetas_para_editor', 999 );
 
+function gg_ocultar_hoy_participa_y_permisos() {
+    $user  = wp_get_current_user();
+    $roles = array( 'editor', 'cumplimiento' );
+
+    if ( ! array_intersect( $roles, (array) $user->roles ) ) {
+        return;
+    }
+
+    remove_menu_page( 'edit.php?post_type=hoy_participa' );
+    remove_menu_page( 'presspermit-groups' );
+}
+add_action( 'admin_menu', 'gg_ocultar_hoy_participa_y_permisos', 999 );
+
 function gg_ocultar_apariencia_para_editor() {
     $user = wp_get_current_user();
 

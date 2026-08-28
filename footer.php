@@ -452,6 +452,21 @@
     </div>
     <?php endif; ?>
 
+    <button type="button" class="gg-back-to-top" id="gg-back-to-top" aria-label="Volver arriba">
+        <svg class="gg-btt-ring" viewBox="0 0 60 60" aria-hidden="true">
+            <circle class="gg-btt-ring-track" cx="30" cy="30" r="27"></circle>
+            <circle class="gg-btt-ring-bar" cx="30" cy="30" r="27"></circle>
+        </svg>
+        <span class="gg-btt-icon-wrap" aria-hidden="true">
+            <svg class="gg-btt-icon gg-btt-icon-fill" viewBox="0 0 24 24" fill="none" stroke="var(--gg-yellow)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21V5M5 12l7-7 7 7"></path>
+            </svg>
+            <svg class="gg-btt-icon gg-btt-icon-base" viewBox="0 0 24 24" fill="none" stroke="#F9FAFB" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21V5M5 12l7-7 7 7"></path>
+            </svg>
+        </span>
+    </button>
+
     <?php wp_footer(); ?>
 </body>
 </html>
