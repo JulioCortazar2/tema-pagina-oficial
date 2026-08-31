@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 ?>
     </main>
 
@@ -47,7 +47,6 @@
                             }
 
                             $target = !empty($btn['target_blank']) ? '_blank' : '_self';
-                            // El primer botón configurado es la acción principal (relleno); el resto queda como secundaria (outline).
                             $clase_boton = $boton_indice === 0 ? 'gg-btn-yellow' : 'gg-btn-yellow gg-btn-yellow--secondary';
                             if ($texto) :
                             ?>
@@ -84,7 +83,7 @@
                         <?php echo !empty($empresa_nombre) ? esc_html($empresa_nombre) : 'GanaGana'; ?>
                     </h3>
                     <p class="gg-footer-desc">
-                        <?php echo !empty($empresa_desc) ? esc_html($empresa_desc) : 'La red multiservicios de los tolimenses. Conectando a nuestra región con servicios de calidad y confianza.'; ?>
+                        <?php echo !empty($empresa_desc) ? esc_html($empresa_desc) : 'La red multiservicios de los tolimenses. Conectando a nuestra regiÃ³n con servicios de calidad y confianza.'; ?>
                     </p>
 
                     <ul class="gg-footer-contact-list">
@@ -102,7 +101,7 @@
                         </li>
                         <li>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                            <span><?php echo !empty($empresa_ubicacion) ? esc_html($empresa_ubicacion) : 'Ibagué, Tolima - Colombia'; ?></span>
+                            <span><?php echo !empty($empresa_ubicacion) ? esc_html($empresa_ubicacion) : 'IbaguÃ©, Tolima - Colombia'; ?></span>
                         </li>
                     </ul>
 
@@ -175,7 +174,7 @@
                     $has_new_enlaces = !empty($footer_enlaces) && is_array($footer_enlaces);
 
                     foreach ($footer_columnas as $col) :
-                        $col_titulo  = !empty($col['titulo_columna']) ? trim($col['titulo_columna']) : 'Sección';
+                        $col_titulo  = !empty($col['titulo_columna']) ? trim($col['titulo_columna']) : 'SecciÃ³n';
                         $col_slug    = gg_get_columna_slug($col_titulo);
                         $col_enlaces = array();
 
@@ -240,9 +239,6 @@
                         <?php
                     endforeach;
                 endif;
-                // Sin "footer_columnas"/"footer_enlaces" configurados
-                // (Ajustes GanaGana → Footer) no se muestra nada aquí: nunca
-                // columnas de relleno con enlaces falsos.
                 ?>
 
             </div>
@@ -288,9 +284,6 @@
                             endif;
                         endforeach;
                     endif;
-                    // Sin "copyright_links" configurado (Ajustes GanaGana →
-                    // Copyright) no se muestra nada aquí: nunca enlaces de
-                    // relleno.
                     ?>
                 </div>
 

@@ -1,13 +1,6 @@
-/**
- * Tema GanaGana Custom — Títulos dinámicos en grupos repetibles de CMB2.
- * Añade el valor del campo más representativo de cada fila (ej: "facebook",
- * "Visión, Misión y valores") al título del recuadro colapsable, para poder
- * identificar el contenido sin tener que expandirlo.
- */
-(function ($) {
+﻿(function ($) {
     'use strict';
 
-    // Mapa: id del grupo repetible -> id del campo cuyo valor se muestra en el título.
     var GG_GROUP_TITLE_FIELDS = {
         'topbar_links':           'texto',
         'logos_institucionales':  'alt',

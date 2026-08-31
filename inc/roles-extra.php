@@ -1,16 +1,8 @@
-<?php
+﻿<?php
 if (!defined('ABSPATH')) {
     exit;
 }
 
-/**
- * Roles adicionales que un usuario con promote_users puede asignar/quitar
- * desde el perfil de usuario, sin depender de plugins de terceros.
- *
- * Whitelist deliberadamente estática: nunca generar este listado desde
- * wp_roles() ni desde $_POST, para que sea imposible asignar 'administrator'
- * u otro rol no previsto vía manipulación del formulario.
- */
 const GG_EXTRA_ROLES = array(
     'editor_carrusel'         => 'Puede administrar Carruseles',
     'editor_ajustes_ganagana' => 'Puede administrar Ajustes del Tema',
@@ -82,14 +74,6 @@ function gg_extra_roles_save_fields($user_id) {
         }
     }
 }
-/**
- * Se usa 'profile_update' (no 'personal_options_update' / 'edit_user_profile_update')
- * porque esos hooks corren ANTES de que WordPress procese el dropdown "Rol" del
- * perfil. Ese proceso termina en WP_User::set_role(), que borra todos los roles
- * del usuario y deja solo el       rol principal — lo que revertía cualquier add_role()
- * hecho aquí antes. 'profile_update' se dispara después de que set_role() ya
- * terminó, así que los cambios de esta whitelist quedan persistidos.
- */
 add_action('profile_update', 'gg_extra_roles_save_fields');
 
 function gg_ocultar_categorias_etiquetas_para_editor() {
@@ -130,11 +114,6 @@ function gg_ocultar_apariencia_para_editor() {
         return;
     }
 
-    // Deja visible únicamente "Menús" dentro de Apariencia; oculta Temas,
-    // Patrones, Personalizar, Widgets y Fuentes. Se filtra por slug en vez
-    // de usar remove_submenu_page() porque el slug de "Personalizar" incluye
-    // un query string dinámico (customize.php?return=...) que cambia en
-    // cada carga y no se puede comparar de forma exacta.
     foreach ( $submenu['themes.php'] as $key => $item ) {
         if ( 0 !== strpos( $item[2], 'nav-menus.php' ) ) {
             unset( $submenu['themes.php'][ $key ] );

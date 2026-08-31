@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 get_header();
 ?>
 
@@ -19,7 +19,6 @@ get_header();
     $hero_position  = get_post_meta(get_the_ID(), 'page_header_position', true);
     $hero_position  = !empty($hero_position) ? $hero_position : 'center center';
 
-    // Manejo de checkboxes: si la meta no existe aún o es 'on', por defecto se activa
     $show_title_meta = get_post_meta(get_the_ID(), 'page_header_show_title', true);
     $show_title      = ($show_title_meta === 'off') ? false : true;
 
@@ -72,7 +71,7 @@ get_header();
                     the_content(); 
 
                     wp_link_pages(array(
-                        'before' => '<div class="page-links">' . __('Páginas:', 'ganagana'),
+                        'before' => '<div class="page-links">' . __('PÃ¡ginas:', 'ganagana'),
                         'after'  => '</div>',
                     ));
                     ?>

@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // Menú hamburguesa móvil
     var mobileToggle = document.getElementById('gg-mobile-toggle');
     var navContainer = document.getElementById('gg-site-navigation');
 
@@ -12,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Submenús del mega menú en móvil
     var navItemsWithChildren = document.querySelectorAll('.nav-item.menu-item-has-children');
 
     navItemsWithChildren.forEach(function (item) {
@@ -42,10 +40,46 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
             });
+
+            parentLink.addEventListener('keydown', function (e) {
+                if (window.innerWidth <= 900) return;
+                if (e.key !== 'Enter' && e.key !== ' ') return;
+
+                var megaDrop = item.querySelector(':scope > .megamenu-dropdown');
+                if (!megaDrop) return;
+
+                e.preventDefault();
+                e.stopPropagation();
+
+                var isOpen = item.classList.contains('is-open');
+
+                navItemsWithChildren.forEach(function (otherItem) {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('is-open');
+                        var otherLink = otherItem.querySelector(':scope > .nav-link');
+                        if (otherLink) otherLink.setAttribute('aria-expanded', 'false');
+                    }
+                });
+
+                if (!isOpen) {
+                    item.classList.add('is-open');
+                    parentLink.setAttribute('aria-expanded', 'true');
+                } else {
+                    item.classList.remove('is-open');
+                    parentLink.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            item.addEventListener('focusout', function (e) {
+                if (window.innerWidth <= 900) return;
+                if (item.contains(e.relatedTarget)) return;
+
+                item.classList.remove('is-open');
+                parentLink.setAttribute('aria-expanded', 'false');
+            });
         }
     });
 
-    // Clic fuera del menú para cerrarlo
     document.addEventListener('click', function (e) {
         if (navContainer && mobileToggle) {
             if (navContainer.classList.contains('is-active')) {
@@ -60,20 +94,25 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Tecla ESC para cerrar el menú
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' || e.key === 'Esc') {
             if (navContainer && navContainer.classList.contains('is-active')) {
                 navContainer.classList.remove('is-active');
                 if (mobileToggle) mobileToggle.classList.remove('is-active');
-                navItemsWithChildren.forEach(function (item) {
-                    item.classList.remove('is-open');
-                });
             }
+            navItemsWithChildren.forEach(function (item) {
+                if (item.classList.contains('is-open')) {
+                    item.classList.remove('is-open');
+                    var link = item.querySelector(':scope > .nav-link');
+                    if (link) {
+                        link.setAttribute('aria-expanded', 'false');
+                        link.focus();
+                    }
+                }
+            });
         }
     });
 
-    // Widget de redes sociales flotantes
     var floatingToggle = document.getElementById('gg-floating-socials-toggle');
     var floatingWidget = document.getElementById('gg-floating-socials');
 
@@ -95,7 +134,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Botón flotante "Volver arriba" con progreso de scroll
     var backToTop = document.getElementById('gg-back-to-top');
 
     if (backToTop) {

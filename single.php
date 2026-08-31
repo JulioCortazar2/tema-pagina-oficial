@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 get_header();
 ?>
 
@@ -31,7 +31,7 @@ get_header();
                         the_content(); 
 
                         wp_link_pages(array(
-                            'before' => '<div class="page-links">' . __('Páginas:', 'ganagana'),
+                            'before' => '<div class="page-links">' . __('PÃ¡ginas:', 'ganagana'),
                             'after'  => '</div>',
                         ));
                         ?>
@@ -44,8 +44,8 @@ get_header();
                     <?php endif; ?>
 
                     <div class="gg-post-navigation" style="display: flex; justify-content: space-between; margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--gg-border-color);">
-                        <div class="nav-previous"><?php previous_post_link('%link', '← %title'); ?></div>
-                        <div class="nav-next"><?php next_post_link('%link', '%title →'); ?></div>
+                        <div class="nav-previous"><?php previous_post_link('%link', 'â† %title'); ?></div>
+                        <div class="nav-next"><?php next_post_link('%link', '%title â†’'); ?></div>
                     </div>
 
                 </article>

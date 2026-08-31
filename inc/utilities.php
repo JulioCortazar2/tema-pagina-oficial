@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 if (!defined('ABSPATH')) {
     exit;
 }
@@ -67,10 +67,6 @@ function gg_build_footer_link_url($columna_slug, $pagina_slug, $page_id = 0) {
     return home_url('/');
 }
 
-/**
- * Soporta el formato nuevo "Texto | pagina-slug | page_id" y, por
- * retrocompatibilidad, el formato antiguo "Texto | https://url...".
- */
 function gg_parse_enlaces_raw_v2($raw_text, $columna_slug = '') {
     $enlaces = array();
     if (empty($raw_text)) {
@@ -162,10 +158,6 @@ function gg_get_pages_inventory() {
     return $inventory;
 }
 
-/**
- * Migra los enlaces guardados en formato antiguo (?page_id=X) al formato
- * nuevo "Texto | slug | ID" — se ejecuta sobre datos ya guardados en la DB.
- */
 function gg_migrate_footer_links_format() {
     $columnas = gg_get_option('footer_columnas');
     if (empty($columnas) || !is_array($columnas)) {
@@ -226,7 +218,7 @@ function gg_footer_opciones_paginas() {
     ));
 
     $options = array(
-        '' => '— Selecciona una página —',
+        '' => 'â€” Selecciona una pÃ¡gina â€”',
     );
 
     if (!empty($pages)) {
@@ -242,7 +234,7 @@ function gg_footer_opciones_columnas() {
     $columnas = gg_get_option('footer_columnas');
 
     $options = array(
-        '' => '— Selecciona una columna —',
+        '' => 'â€” Selecciona una columna â€”',
     );
 
     if (!empty($columnas) && is_array($columnas)) {

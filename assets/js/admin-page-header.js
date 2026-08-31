@@ -1,8 +1,4 @@
-/**
- * Tema GanaGana Custom — Admin Page Header Preview & Toggle
- * Controla la visibilidad de campos y el Live Preview en el editor de páginas.
- */
-(function ($) {
+﻿(function ($) {
     'use strict';
 
     $(document).ready(function () {
@@ -18,7 +14,6 @@
         var $overlayCheck    = $('#page_header_overlay');
         var $previewWrap     = $('#gg-ph-preview-wrap');
 
-        // Filas de los campos hero en CMB2
         function getHeroRows() {
             return $metaBox.find('.cmb-row').filter(function () {
                 var $row = $(this);
@@ -33,7 +28,7 @@
             if (mode === 'hidden') {
                 $previewWrap.html(
                     '<div style="background:#F7FAFC;border:2px dashed #CBD5E0;border-radius:8px;padding:16px;text-align:center;color:#718096;font-size:0.75rem;font-weight:600;text-transform:uppercase;">' +
-                    '🚫 La página no tendrá cabecera (inicia directo con el contenido)' +
+                    'ðŸš« La pÃ¡gina no tendrÃ¡ cabecera (inicia directo con el contenido)' +
                     '</div>'
                 );
                 return;
@@ -52,7 +47,6 @@
                 return;
             }
 
-            // Modo HERO
             var imgUrl       = $imageField.val() || '';
             var heightVal    = $heightSelect.val() || '400';
             var positionVal  = $posSelect.val() || 'center center';
@@ -61,7 +55,6 @@
             var hasOverlay   = $overlayCheck.is(':checked');
             var titleText    = getPageTitle();
 
-            // Altura proporcional para la miniatura
             var miniHeight = 90;
             if (heightVal === '200') miniHeight = 60;
             if (heightVal === '500' || heightVal === '650') miniHeight = 120;
@@ -86,12 +79,11 @@
                      overlayHtml +
                      titleHtml +
                 '  </div>' +
-                (!imgUrl ? '<div style="font-size:0.68rem;color:#E53E3E;margin-top:4px;font-style:italic;">⚠️ Sin imagen seleccionada (mostrando fondo verde de prueba)</div>' : '') +
+                (!imgUrl ? '<div style="font-size:0.68rem;color:#E53E3E;margin-top:4px;font-style:italic;">âš ï¸ Sin imagen seleccionada (mostrando fondo verde de prueba)</div>' : '') +
                 '</div>'
             );
         }
 
-        // Obtener título de la página desde Gutenberg o el editor clásico
         function getPageTitle() {
             var gtenbergTitle = $('.editor-post-title__input, .components-text-control__input').val();
             if (gtenbergTitle) return gtenbergTitle;
@@ -99,7 +91,7 @@
             var classicTitle = $('#title').val();
             if (classicTitle) return classicTitle;
 
-            return window.ggPageHeader ? window.ggPageHeader.siteTitle : 'TÍTULO DE PÁGINA';
+            return window.ggPageHeader ? window.ggPageHeader.siteTitle : 'TÃTULO DE PÃGINA';
         }
 
         function escapeHtml(text) {
@@ -128,7 +120,6 @@
 
         $(document).on('input keyup change', '.editor-post-title__input, #title', renderPreview);
 
-        // Observar cuando WP Media Modal actualiza el valor del campo file
         var observer = new MutationObserver(function() {
             renderPreview();
         });

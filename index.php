@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 get_header();
 ?>
 
@@ -6,7 +6,7 @@ get_header();
 
     <div class="gg-page-header">
         <h1 class="gg-page-title">Noticias y Novedades</h1>
-        <p class="gg-page-subtitle">Entérate de las últimas promociones, ganadores y comunicados de GanaGana</p>
+        <p class="gg-page-subtitle">EntÃ©rate de las Ãºltimas promociones, ganadores y comunicados de GanaGana</p>
     </div>
 
     <div class="gg-layout-grid">
@@ -42,7 +42,7 @@ get_header();
                                 </div>
 
                                 <a href="<?php the_permalink(); ?>" class="gg-post-card-btn">
-                                    Leer artículo
+                                    Leer artÃ­culo
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                                 </a>
                             </div>
@@ -55,8 +55,8 @@ get_header();
                     <?php
                     the_posts_pagination(array(
                         'mid_size'  => 2,
-                        'prev_text' => '‹ Anterior',
-                        'next_text' => 'Siguiente ›',
+                        'prev_text' => 'â€¹ Anterior',
+                        'next_text' => 'Siguiente â€º',
                     ));
                     ?>
                 </div>
@@ -65,7 +65,7 @@ get_header();
 
                 <div class="gg-article">
                     <h2>No se encontraron publicaciones</h2>
-                    <p>Lo sentimos, actualmente no hay artículos disponibles para mostrar.</p>
+                    <p>Lo sentimos, actualmente no hay artÃ­culos disponibles para mostrar.</p>
                 </div>
 
             <?php endif; ?>

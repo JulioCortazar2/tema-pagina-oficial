@@ -1,5 +1,4 @@
-/* GanaGana Custom Theme — Admin Options Page Styles. Aplica solo en las páginas: Topbar (CMB2 Options) */
-
+﻿
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 
 :root {
@@ -101,7 +100,6 @@
     letter-spacing: 0.08em !important;
 }
 
-/* Ocultar el toggle de colapsar (no necesario en options page) */
 .cmb2-options-page .postbox-header .handle-actions {
     display: none !important;
 }
@@ -235,7 +233,6 @@
     box-shadow: 0 2px 12px rgba(26,56,45,0.08) !important;
 }
 
-/* Título del repeater (Link #1, Botón #1, etc.) */
 .cmb2-options-page .cmb-group-title,
 .cmb2-options-page .cmb-repeatable-grouping h3,
 .cmb2-options-page .cmb-repeatable-grouping h4 {
@@ -251,7 +248,6 @@
     border-radius: var(--gg-radius-sm) var(--gg-radius-sm) 0 0 !important;
 }
 
-/* Ocultar la "x" superior redundante: ya existe el botón "Eliminar" al pie de cada grupo */
 .cmb2-options-page .cmb-repeatable-grouping > .dashicons-no-alt.cmb-remove-group-row {
     display: none !important;
 }
@@ -354,7 +350,7 @@
 }
 
 .cmb2-options-page .cmb-submit-wrap::before {
-    content: 'Recuerda guardar los cambios antes de salir de la página';
+    content: 'Recuerda guardar los cambios antes de salir de la pÃ¡gina';
     font-family: 'Montserrat', sans-serif;
     font-size: 0.75rem;
     font-weight: 500;

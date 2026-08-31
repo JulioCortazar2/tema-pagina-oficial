@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 if (!defined('ABSPATH')) {
     exit;
 }
@@ -38,19 +38,19 @@ function gg_register_theme_options() {
         'type' => 'text',
     ));
     $topbar->add_group_field($topbar_group, array(
-        'name'       => 'Página Interna (Opcional)',
+        'name'       => 'PÃ¡gina Interna (Opcional)',
         'id'         => 'pagina_id',
         'type'       => 'select',
         'options_cb' => 'gg_footer_opciones_paginas',
     ));
     $topbar->add_group_field($topbar_group, array(
         'name' => 'URL Externa (Opcional)',
-        'desc' => 'Ej: https://www.ejemplo.com (Si colocas una URL aquí, se usará en lugar de la página de destino)',
+        'desc' => 'Ej: https://www.ejemplo.com (Si colocas una URL aquÃ­, se usarÃ¡ en lugar de la pÃ¡gina de destino)',
         'id'   => 'url',
         'type' => 'text_url',
     ));
     $topbar->add_group_field($topbar_group, array(
-        'name' => 'Abrir en nueva pestaña',
+        'name' => 'Abrir en nueva pestaÃ±a',
         'id'   => 'target_blank',
         'type' => 'checkbox',
     ));
@@ -66,39 +66,39 @@ function gg_register_theme_options() {
     ));
     $header_promo->add_field(array(
         'name'        => 'URL del Logo (al hacer clic)',
-        'description' => 'Tiene prioridad sobre la página seleccionada abajo. Si se deja vacío, se usa esa página o (si tampoco hay) el inicio del sitio.',
+        'description' => 'Tiene prioridad sobre la pÃ¡gina seleccionada abajo. Si se deja vacÃ­o, se usa esa pÃ¡gina o (si tampoco hay) el inicio del sitio.',
         'id'          => 'logo_url',
         'type'        => 'text_url',
     ));
     $header_promo->add_field(array(
-        'name'       => 'Página Interna del Logo (Opcional)',
-        'description'=> 'Alternativa a la URL de arriba. Se usa solo si la URL del Logo está vacía.',
+        'name'       => 'PÃ¡gina Interna del Logo (Opcional)',
+        'description'=> 'Alternativa a la URL de arriba. Se usa solo si la URL del Logo estÃ¡ vacÃ­a.',
         'id'         => 'logo_pagina_id',
         'type'       => 'select',
         'options_cb' => 'gg_footer_opciones_paginas',
     ));
     $header_promo->add_field(array(
-        'name'    => 'Texto del Botón del Menú',
+        'name'    => 'Texto del BotÃ³n del MenÃº',
         'id'      => 'btn_promociones_texto',
         'type'    => 'text',
         'default' => 'PROMOCIONES',
     ));
     $header_promo->add_field(array(
-        'name'        => 'URL del Botón del Menú',
-        'description' => 'Tiene prioridad sobre la página seleccionada abajo.',
+        'name'        => 'URL del BotÃ³n del MenÃº',
+        'description' => 'Tiene prioridad sobre la pÃ¡gina seleccionada abajo.',
         'id'          => 'btn_promociones_url',
         'type'        => 'text_url',
     ));
     $header_promo->add_field(array(
-        'name'       => 'Página Interna del Botón del Menú (Opcional)',
-        'description'=> 'Alternativa a la URL de arriba. Se usa solo si la URL del Botón está vacía.',
+        'name'       => 'PÃ¡gina Interna del BotÃ³n del MenÃº (Opcional)',
+        'description'=> 'Alternativa a la URL de arriba. Se usa solo si la URL del BotÃ³n estÃ¡ vacÃ­a.',
         'id'         => 'btn_promociones_pagina_id',
         'type'       => 'select',
         'options_cb' => 'gg_footer_opciones_paginas',
     ));
     $header_promo->add_field(array(
-        'name'    => 'Mostrar Botón del Menú',
-        'desc'    => 'Activa/desactiva la visibilidad del botón que aparece al lado de la barra de búsqueda.',
+        'name'    => 'Mostrar BotÃ³n del MenÃº',
+        'desc'    => 'Activa/desactiva la visibilidad del botÃ³n que aparece al lado de la barra de bÃºsqueda.',
         'id'      => 'mostrar_btn_menu',
         'type'    => 'checkbox',
         'default' => 'on',
@@ -115,8 +115,8 @@ function gg_register_theme_options() {
         'capability'   => 'gg_manage_theme_options',
     ));
     $img_final->add_field(array(
-        'name'       => esc_html__('Altura Máxima de Logos (px)', 'ganagana'),
-        'desc'       => esc_html__('Se reduce automáticamente en móvil.', 'ganagana'),
+        'name'       => esc_html__('Altura MÃ¡xima de Logos (px)', 'ganagana'),
+        'desc'       => esc_html__('Se reduce automÃ¡ticamente en mÃ³vil.', 'ganagana'),
         'id'         => 'logos_altura_max',
         'type'       => 'text_small',
         'default'    => '70',
@@ -159,7 +159,7 @@ function gg_register_theme_options() {
         'type' => 'text_url',
     ));
     $img_final->add_group_field($logos_group, array(
-        'name' => esc_html__('Abrir en nueva pestaña', 'ganagana'),
+        'name' => esc_html__('Abrir en nueva pestaÃ±a', 'ganagana'),
         'id'   => 'target_blank',
         'type' => 'checkbox',
     ));
@@ -184,32 +184,32 @@ function gg_register_theme_options() {
         'id'          => 'prefooter_botones',
         'type'        => 'group',
         'options'     => array(
-            'group_title'   => 'Botón #{#}',
-            'add_button'    => '+ Agregar Botón',
-            'remove_button' => 'Eliminar Botón',
+            'group_title'   => 'BotÃ³n #{#}',
+            'add_button'    => '+ Agregar BotÃ³n',
+            'remove_button' => 'Eliminar BotÃ³n',
             'sortable'      => true,
             'closed'        => true,
         ),
     ));
     $prefooter->add_group_field($prefooter_btns, array(
-        'name' => 'Texto del Botón',
+        'name' => 'Texto del BotÃ³n',
         'id'   => 'texto_boton',
         'type' => 'text',
     ));
     $prefooter->add_group_field($prefooter_btns, array(
-        'name'       => 'Página Interna (Opcional)',
+        'name'       => 'PÃ¡gina Interna (Opcional)',
         'id'         => 'pagina_id',
         'type'       => 'select',
         'options_cb' => 'gg_footer_opciones_paginas',
     ));
     $prefooter->add_group_field($prefooter_btns, array(
         'name' => 'URL Externa (Opcional)',
-        'desc' => 'Ej: https://www.ejemplo.com (Si colocas una URL aquí, se usará en lugar de la página de destino)',
+        'desc' => 'Ej: https://www.ejemplo.com (Si colocas una URL aquÃ­, se usarÃ¡ en lugar de la pÃ¡gina de destino)',
         'id'   => 'url_boton',
         'type' => 'text_url',
     ));
     $prefooter->add_group_field($prefooter_btns, array(
-        'name' => 'Abrir en nueva pestaña',
+        'name' => 'Abrir en nueva pestaÃ±a',
         'id'   => 'target_blank',
         'type' => 'checkbox',
     ));
@@ -227,7 +227,7 @@ function gg_register_theme_options() {
     $footer->add_field(array(
         'id'   => 'info_principal_heading',
         'type' => 'title',
-        'name' => '<div style="background-color: #1A382D; color: #FFFFFF; padding: 12px 15px; margin: 20px 0 15px 0; border-left: 4px solid #FFE82C; font-size: 14px; font-weight: 600;">Información Principal</div>',
+        'name' => '<div style="background-color: #1A382D; color: #FFFFFF; padding: 12px 15px; margin: 20px 0 15px 0; border-left: 4px solid #FFE82C; font-size: 14px; font-weight: 600;">InformaciÃ³n Principal</div>',
     ));
 
     $footer->add_field(array(
@@ -237,7 +237,7 @@ function gg_register_theme_options() {
         'default' => 'GanaGana',
     ));
     $footer->add_field(array(
-        'name' => 'Descripción de la Empresa',
+        'name' => 'DescripciÃ³n de la Empresa',
         'id'   => 'footer_empresa_desc',
         'type' => 'textarea_small',
     ));
@@ -247,12 +247,12 @@ function gg_register_theme_options() {
         'type' => 'text_email',
     ));
     $footer->add_field(array(
-        'name' => 'Teléfono',
+        'name' => 'TelÃ©fono',
         'id'   => 'footer_empresa_telefono',
         'type' => 'text',
     ));
     $footer->add_field(array(
-        'name' => 'Ubicación',
+        'name' => 'UbicaciÃ³n',
         'id'   => 'footer_empresa_ubicacion',
         'type' => 'text',
     ));
@@ -304,7 +304,7 @@ function gg_register_theme_options() {
         ),
     ));
     $footer->add_group_field($cols_group, array(
-        'name' => 'Título de la Columna',
+        'name' => 'TÃ­tulo de la Columna',
         'id'   => 'titulo_columna',
         'type' => 'text',
     ));
@@ -312,7 +312,7 @@ function gg_register_theme_options() {
     $footer->add_field(array(
         'id'   => 'enlaces_heading',
         'type' => 'title',
-        'name' => '<div style="background-color: #1A382D; color: #FFFFFF; padding: 12px 15px; margin: 20px 0 15px 0; border-left: 4px solid #FFE82C; font-size: 14px; font-weight: 600;">Vinculación de Enlaces</div>',
+        'name' => '<div style="background-color: #1A382D; color: #FFFFFF; padding: 12px 15px; margin: 20px 0 15px 0; border-left: 4px solid #FFE82C; font-size: 14px; font-weight: 600;">VinculaciÃ³n de Enlaces</div>',
     ));
 
     $enlaces_group = $footer->add_field(array(
@@ -332,19 +332,19 @@ function gg_register_theme_options() {
         'type' => 'text',
     ));
     $footer->add_group_field($enlaces_group, array(
-        'name'       => 'Página de Destino',
+        'name'       => 'PÃ¡gina de Destino',
         'id'         => 'pagina_id',
         'type'       => 'select',
         'options_cb' => 'gg_footer_opciones_paginas',
     ));
     $footer->add_group_field($enlaces_group, array(
         'name' => 'URL Externa (Opcional)',
-        'desc' => 'Ej: https://www.ejemplo.com (Si colocas una URL aquí, se usará en lugar de la página de destino)',
+        'desc' => 'Ej: https://www.ejemplo.com (Si colocas una URL aquÃ­, se usarÃ¡ en lugar de la pÃ¡gina de destino)',
         'id'   => 'url_externa',
         'type' => 'text_url',
     ));
     $footer->add_group_field($enlaces_group, array(
-        'name' => 'Abrir en nueva pestaña',
+        'name' => 'Abrir en nueva pestaÃ±a',
         'id'   => 'target_blank',
         'type' => 'checkbox',
     ));
@@ -355,8 +355,8 @@ function gg_register_theme_options() {
         'options_cb' => 'gg_footer_opciones_columnas',
     ));
     $footer->add_group_field($enlaces_group, array(
-        'name'       => 'Orden de aparición',
-        'desc'       => 'Posición dentro de su columna (0 = primero, 1 = segundo, etc.)',
+        'name'       => 'Orden de apariciÃ³n',
+        'desc'       => 'PosiciÃ³n dentro de su columna (0 = primero, 1 = segundo, etc.)',
         'id'         => 'orden',
         'type'       => 'text',
         'default'    => '0',
@@ -377,7 +377,7 @@ function gg_register_theme_options() {
     ));
     $copyright->add_field(array(
         'name'        => 'Texto de Copyright',
-        'description' => 'Ej: © 2026 GanaGana - Todos los derechos reservados.',
+        'description' => 'Ej: Â© 2026 GanaGana - Todos los derechos reservados.',
         'id'          => 'copyright_texto',
         'type'        => 'text',
     ));
@@ -399,14 +399,14 @@ function gg_register_theme_options() {
         'type' => 'text',
     ));
     $copyright->add_group_field($legal_group, array(
-        'name'       => 'Página de Destino',
+        'name'       => 'PÃ¡gina de Destino',
         'id'         => 'pagina_id',
         'type'       => 'select',
         'options_cb' => 'gg_footer_opciones_paginas',
     ));
     $copyright->add_group_field($legal_group, array(
         'name' => 'URL',
-        'desc' => 'Ej: https://www.ejemplo.com (Si colocas una URL aquí, se usará en lugar de la página de destino)',
+        'desc' => 'Ej: https://www.ejemplo.com (Si colocas una URL aquÃ­, se usarÃ¡ en lugar de la pÃ¡gina de destino)',
         'id'   => 'url',
         'type' => 'text_url',
     ));
@@ -443,13 +443,13 @@ function gg_register_theme_options() {
         'type' => 'text_url',
     ));
     $redes_flotantes->add_group_field($flotantes_group, array(
-        'name'    => 'Abrir en nueva pestaña',
+        'name'    => 'Abrir en nueva pestaÃ±a',
         'id'      => 'target_blank',
         'type'    => 'checkbox',
         'default' => 'on',
     ));
     $redes_flotantes->add_group_field($flotantes_group, array(
-        'name'    => 'Ícono de la red social',
+        'name'    => 'Ãcono de la red social',
         'id'      => 'icono_red',
         'type'    => 'select',
         'options' => array(
@@ -462,7 +462,7 @@ function gg_register_theme_options() {
             'tiktok'    => 'TikTok',
             'linkedin'  => 'LinkedIn',
             'whatsapp'  => 'WhatsApp',
-            'otro'      => 'No está la red social',
+            'otro'      => 'No estÃ¡ la red social',
         ),
         'default' => 'facebook',
     ));
@@ -481,15 +481,15 @@ function gg_register_theme_options() {
         'id'          => 'botones_derechos_items',
         'type'        => 'group',
         'options'     => array(
-            'group_title'   => 'Botón Derecho #{#}',
-            'add_button'    => '+ Agregar Botón Derecho',
+            'group_title'   => 'BotÃ³n Derecho #{#}',
+            'add_button'    => '+ Agregar BotÃ³n Derecho',
             'remove_button' => 'Eliminar',
             'sortable'      => true,
             'closed'        => true,
         ),
     ));
     $botones_derechos->add_group_field($right_group, array(
-        'name' => 'Texto del Botón (Visible al Expandir)',
+        'name' => 'Texto del BotÃ³n (Visible al Expandir)',
         'id'   => 'texto',
         'type' => 'text',
     ));
@@ -499,12 +499,12 @@ function gg_register_theme_options() {
         'type' => 'text_url',
     ));
     $botones_derechos->add_group_field($right_group, array(
-        'name' => 'Abrir en nueva pestaña',
+        'name' => 'Abrir en nueva pestaÃ±a',
         'id'   => 'target_blank',
         'type' => 'checkbox',
     ));
     $botones_derechos->add_group_field($right_group, array(
-        'name' => 'Imagen del Ícono (Esfera)',
+        'name' => 'Imagen del Ãcono (Esfera)',
         'id'   => 'imagen_icono',
         'type' => 'file',
         'options' => array(
@@ -512,7 +512,7 @@ function gg_register_theme_options() {
         ),
     ));
     $botones_derechos->add_group_field($right_group, array(
-        'name'    => 'Color del Círculo (Esfera)',
+        'name'    => 'Color del CÃ­rculo (Esfera)',
         'id'      => 'color_circulo',
         'type'    => 'colorpicker',
         'default' => '#1A382D',
@@ -553,7 +553,7 @@ function gg_register_theme_options() {
     ));
     $servicios->add_group_field($servicios_group, array(
         'name'       => 'Imagen',
-        'desc'       => 'Usa imágenes con fondo transparente: se muestran tal cual, sin recorte.',
+        'desc'       => 'Usa imÃ¡genes con fondo transparente: se muestran tal cual, sin recorte.',
         'id'         => 'imagen',
         'type'       => 'file',
         'options'    => array(
@@ -569,30 +569,25 @@ function gg_register_theme_options() {
         'type' => 'text',
     ));
     $servicios->add_group_field($servicios_group, array(
-        'name'       => 'Página de Destino',
+        'name'       => 'PÃ¡gina de Destino',
         'id'         => 'pagina_id',
         'type'       => 'select',
         'options_cb' => 'gg_footer_opciones_paginas',
     ));
     $servicios->add_group_field($servicios_group, array(
         'name' => 'URL Externa (Opcional)',
-        'desc' => 'Ej: https://www.ejemplo.com (Si colocas una URL aquí, se usará en lugar de la página de destino)',
+        'desc' => 'Ej: https://www.ejemplo.com (Si colocas una URL aquÃ­, se usarÃ¡ en lugar de la pÃ¡gina de destino)',
         'id'   => 'url_externa',
         'type' => 'text_url',
     ));
     $servicios->add_group_field($servicios_group, array(
-        'name'    => 'Abrir en nueva pestaña',
+        'name'    => 'Abrir en nueva pestaÃ±a',
         'id'      => 'target_blank',
         'type'    => 'checkbox',
         'default' => 'on',
     ));
 }
 
-/**
- * WordPress duplica el título del menú padre como título del primer submenú
- * (add_menu_page reutiliza el mismo $menu_title para ambos); esto restaura
- * "Topbar" en esa pestaña.
- */
 add_action('admin_menu', 'gg_fix_topbar_submenu_label', 999);
 function gg_fix_topbar_submenu_label() {
     global $submenu;
@@ -609,7 +604,7 @@ function gg_register_page_header_meta() {
 
     $cmb = new_cmb2_box(array(
         'id'           => 'gg_page_header_meta',
-        'title'        => 'Cabecera de Página',
+        'title'        => 'Cabecera de PÃ¡gina',
         'object_types' => array('page'),
         'context'      => 'side',
         'priority'     => 'high',
@@ -622,8 +617,8 @@ function gg_register_page_header_meta() {
         'type'    => 'select',
         'default' => 'default',
         'options' => array(
-            'default' => 'Barra verde con título (predeterminado)',
-            'hero'    => 'Imagen de ancho completo con título',
+            'default' => 'Barra verde con tÃ­tulo (predeterminado)',
+            'hero'    => 'Imagen de ancho completo con tÃ­tulo',
             'hidden'  => 'Sin cabecera (solo contenido)',
         ),
     ));
@@ -642,16 +637,16 @@ function gg_register_page_header_meta() {
         'type'    => 'select',
         'default' => '400',
         'options' => array(
-            '200'   => 'Pequeña — 200px',
-            '350'   => 'Media — 350px',
-            '500'   => 'Grande — 500px',
-            '650'   => 'Extra Grande — 650px',
+            '200'   => 'PequeÃ±a â€” 200px',
+            '350'   => 'Media â€” 350px',
+            '500'   => 'Grande â€” 500px',
+            '650'   => 'Extra Grande â€” 650px',
             '100vh' => 'Pantalla completa',
         ),
     ));
 
     $cmb->add_field(array(
-        'name'    => 'Posición de imagen',
+        'name'    => 'PosiciÃ³n de imagen',
         'id'      => 'page_header_position',
         'type'    => 'select',
         'default' => 'center center',
@@ -665,20 +660,17 @@ function gg_register_page_header_meta() {
     ));
 
     $cmb->add_field(array(
-        'name'            => 'Mostrar título',
+        'name'            => 'Mostrar tÃ­tulo',
         'id'              => 'page_header_show_title',
         'type'            => 'checkbox',
         'default'         => 'on',
-        // CMB2 borra el meta al desmarcar un checkbox en vez de guardar 'off',
-        // lo que impedía distinguir "desmarcado" de "nunca guardado" (ambos
-        // devolvían '' en get_post_meta y siempre se mostraba el título).
         'sanitization_cb' => function ($value) {
             return $value === 'on' ? 'on' : 'off';
         },
     ));
 
     $cmb->add_field(array(
-        'name'    => 'Color del título',
+        'name'    => 'Color del tÃ­tulo',
         'id'      => 'page_header_title_color',
         'type'    => 'colorpicker',
         'default' => '#FFFFFF',

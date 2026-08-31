@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
@@ -9,6 +9,8 @@
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
+
+<a class="skip-link" href="#gg-main-content">Saltar al contenido</a>
 
 <header class="gg-site-header">
     <div class="gg-topbar">
@@ -43,8 +45,6 @@
                         endif;
                     endforeach;
                 endif;
-                // Sin "topbar_links" configurado (Ajustes GanaGana → Topbar)
-                // no se muestra nada aquí: nunca enlaces de relleno.
                 ?>
             </div>
         </div>
@@ -89,7 +89,7 @@
                 <?php endif; ?>
             </div>
 
-            <nav class="gg-nav-container" id="gg-site-navigation" aria-label="Menú Principal">
+            <nav class="gg-nav-container" id="gg-site-navigation" aria-label="MenÃº Principal">
                 <?php
                 if (has_nav_menu('primary-menu')) {
                     wp_nav_menu(array(
@@ -100,9 +100,6 @@
                         'walker'         => new GG_Mega_Menu_Walker(),
                     ));
                 }
-                // Sin menú asignado a "primary-menu" (Apariencia → Menús) no
-                // se muestra nada aquí: nunca un menú de relleno con enlaces
-                // falsos.
                 ?>
             </nav>
 
@@ -146,7 +143,7 @@
                 }
                 ?>
 
-                <button class="gg-mobile-toggle" id="gg-mobile-toggle" aria-label="Abrir menú de navegación">
+                <button class="gg-mobile-toggle" id="gg-mobile-toggle" aria-label="Abrir menÃº de navegaciÃ³n">
                     <span class="gg-hamburger-bar"></span>
                     <span class="gg-hamburger-bar"></span>
                     <span class="gg-hamburger-bar"></span>

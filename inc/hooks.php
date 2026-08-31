@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 if (!defined('ABSPATH')) {
     exit;
 }
@@ -26,7 +26,7 @@ add_action('after_setup_theme', 'ganagana_theme_support');
 
 function ganagana_register_menus() {
     register_nav_menus(array(
-        'primary-menu' => __('Menú Principal Header', 'ganagana'),
+        'primary-menu' => __('MenÃº Principal Header', 'ganagana'),
     ));
 }
 add_action('init', 'ganagana_register_menus');
@@ -35,7 +35,7 @@ function ganagana_widgets_init() {
     register_sidebar(array(
         'name'          => __('Barra Lateral Principal', 'ganagana'),
         'id'            => 'sidebar-1',
-        'description'   => __('Agrega widgets aquí para mostrar en el sidebar de blogs y páginas.', 'ganagana'),
+        'description'   => __('Agrega widgets aquÃ­ para mostrar en el sidebar de blogs y pÃ¡ginas.', 'ganagana'),
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h3 class="widget-title">',
@@ -56,10 +56,9 @@ function gg_asegurar_rol_ajustes_theme() {
     $rol = get_role('editor_ajustes_ganagana');
     if ($rol) {
         $rol->add_cap('gg_manage_theme_options');
-        $rol->add_cap('edit_theme_options'); // Apariencia > Menús (estructura del mega menú).
+        $rol->add_cap('edit_theme_options'); // Apariencia > MenÃºs (estructura del mega menÃº).
     }
 
-    // Administrator no la trae de fábrica al no ser 'manage_options'.
     $admin = get_role('administrator');
     if ($admin) {
         $admin->add_cap('gg_manage_theme_options');

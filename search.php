@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 get_header();
 ?>
 
@@ -12,7 +12,7 @@ get_header();
             <p class="gg-page-subtitle">
                 <?php 
                 global $wp_query;
-                echo sprintf(_n('Se encontró %d resultado', 'Se encontraron %d resultados', $wp_query->found_posts, 'ganagana'), $wp_query->found_posts);
+                echo sprintf(_n('Se encontrÃ³ %d resultado', 'Se encontraron %d resultados', $wp_query->found_posts, 'ganagana'), $wp_query->found_posts);
                 ?>
             </p>
         </div>
@@ -39,7 +39,7 @@ get_header();
 
                             <div class="gg-post-card-body">
                                 <div class="gg-post-meta">
-                                    <span><?php echo get_post_type() === 'page' ? 'Página' : get_the_date('d M, Y'); ?></span>
+                                    <span><?php echo get_post_type() === 'page' ? 'PÃ¡gina' : get_the_date('d M, Y'); ?></span>
                                 </div>
 
                                 <h2 class="gg-post-card-title">
@@ -64,8 +64,8 @@ get_header();
                     <?php
                     the_posts_pagination(array(
                         'mid_size'  => 2,
-                        'prev_text' => '‹ Anterior',
-                        'next_text' => 'Siguiente ›',
+                        'prev_text' => 'â€¹ Anterior',
+                        'next_text' => 'Siguiente â€º',
                     ));
                     ?>
                 </div>
@@ -74,11 +74,11 @@ get_header();
 
                 <div class="gg-article" style="text-align: center;">
                     <h2>No se encontraron resultados</h2>
-                    <p>No pudimos encontrar ningún contenido que coincida con "<strong><?php echo get_search_query(); ?></strong>". Por favor intenta con otros términos de búsqueda.</p>
+                    <p>No pudimos encontrar ningÃºn contenido que coincida con "<strong><?php echo get_search_query(); ?></strong>". Por favor intenta con otros tÃ©rminos de bÃºsqueda.</p>
                     
                     <div style="max-width: 400px; margin: 25px auto 0;">
                         <form role="search" method="get" class="gg-search-form" action="<?php echo esc_url(home_url('/')); ?>">
-                            <input type="search" class="gg-search-input" style="width: 100%;" placeholder="Intentar otra búsqueda..." value="" name="s" />
+                            <input type="search" class="gg-search-input" style="width: 100%;" placeholder="Intentar otra bÃºsqueda..." value="" name="s" />
                             <button type="submit" class="gg-search-submit" aria-label="Buscar">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                             </button>

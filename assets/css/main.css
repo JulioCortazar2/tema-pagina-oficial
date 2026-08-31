@@ -96,6 +96,28 @@ ol {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 12px;
+    z-index: 9999;
+    background: var(--gg-green-darker);
+    color: var(--gg-yellow);
+    font-family: var(--gg-font);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 8px 18px;
+    border-radius: 0 0 8px 8px;
+    text-decoration: none;
+    transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 2px solid var(--gg-yellow);
+    outline-offset: 2px;
+}
+
 .gg-topbar {
     background-color: var(--gg-topbar-bg);
     color: #ffffff;
@@ -175,7 +197,6 @@ ol {
     transform: scale(1.02);
 }
 
-/* Menú Principal (Walker Mega Menu) */
 .gg-nav-container {
     display: flex;
     align-items: flex-end;
@@ -219,14 +240,14 @@ ol {
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* El disparador de un dropdown sin destino real es un <span>, no un <a>:
-   el cursor pointer se pierde por defecto y hay que restaurarlo a mano. */
 .nav-item>span.nav-link {
     cursor: pointer;
 }
 
 .nav-item:hover>a,
 .nav-item:hover>.nav-link,
+.nav-item:focus-within>a,
+.nav-item:focus-within>.nav-link,
 .nav-item.is-open>a,
 .nav-item.is-open>.nav-link {
     background-color: var(--gg-green-dark);
@@ -248,9 +269,10 @@ ol {
     color: #ffffff !important;
 }
 
-/* Curvas cóncavas inferiores (Fillets) solo al hacer HOVER o al estar abierto */
 .nav-item:hover>a::before,
 .nav-item:hover>.nav-link::before,
+.nav-item:focus-within>a::before,
+.nav-item:focus-within>.nav-link::before,
 .nav-item.is-open>a::before,
 .nav-item.is-open>.nav-link::before {
     content: '';
@@ -265,6 +287,8 @@ ol {
 
 .nav-item:hover>a::after,
 .nav-item:hover>.nav-link::after,
+.nav-item:focus-within>a::after,
+.nav-item:focus-within>.nav-link::after,
 .nav-item.is-open>a::after,
 .nav-item.is-open>.nav-link::after {
     content: '';
@@ -289,6 +313,8 @@ ol {
 
 .nav-item:hover>a .dropdown-arrow,
 .nav-item:hover>.nav-link .dropdown-arrow,
+.nav-item:focus-within>a .dropdown-arrow,
+.nav-item:focus-within>.nav-link .dropdown-arrow,
 .nav-item.is-open>a .dropdown-arrow,
 .nav-item.is-open>.nav-link .dropdown-arrow {
     color: #ffffff !important;
@@ -323,7 +349,8 @@ ol {
     }
 }
 
-.nav-item:hover>.megamenu-dropdown {
+.nav-item:hover>.megamenu-dropdown,
+.nav-item.is-open>.megamenu-dropdown {
     display: block;
 }
 
@@ -340,7 +367,6 @@ ol {
     min-width: 170px;
 }
 
-/* Título de sección (CHANCES, BALOTOS, etc.) */
 .section-title {
     color: var(--gg-green-dark);
     font-weight: 800;
@@ -380,7 +406,6 @@ ol {
     padding-left: 6px;
 }
 
-/* Badges (NUEVO, RECARGA, PROMO) */
 .menu-badge {
     font-size: 0.6rem;
     padding: 2px 7px;
@@ -515,7 +540,11 @@ ol {
 .gg-mobile-toggle:hover,
 .gg-mobile-toggle:focus {
     background-color: var(--gg-green-darker);
-    outline: none;
+}
+
+.gg-mobile-toggle:focus-visible {
+    outline: 2px solid var(--gg-yellow);
+    outline-offset: 2px;
 }
 
 .gg-hamburger-bar {
@@ -612,7 +641,6 @@ ol {
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
 }
 
-/* Variante secundaria: misma familia visual, menor peso para no competir con la acción principal */
 .gg-btn-yellow--secondary {
     background-color: transparent;
     border-color: var(--gg-yellow);
@@ -787,7 +815,6 @@ ol {
     }
 }
 
-/* Móvil: máximo 3 por fila, tamaño reducido para que ningún logo quede desproporcionado */
 @media (max-width: 767px) {
     .gg-footer-logos__list {
         gap: 16px 18px;
@@ -801,7 +828,6 @@ ol {
     }
 }
 
-/* Celular pequeño: 2 por fila, ya que 3 columnas dejarían los logos con texto ilegibles */
 @media (max-width: 480px) {
     .gg-footer-logos__list {
         gap: 14px 16px;
@@ -890,7 +916,6 @@ ol {
     font-weight: 500;
 }
 
-/* Grilla de Entradas (Blog / Index / Search) */
 .gg-posts-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -980,7 +1005,6 @@ ol {
     letter-spacing: 0.5px;
 }
 
-/* Single Post / Page Detail */
 .gg-article {
     background-color: #ffffff;
     padding: 40px;
@@ -1031,11 +1055,6 @@ ol {
     margin: 30px 0 15px;
 }
 
-/* El reset global "ul, ol { list-style: none; }" (más arriba en este archivo)
-   quita viñetas/numeración en todo el sitio a propósito (menús, tarjetas,
-   footer). Pero eso también apaga las listas escritas dentro del contenido
-   de texto: entradas del blog y el widget "Editor de Texto"/"Contenido de
-   la entrada" de Elementor, donde sí deben verse como listas normales. */
 .gg-entry-content ul,
 .elementor-widget-text-editor ul,
 .elementor-widget-theme-post-content ul {
@@ -1168,21 +1187,17 @@ ol {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
-/* Pestañas 2x2 */
 .elementor-widget-tabs .elementor-tabs-wrapper {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    /* opcional, espaciado entre tabs */
 }
 
 .elementor-widget-tabs .elementor-tab-title {
     flex-basis: calc(50% - 5px);
-    /* 50% menos la mitad del gap */
     box-sizing: border-box;
 }
 
-/* Si necesitas ajustar el ancho del contenido también */
 .elementor-widget-tabs .elementor-tab-content {
     width: 100%;
 }
@@ -1311,7 +1326,6 @@ ol {
         transform: rotate(180deg);
     }
 
-    /* En móvil, :hover NO debe mantener abierto el megamenu, solo la clase .is-open */
     .nav-item:hover>.megamenu-dropdown {
         display: none;
     }
@@ -1361,7 +1375,6 @@ ol {
     }
 }
 
-/* Reducción progresiva de padding en tabletas y móviles para aprovechar todo el ancho */
 @media (max-width: 768px) {
     .gg-container {
         padding-left: 12px;
@@ -1389,7 +1402,6 @@ ol {
         line-height: 1.6;
     }
 
-    /* Ajuste para contenedores de Elementor en pantalla pequeña */
     .elementor-section-wrap,
     .elementor-section,
     .elementor-column,
@@ -1486,7 +1498,6 @@ ol {
     }
 }
 
-/* Modo Default: Barra Verde */
 .gg-page-header {
     background-color: var(--gg-green-dark);
     padding: 30px 0;
@@ -1505,10 +1516,6 @@ ol {
     letter-spacing: 0.03em;
 }
 
-/* Modo Hero: Imagen Ancho Completo
-   Las propiedades que varían por página (imagen, alto, posición, color de
-   título) llegan como variables CSS inline —solo esas—; el resto del
-   comportamiento vive aquí para poder cachearse como hoja de estilos. */
 .gg-page-hero {
     position: relative;
     width: 100%;
@@ -1562,7 +1569,6 @@ ol {
     line-height: 1.25;
 }
 
-/* El encabezado de imagen ancho completo debe quedar pegado al navbar (desktop y móvil) */
 .gg-main-content:has(> .gg-page-hero) {
     padding-top: 0;
 }
@@ -1588,7 +1594,6 @@ ol {
     align-items: center;
 }
 
-/* Botón principal (esfera retraída en el centro-izquierda en Desktop) */
 .gg-floating-socials-toggle {
     width: 50px;
     height: 50px;
@@ -1602,7 +1607,6 @@ ol {
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease, border-color 0.3s ease;
-    outline: none;
     padding: 0;
     margin: 0;
     position: relative;
@@ -1612,6 +1616,11 @@ ol {
 .gg-floating-socials-toggle:hover {
     transform: scale(1.08);
     background-color: #132b22;
+}
+
+.gg-floating-socials-toggle:focus-visible {
+    outline: 2px solid #FBD000;
+    outline-offset: 3px;
 }
 
 .gg-floating-socials-toggle .gg-icon-toggle {
@@ -1628,7 +1637,6 @@ ol {
     transform: rotate(45deg);
 }
 
-/* Lista desplegada (En Desktop: Despliega hacia ABAJO debajo del botón) */
 .gg-floating-socials-list {
     display: flex;
     flex-direction: column;
@@ -1758,12 +1766,10 @@ ol {
     background-color: var(--btn-circle-bg, #1A382D);
     overflow: hidden;
     max-width: 96px;
-    /* Estado retraído: esfera circular grande (150% del tamaño original) */
 }
 
 .gg-right-pill-btn:hover {
     max-width: 400px;
-    /* Se expande suavemente hacia la izquierda */
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
     background-color: var(--btn-exp-bg, #ffe82c);
 }
@@ -2016,12 +2022,6 @@ ol {
     color: #555;
 }
 
-/* ==========================================================================
-   Indicador de carga reutilizable (gg-spinner)
-   Usado por cualquier zona del sitio que trae contenido por AJAX o carga
-   diferida (resultados, simulador, visores de PDF, etc.) para que nunca se
-   quede en blanco mientras espera respuesta.
-   ========================================================================== */
 .gg-spinner {
     display: inline-block;
     width: 30px;
@@ -2072,14 +2072,11 @@ ol {
 }
 
 @media (min-width: 992px) {
-    /* Topbar con tipografía fija en px: no debe escalar con el tamaño base
-       de la página en desktop, o crece innecesariamente en altura. */
     .gg-topbar {
         padding: 6px 0;
         font-size: 13px;
     }
 
-    /* Widget de redes sociales flotantes, ~10% más compacto en desktop */
     .gg-floating-socials-toggle {
         width: 45px;
         height: 45px;
@@ -2094,7 +2091,6 @@ ol {
         gap: 9px;
     }
 
-    /* Widget de botones flotantes derechos, ~10% más compacto en desktop */
     .gg-floating-right-widget {
         right: 18px;
         gap: 14px;
@@ -2116,7 +2112,6 @@ ol {
         height: 38px;
     }
 
-    /* Botón "volver arriba", realineado al nuevo ancho del widget derecho */
     .gg-back-to-top {
         right: 118px;
         width: 54px;
